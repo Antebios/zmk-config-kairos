@@ -2,13 +2,12 @@ file_format: "1"
 id: kairos
 name: Kairos
 type: shield
-url: https://github.com/foostan/crkbd/
+url: https://github.com/Antebios/zmk-config-kairos/
 requires: [pro_micro]
 exposes: [i2c_oled]
 features:
   - keys
   - display
-  - underglow
   - studio
 siblings:
   - kairos_left
