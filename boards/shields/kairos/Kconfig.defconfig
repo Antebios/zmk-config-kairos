@@ -1,0 +1,6 @@
+if SHIELD_KAIROS
+
+config ZMK_KAIROS
+    default "kairos"
+
+endif

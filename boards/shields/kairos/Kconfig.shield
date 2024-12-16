@@ -1,0 +1,2 @@
+config SHIELD_KAIROS
+    def bool $(shields_list_contains, kairos)
