@@ -13,25 +13,25 @@
 #define HRMR(k1, k2, k3, k4) &ht LGUI k1  &ht LALT k2  &ht LSHFT k3  &ht LCTRL k4
 
 / {
-        behaviors {
-            ht: hold_tap {
-                label = "hold_tap";
-                compatible = "zmk,behavior-hold-tap";
-                #binding-cells = <2>;
-                flavor = "tap-unless-interrupted";
-                tapping-term-ms = <220>;
-                quick-tap-ms = <200>;
-                bindings = <&kp>, <&kp>;
-            };
-        };
+        // behaviors {
+        //     ht: hold_tap {
+        //         label = "hold_tap";
+        //         compatible = "zmk,behavior-hold-tap";
+        //         #binding-cells = <2>;
+        //         flavor = "tap-unless-interrupted";
+        //         tapping-term-ms = <220>;
+        //         quick-tap-ms = <200>;
+        //         bindings = <&kp>, <&kp>;
+        //     };
+        // };
 
-        conditional_layers {
-            compatible = "zmk,behavior-hold_tap";
-            tri-layer {
-                if-layer = <1 2>;
-                then-layer = <3>;
-            }
-        };
+        // conditional_layers {
+        //     compatible = "zmk,behavior-hold_tap";
+        //     tri-layer {
+        //         if-layer = <1 2>;
+        //         then-layer = <3>;
+        //     }
+        // };
 
         keymap {
                 compatible = "zmk,keymap";
