@@ -9,8 +9,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row key mods
-#define HRML(k1, k2, k3, k4) &ht RCTRL k1  &ht RSHFT k2  &ht RALT k3  &ht RGUI k4
-#define HRMR(k1, k2, k3, k4) &ht LGUI k1  &ht LALT k2  &ht LSHFT k3  &ht LCTRL k4
+// #define HRML(k1, k2, k3, k4) &ht RCTRL k1  &ht RSHFT k2  &ht RALT k3  &ht RGUI k4
+// #define HRMR(k1, k2, k3, k4) &ht LGUI k1  &ht LALT k2  &ht LSHFT k3  &ht LCTRL k4
 
 / {
         // behaviors {
@@ -42,7 +42,8 @@
 // |  TAB  |  Q    |  W  |  E  |  R  |  T  |    |  Y  |  U   |  I  |  O  |   P  | BSPC    |
     &kp TAB   &kp Q &kp W &kp E &kp R &kp T    &kp Y &kp U  &kp I &kp O  &kp P    &kp BSPC
 // | CTRL  |    A  |   S  |  D  |  F  |  G  |   |  H  |   J   |  K  |  L  |  ;  |  '   |
-    &kp LCTRL HRML( A, S,    D,    F)  &kp G   &kp H HRMR(J,     K,    L,  SEMI)  &kp SQT
+//  &kp LCTRL HRML( A, S,    D,    F)  &kp G   &kp H HRMR(J,     K,    L,  SEMI)  &kp SQT
+    &kp LCTRL &kp A &kp S &kp D &kp F  &kp G   &kp H &kp J &kp K &kp L &kp SEMI  &kp SQT
 // | SHFT  |  Z    |  X  |  C  |  V  |  B  |    |  N  |  M   |  ,  |  .  |  /  |  ESC  |
     &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
 //               | GUI     | LWR   | SPC   |    | ENT    | RSE  |  ALT   |
