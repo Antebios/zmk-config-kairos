@@ -31,8 +31,10 @@
     status = "disabled";
 };
 
+/ {
 chosen {
     zephyr,display = "&epd";
+};
 };
 
 &pinctrl {
