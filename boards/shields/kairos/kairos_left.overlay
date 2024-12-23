@@ -71,7 +71,7 @@ chosen {
         spi-max-frequency = <4000000>;
         // dc-gpios = <&pro_micro 10 GPIO_ACTIVE_LOW>;
         // busy-gpios = <&pro_micro 9 GPIO_ACTIVE_LOW>;
-        // reset-gpios = <&pro_micro 8 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&pro_micro 8 GPIO_ACTIVE_LOW>;
         pwr = [03 00 26 26];
         cdi = <0xd2>;
         tcon = <0x22>;
