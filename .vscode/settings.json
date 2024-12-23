@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "*.ndjson": "jsonl",
+    "*.dbclient-js": "javascript",
+    "MLTable": "yaml",
+    "Dockerfile2016": "dockerfile",
+    "*.overlay": "cpp"
+  }
+}
