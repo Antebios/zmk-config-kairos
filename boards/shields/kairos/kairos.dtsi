@@ -67,7 +67,7 @@
 
 / {
     chosen {
-        zephyr,display = &oled;
+        zephyr,display = &nice_view;
         zmk,kscan = &kscan0;
         zmk,physical-layout = &foostan_corne_6col_layout;
     };
