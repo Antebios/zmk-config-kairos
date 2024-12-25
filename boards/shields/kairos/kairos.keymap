@@ -7,22 +7,27 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include "combos.dtsi"
+// #include "combos.dtsi"
 
-#define DEFAULT   0
-#define FKEYS     1
-#define NUMBERS   2
-#define WINDOWS   3
-#define W_FKEYS   4
-#define W_NUMBERS 5
-#define MATHS     6
-#define KB_CONFIG 7
+// HELPERS
+#include "helpers/combos_include.keymap"
+#include "helpers/macros_include.keymap"
+#include "helpers/press.keymap"
 
-// Home row key mods
-#define HRML(k1, k2, k3, k4) &ht LGUI k1  &ht LALT k2  &ht LSHFT k3  &ht LCTRL k4
-#define HRMR(k1, k2, k3, k4) &ht RCTRL k1  &ht RSHFT k2  &ht RALT k3  &ht RGUI k4
+// LAYERS NAMES
+#define DEFAULT 0
+#define LOWER 1
+#define RAISE 2
+#define NUMBER 3
+#define EXTRA 4
+#define UBER 5
+#define PLAYER 6
+
 
 / {
+    macros {
+        #include "helpers/macros.keymap"
+    };
 
     behaviors {
         ht: hold_tap {
@@ -34,6 +39,11 @@
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        #include "helpers/combos.keymap"
     };
 
     keymap {
