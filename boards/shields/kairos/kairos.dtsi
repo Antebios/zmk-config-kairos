@@ -8,7 +8,6 @@
 
 #include <layouts/foostan/corne/5column.dtsi>
 #include <layouts/foostan/corne/6column.dtsi>
-// #include <kairos-pinctrl.dtsi>
 
 &foostan_corne_6col_layout {
     transform = <&default_transform>;
