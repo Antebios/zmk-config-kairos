@@ -39,7 +39,7 @@
         compatible = "zmk,keymap";
 
             #include "keymaps/1.base.keymap"
-            #include "keymaps/2.lower.keymap"
+            #include "keymaps/2.nav.keymap"
             #include "keymaps/3.raise.keymap"
             #include "keymaps/4.utils.keymap"
     };
