@@ -1,12 +1,24 @@
 ht: hold_tap {
-            label = "hold_tap";
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <200>;
-            bindings = <&kp>, <&kp>;
-        };
+  label = "hold_tap";
+  compatible = "zmk,behavior-hold-tap";
+  #binding-cells = <2>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <220>;
+  quick-tap-ms = <200>;
+  bindings = <&kp>, <&kp>;
+};
+
+lower_td: lower_td {
+  label = "lower_td";
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+//   flavor = "tap-preferred";
+  tapping-term-ms = <220>;
+  quick-tap-ms = <200>;
+  bindings =
+      <&lt LOWER  &to LOWER>      // Tap-Hold, Tap
+    , <&to LOWER>;               // Double-Tap
+};
 
 // NOT USED
 // td_alt: tab_dance_alt {
