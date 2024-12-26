@@ -8,12 +8,12 @@ ht: hold_tap {
   bindings = <&kp>, <&kp>;
 };
 
-// td_mt: tap_dance_mod_tap {
-//     compatible = "zmk,behavior-tap-dance";
-//     #binding-cells = <0>;
-//     tapping-term-ms = <200>;
-//     bindings = <&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
-// };
+td_mt: tap_dance_mod_tap {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <200>;
+    bindings = <&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
+};
 
 // lower_td: tap_dance_mod_tap {
 //   compatible = "zmk,behavior-tap-dance";
