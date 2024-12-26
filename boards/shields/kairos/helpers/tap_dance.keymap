@@ -9,10 +9,10 @@ ht: hold_tap {
 };
 
 td_mt: tap_dance_mod_tap {
-    compatible = "zmk,behavior-tap-dance";
-    #binding-cells = <0>;
-    tapping-term-ms = <200>;
-    bindings = <&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+  tapping-term-ms = <220>;
+  bindings = <&lt LOWER  &to LOWER>, <&to LOWER>;
 };
 
 // lower_td: tap_dance_mod_tap {
