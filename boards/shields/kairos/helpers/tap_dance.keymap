@@ -12,7 +12,7 @@ td_mt: tap_dance_mod_tap {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <220>;
-  bindings = <&lt LOWER CAPSLOCK>, <&kp LCTRL>;
+  bindings = <&lt LOWER CAPSLOCK>, <&to LOWER>;
 };
 
 // lower_td: tap_dance_mod_tap {
