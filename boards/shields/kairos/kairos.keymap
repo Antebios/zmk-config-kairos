@@ -40,7 +40,7 @@
 
             #include "keymaps/1.base.keymap"
             #include "keymaps/2.lower.keymap"
-            #include "keymaps/raise.keymap"
-            #include "keymaps/utils.keymap"
+            #include "keymaps/3.raise.keymap"
+            #include "keymaps/4.utils.keymap"
     };
 };
