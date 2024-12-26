@@ -9,12 +9,10 @@ ht: hold_tap {
 };
 
 lower_td: lower_td {
-  label = "lower_td";
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
 //   flavor = "tap-preferred";
   tapping-term-ms = <220>;
-  quick-tap-ms = <200>;
   bindings =
       <&lt LOWER  &to LOWER>      // Tap-Hold, Tap
     , <&to LOWER>;               // Double-Tap
