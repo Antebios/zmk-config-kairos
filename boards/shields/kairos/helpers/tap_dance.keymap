@@ -8,7 +8,7 @@ ht: hold_tap {
   bindings = <&kp>, <&kp>;
 };
 
-lower_td: lower_td {
+lower_td: tap_dance_mod_tap {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
 //   flavor = "tap-preferred";
