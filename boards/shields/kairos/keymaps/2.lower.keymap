@@ -6,7 +6,7 @@ lower_layer {
 // |  DELETE | MSWHL UP   | MSSCR LEFT   |      ↑       | MSSCR RIGHT   |      | █ |      |      |      |      |      |      |
   &kp DELETE  &msc SCRL_UP &msc SCRL_LEFT &mmv MOVE_UP   &msc SCRL_RIGHT &none     &trans &trans &trans &trans &trans &trans
 // |  TAB    | MSWHL DN   |       ←      |      ↓       |     →         |      | █ |      |      |      |      |      |      |
-  &trans      &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &msc SCRL_RIGHT &none     &trans &trans &trans &trans &trans &trans
+  &trans      &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none   &trans &trans &trans &trans &trans &trans
   // &kp TAB     &msc SCRL_DN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none     &trans &trans &trans &trans &trans &trans
 // | SHFT    |            | LEFT BTN     |  MIDDLE BTN  |  RIGHT BTN    |      | █ |      |      |      |      |      |      |
   &trans      &none        &mkp LCLK       &mkp MCLK       &mkp RCLK     &none     &trans &trans &trans &trans &trans &trans
