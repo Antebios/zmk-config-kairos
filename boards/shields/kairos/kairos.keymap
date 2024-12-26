@@ -20,7 +20,6 @@
 // KEYS
 #include "helpers/keys.keymap"
 
-
 / {
     macros {
         #include "helpers/macros.keymap"
