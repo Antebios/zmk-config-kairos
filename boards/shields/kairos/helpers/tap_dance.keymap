@@ -10,21 +10,21 @@ ht: hold_tap {
 
 
 
-td_lower_layer: tap_dance_layer {
+td_nav_layer: tap_dance_layer {
   compatible = "zmk,behavior-tap-dance";
   label = "TAP_DANCE_LAYER";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
 };
-slmo_lower: sticky_momentary_layer {
+slmo_nav: sticky_momentary_layer {
   compatible = "zmk,behavior-hold-tap";
   label = "STICKY_MOMENTARY_LAYER";
   #binding-cells = <2>;
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
   flavor = "hold-preferred";
-  bindings = <&mo>, <&td_lower_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+  bindings = <&mo>, <&td_nav_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
 };
 
 
