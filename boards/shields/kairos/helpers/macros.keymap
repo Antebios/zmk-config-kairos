@@ -1,5 +1,18 @@
 
 
+// To Layer 1
+// vscode_tog_console: vscode_tog_console {
+//   label = "vsc_console";
+//   compatible = "zmk,behavior-macro";
+//   #binding-cells = <0>;
+//   bindings
+//     = <&macro_press &kp LCTRL>
+//     , <&macro_tap &kp GRAVE>
+//     , <&macro_release &kp LCTRL>;
+// };
+
+// =======================================
+
 // Control + ` = Toggle VS Code Console
 vscode_tog_console: vscode_tog_console {
   label = "vsc_console";
