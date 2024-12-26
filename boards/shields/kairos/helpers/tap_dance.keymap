@@ -8,12 +8,39 @@ ht: hold_tap {
   bindings = <&kp>, <&kp>;
 };
 
-td_mt: tap_dance_mod_tap {
+// mo_tog: behavior_mo_tog {
+//   compatible = "zmk,behavior-hold-tap";
+//   #binding-cells = <2>;
+//   flavor = "hold-preferred";
+//   tapping-term-ms = <200>;
+//   bindings = <&mo>, <&tog>;
+// };
+
+
+td_layer: tap_dance_layer {
   compatible = "zmk,behavior-tap-dance";
+  label = "TAP_DANCE_LAYER";
   #binding-cells = <0>;
-  tapping-term-ms = <220>;
-  bindings = <&lt LOWER osl(LOWER)>, <&to LOWER>;
+  tapping-term-ms = <300>;
+  bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
 };
+slmo: sticky_momentary_layer {
+  compatible = "zmk,behavior-hold-tap";
+  label = "STICKY_MOMENTARY_LAYER";
+  #binding-cells = <2>;
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "hold-preferred";
+  bindings = <&mo>, <&td_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+};
+
+
+// td_mt: tap_dance_mod_tap {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <220>;
+//   bindings = <&lt LOWER osl(LOWER)>, <&to LOWER>;
+// };
 
 // lower_td: tap_dance_mod_tap {
 //   compatible = "zmk,behavior-tap-dance";
