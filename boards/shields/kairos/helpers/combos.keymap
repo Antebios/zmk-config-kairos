@@ -22,11 +22,11 @@ COMBO_ALL(vscode_cmd_pallet, &vscode_cmd_pallet, 9 10)
 
 
 // Print Screen
-COMBO_ALL(print_screen , SPRINTSCREEN, 12 13)
+COMBO_ALL(print_screen , &kp SPRINTSCREEN, 12 13)
 // Back Tick `
-COMBO_ALL(back_tick , GRAVE, 12 13)
+COMBO_ALL(back_tick , &kp GRAVE, 12 13)
 // Tilde ~
-COMBO_ALL(tilde , TILDE, 24 25)
+COMBO_ALL(tilde , &kp TILDE, 24 25)
 
 
 
