@@ -9,7 +9,10 @@ ht: hold_tap {
 };
 
 
-
+// Lower key:
+// Hold = Temporary Layer 1, then released when Lower key is released
+// Tap  = Layer 1 active, then after next key press Layer 1 is released
+// Double Tap = Layer 1 is active and locked
 td_nav_layer: tap_dance_layer {
   compatible = "zmk,behavior-tap-dance";
   label = "TAP_DANCE_LAYER";
@@ -25,6 +28,29 @@ slmo_nav: sticky_momentary_layer {
   quick-tap-ms = <0>;
   flavor = "hold-preferred";
   bindings = <&mo>, <&td_nav_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+};
+
+
+
+// Left Shift:
+// Hold = Temporary Left Shift, then released when Shift key is released
+// Tap  = Shift is active, then after next key press Shift is released
+// Double Tap = Layer 1 is active and locked
+td_lshift_caps: tap_dance_layer {
+  compatible = "zmk,behavior-tap-dance";
+  label = "TAP_DANCE_LAYER";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = <&sk LSHIFT>, <&caps_word>;    // First tap = sticky shift, double tap = enable Caps Word
+};
+ls_caps: sticky_momentary_layer {
+  compatible = "zmk,behavior-hold-tap";
+  label = "AutoShift";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "hold-preferred";
+  bindings = <&mt>, <&td_lshift_caps>;  // Hold for momentary, tap for tap-dance behavior ex:&lshift_caps
 };
 
 
