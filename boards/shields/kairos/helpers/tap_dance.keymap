@@ -50,8 +50,8 @@ ls_caps: ls_caps {
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
   flavor = "hold-preferred";
-  bindings = &mt LSHIFT, &sk LSHIFT;  // Hold for momentary Shift,
-                                           // Tap for tap-dance behavior ex: &lshift_caps
+  bindings = <&mt LSHIFT>, <&sk LSHIFT>;  // Hold for momentary Shift,
+                                      // Tap for tap-dance behavior ex: &lshift_caps
 };
 
 
