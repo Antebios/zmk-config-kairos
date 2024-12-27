@@ -8,8 +8,8 @@ base_layer {
 // |  TAB  |    A  |   S  |  D  |   F  |  G  |     |  H  |  J   |  K  |  L  |  ; : |  ' "   |
   &kp TAB HRML( A,     S,    D,     F)  &kp G     &kp H HRMR(J,    K,    L,   SEMI)  &td_quote
     // &kp LCTRL &kp A &kp S &kp D &kp F &kp G    &kp H &kp J &kp K &kp L &kp SEMI  &kp SQT
-// | SHFT  |   Z   |  X   |  C  |  V   |  B  |     |  N  |  M   |  ,<  |  .>  |  /?  |  \|  |
-  AS(LSHFT) &kp Z &kp X  &kp C &kp V  &kp B       &kp N &kp M  &td_comma &td_period &td_fslash &td_bslash
+// | SHFT  |  Z    |  X   |  C  |  V   |  B  |     |  N  |  M   |  ,<  |  .>  |  /?  |  \|  |
+  &kp LSHFT &kp Z &kp X  &kp C &kp V  &kp B       &kp N &kp M  &td_comma &td_period &td_fslash &td_bslash
 //               | Lower  | Raise  |  SPC    |    |  ENT |  ↑   |  ↓   |
              &slmo_nav 1 1  &mo 3   &kp SPACE    &kp RET  &mo 3  &mo 4
   >;
