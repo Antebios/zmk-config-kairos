@@ -38,8 +38,8 @@
     keymap {
         compatible = "zmk,keymap";
 
-            #include "keymaps/1.base.keymap"
-            #include "keymaps/2.nav.keymap"
+            #include "keymaps/0.base.keymap"
+            #include "keymaps/1.nav.keymap"
             #include "keymaps/3.raise.keymap"
             #include "keymaps/4.utils.keymap"
     };
