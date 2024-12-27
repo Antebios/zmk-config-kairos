@@ -65,7 +65,7 @@ tab_next: tab_next {
                 , <&macro_release &kp LCTRL>;
 };
 
-tab_reopen: tab_next {
+tab_reopen: tab_reopen {
         label = "ZM_tab_reopen";
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
