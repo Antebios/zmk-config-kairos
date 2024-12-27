@@ -6,29 +6,42 @@
 //                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
 
 // ESC
-COMBO_ALL(esc_one_two, &kp ESC, 2 3)
-// COMBO_ALL(esc_left, &kp ESC, 25 26)
-// COMBO_ALL(esc_null_one, &kp ESC, 9 10)
+COMBO_ALL(esc_left, &kp ESC, 2 3)
 
-// BACKSPACE
-COMBO_ALL(bspc_left, &kp BSPC, 0 1)
+// DELETE
+COMBO_ALL(delete, &kp DELETE, 0 1)
 
 // Control + ` = Toggle VS Code Console
-COMBO_ALL(vscode_tog_console, &vscode_tog_console, 26 27)
+COMBO_ALL(vscode_tog_console, &vscode_tog_console, 9 10)
 // Shift + Control + ` = New VS Code Console
-COMBO_ALL(vscode_new_console, &vscode_new_console, 27 28)
-// Control + ` = Toggle VS Code Console
-COMBO_ALL(vscode_cmd_pallet, &vscode_cmd_pallet, 9 10)
+COMBO_ALL(vscode_new_console, &vscode_new_console, 21 22)
+// Shift + Control + P = Command Pallet
+COMBO_ALL(vscode_cmd_pallet, &vscode_cmd_pallet, 33 34)
 
 
+// BUTTON INDEXES
+//                  ^                              ^
+// | 0  | 1  | 2  | 3  | 4  | 5  | ___ | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
 // Print Screen
-COMBO_ALL(print_screen , &kp SPRINTSCREEN, 12 13)
+COMBO_ALL(print_screen , &kp SPRINTSCREEN, 12 13 14)
 // Back Tick `
-COMBO_ALL(back_tick , &kp GRAVE, 12 13)
+COMBO_ALL(back_tick , &kp GRAVE, 1 2 3)
 // Tilde ~
-COMBO_ALL(tilde , &kp TILDE, 24 25)
+COMBO_ALL(tilde , &kp TILDE, 12 13 14)
+// Dash or Minus -
+COMBO_ALL(minus , &kp MINUS, 6 7)
+// Underscore _
+COMBO_ALL(underscore , &kp UNDERSCORE, 8 9)
+// Plus +
+COMBO_ALL(plus , &kp PLUS, 18 19)
+// Equal =
+COMBO_ALL(equal , &kp EQUAL, 19 20)
 
-
+COMBO_ALL(wkshell , &kp KP_N5 &kp KP_N8 &kp KP_N8 &kp KP_N1 &kp KP_N3 &kp KP_N2 &kp KP_N0, 4 5)
+COMBO_ALL(wkshell , &kp LS(Q) &kp w &kp e &kp r &kp q &kp w &kp e &kp r, 16 17)
 
 // BLUETOOTH CLEAR
 // COMBO(bt_clr, &bt BT_CLR, 24 29, 4)
