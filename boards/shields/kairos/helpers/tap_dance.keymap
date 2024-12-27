@@ -57,50 +57,44 @@ ls_caps: ls_caps {
 
 td_semi: td_semi {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_semi";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&kp SEMICOLON>, <&kp COLON>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp SEMICOLON>, <&kp COLON>;
 };
 
 td_quote: td_quote {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_quote";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
 };
 
 td_comma: td_comma {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_comma";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&kp COMMA>, <&kp LESS_THAN>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp COMMA>, <&kp LESS_THAN>;
 };
 
 td_period: td_period {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_period";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&kp PERIOD>, <&kp GREATER_THAN>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp PERIOD>, <&kp GREATER_THAN>;
 };
 
 td_fslash: td_fslash {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_fslash";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&kp SLASH>, <&kp QUESTION>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp SLASH>, <&kp QUESTION>;
 };
 
 td_bslash: td_bslash {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_bslash";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&kp BACKSLASH>, <&kp PIPE>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp BACKSLASH>, <&kp PIPE>;
 };
 
 // td_alt: tab_dance_alt {
