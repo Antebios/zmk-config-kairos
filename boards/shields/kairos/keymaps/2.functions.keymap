@@ -1,6 +1,6 @@
 raise_layer {
-  label = "SYMBOL_KP";
-  display-name = "Symbols_KeyPad";
+  label = "FUNCTIONS";
+  display-name = "Functions";
   bindings = <
 // -----------------------------------------------------------------------------------------
 // |   `   |   !     |    @    |   (    |   )    |   &    | █ |       /       |    7    |    8    |    9    |     -      |     _      |
@@ -13,4 +13,3 @@ raise_layer {
                                 &kp LGUI &trans  &kp SPACE         &kp RET       &none    &kp KP_N0
     >;
 };
-

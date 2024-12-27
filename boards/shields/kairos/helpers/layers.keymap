@@ -1,8 +1,9 @@
 // LAYERS NAMES
 #define BASE 0
 #define NAVIGATION 1
-#define SYMBOL_KP 2
-#define UTILS 3
+#define FUNCTIONS 2
+#define SYMBOL_KP 3
+#define UTILS 4
 // #define NUMBER 3
 // #define EXTRA 4
 // #define UBER 5
