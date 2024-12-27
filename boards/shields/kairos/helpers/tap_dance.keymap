@@ -20,7 +20,7 @@ td_nav_layer: td_nav_layer {
   tapping-term-ms = <300>;
   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
 };
-slmo_nav: sticky_momentary_layer {
+slmo_nav: slmo_nav {
   compatible = "zmk,behavior-hold-tap";
   label = "STICKY_MOMENTARY_LAYER";
   #binding-cells = <2>;
