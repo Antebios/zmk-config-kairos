@@ -13,14 +13,14 @@ ht: hold_tap {
 // Hold = Temporary Layer 1, then released when Lower key is released
 // Tap  = Layer 1 active, then after next key press Layer 1 is released
 // Double Tap = Layer 1 is active and locked
-td_nav_layer: tap_dance_layer {
+td_nav_layer: td_nav_layer {
   compatible = "zmk,behavior-tap-dance";
   label = "td_nav_layer";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
 };
-slmo_nav: sticky_momentary_layer {
+slmo_nav: slmo_nav {
   compatible = "zmk,behavior-hold-tap";
   label = "STICKY_MOMENTARY_LAYER";
   #binding-cells = <2>;
@@ -36,14 +36,14 @@ slmo_nav: sticky_momentary_layer {
 // Hold = Temporary Left Shift, then released when Shift key is released
 // Tap  = Shift is active, then after next key press Shift is released
 // Double Tap = Layer 1 is active and locked
-td_lshift_caps: tap_dance_layer {
+td_lshift_caps: td_lshift_caps {
   compatible = "zmk,behavior-tap-dance";
   label = "td_lshift_caps";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = &sk LSHIFT, &caps_word;    // First tap = sticky shift, double tap = enable Caps Word
 };
-ls_caps: sticky_momentary_layer {
+ls_caps: ls_caps {
   compatible = "zmk,behavior-hold-tap";
   label = "AutoShift";
   #binding-cells = <0>;
@@ -55,6 +55,22 @@ ls_caps: sticky_momentary_layer {
 };
 
 
+td_comma td_period {
+  compatible = "zmk,behavior-tap-dance";
+  label = "td_period";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = &kp COMMA, &kp LESS_THAN;    // First tap = sticky shift, double tap = enable Caps Word
+};
+
+
+td_period: td_period {
+  compatible = "zmk,behavior-tap-dance";
+  label = "td_period";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = &kp PERIOD, &kp GREATER_THAN;    // First tap = sticky shift, double tap = enable Caps Word
+};
 
 // td_alt: tab_dance_alt {
 //         label = "TAP_DANCE_ALT";
