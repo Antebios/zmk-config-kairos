@@ -26,7 +26,7 @@ COMBO_ALL(vscode_cmd_pallet, &vscode_cmd_pallet, 33 34)
 // | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
 //                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
 // Print Screen
-COMBO_ALL(print_screen , &kp SPRINTSCREEN, 12 13 14)
+COMBO_ALL(print_screen , &kp SPRINTSCREEN, 11 23)
 // Back Tick `
 COMBO_ALL(back_tick , &kp GRAVE, 1 2 3)
 // Tilde ~
