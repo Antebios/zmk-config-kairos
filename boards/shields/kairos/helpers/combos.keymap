@@ -19,9 +19,9 @@ COMBO(vscode_cmd_pallet, &vscode_cmd_pallet, 33 34, BASE)
 // File Explorer
 COMBO(vscode_explorer , &kp LC(LS(E)), 10 11, BASE)
 // Search
-COMBO(vscode_explorer , &kp LC(LS(F)), 12 23, BASE)
+// COMBO(vscode_explorer , &kp LC(LS(F)), 12 23, BASE)
 // Source Control
-COMBO(vscode_explorer , &kp LC(LS(G)) &kp G, 34 35, BASE)
+// COMBO(vscode_explorer , &kp LC(LS(G)) &kp G, 34 35, BASE)
 
 
 // BUTTON INDEXES
