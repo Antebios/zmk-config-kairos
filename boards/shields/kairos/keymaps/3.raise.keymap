@@ -9,7 +9,7 @@ raise_layer {
   &kp TILDE  &kp HASH  &kp DLLR  &kp LBKT &kp RBKT  &none      &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp PLUS    &kp KP_EQUAL
 // |  "|"  |   %     |   ^     |   {    |   }    |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
   &kp PIPE  &kp PRCNT &kp CARET &kp LBRC &kp RBRC   &none      &kp KP_DOT      &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_COMMA &kp  ENTER
-//                               |  ▼   |   ▼  |    ▼     | █ |       ▼       |          |    0    |
+//                               |  ▼   |   ▼  |    ▼     | █ |    Return     |          |    0    |
                                 &kp LGUI &trans  &kp SPACE         &kp RET       &none    &kp KP_N0
     >;
 };
