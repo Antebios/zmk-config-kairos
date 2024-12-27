@@ -40,7 +40,9 @@
 
             #include "keymaps/0.base.keymap"
             #include "keymaps/1.nav.keymap"
+            #include "keymaps/2.functions.keymap"
             #include "keymaps/3.symbols_kp.keymap"
+            #include "keymaps/4.utils.keymap"
             // #include "keymaps/4.utils.keymap"
     };
 };
