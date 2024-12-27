@@ -3,7 +3,7 @@ utils_layer {
   display-name = "Utils";
   bindings = <
 //╭─────────────────┬─────────────────┬─────────────────┬─────────────────┬──────────────────┬──────────────────╮  ╭───────┬───────────────┬──────────────┬──────────────┬─────────────┬───────────────╮
-    &bt BT_PRV      &bt BT_CLR_ALL    &bt BT_NXT     &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2         &none   &none  &none  &none   &none  &kp C_VOL_UP
+    &bt BT_PRV      &bt BT_CLR_ALL    &bt BT_NXT     &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2         &none   &none  &none  &none   &kp C_BRI_UP  &kp C_VOL_UP
     // &bt BT_PRV      &bt BT_CLR_ALL    &bt BT_NXT     &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2         &none   &kp LCTRL(X)  &kp LCTRL(C)  &kp LCTRL(V) &kp C_BRI_UP &kp C_VOL_UP
 //├─────────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────────┼──────────────────┤  ├───────┼───────────────┼──────────────┼──────────────┼─────────────┼───────────────┤
     &none          &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI     &none   &none         &none         &none        &none &none
