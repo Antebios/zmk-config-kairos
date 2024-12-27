@@ -10,6 +10,6 @@ functions_layer {
 // | BASE  |  F10    |   F1    |   F2   |   F3   |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
   &to 0      &kp F10    &kp CARET &kp LBRC &kp RBRC  &none      &kp KP_DOT      &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_COMMA &kp  ENTER
 //                             |    ▼   |    ▼   |    ▼   | █ |       ▼       |     ▼    |    0    |
-                                 &transI  &trans    &trans         &trans       &trans   &trans
+                                 &transv  &trans    &trans         &trans       &trans   &trans
     >;
 };
