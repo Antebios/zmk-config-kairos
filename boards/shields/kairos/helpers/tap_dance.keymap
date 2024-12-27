@@ -72,6 +72,22 @@ td_period: td_period {
   bindings = &kp PERIOD, &kp GREATER_THAN;    // First tap = sticky shift, double tap = enable Caps Word
 };
 
+td_fslash: td_fslash {
+  compatible = "zmk,behavior-tap-dance";
+  label = "td_fslash";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = &kp SLASH, &kp QUESTION;    // First tap = sticky shift, double tap = enable Caps Word
+};
+
+td_bslash: td_bslash {
+  compatible = "zmk,behavior-tap-dance";
+  label = "td_bslash";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = &kp BACKSLASH, &kp PIPE;    // First tap = sticky shift, double tap = enable Caps Word
+};
+
 // td_alt: tab_dance_alt {
 //         label = "TAP_DANCE_ALT";
 //         compatible = "zmk,behavior-tap-dance";
