@@ -9,7 +9,7 @@ navigation_layer {
   &trans              LEFT_ARROW DOWN_ARROW RIGHT_ARROW  PAGE_DOWN      &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
 // | BASE    |       |          |          |  HOME     |  END      | █ |            | LEFT BTN     |  MIDDLE BTN  |  RIGHT BTN    |      |      |
   &to 0       &none                           HOME        END            &none       &mkp LCLK       &mkp MCLK      &mkp RCLK     &none  &none
-//                           |  ▼            |  ▼           | ▼    | █ | ▼    |  ▼    | ▼ |
-                                           &trans         &trans         &trans     &trans &trans &trans
+//                              |      ▼   |      ▼    |     ▼     | █ |   ▼   |    ▼  |   ▼   |
+                                    &trans    &trans      &trans        &trans  &trans  &trans
   >;
 };
