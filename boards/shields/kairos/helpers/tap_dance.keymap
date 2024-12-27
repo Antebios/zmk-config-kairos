@@ -15,7 +15,7 @@ ht: hold_tap {
 // Double Tap = Layer 1 is active and locked
 td_nav_layer: tap_dance_layer {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_LAYER";
+  label = "td_nav_layer";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
@@ -38,10 +38,10 @@ slmo_nav: sticky_momentary_layer {
 // Double Tap = Layer 1 is active and locked
 td_lshift_caps: tap_dance_layer {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_LAYER";
+  label = "td_lshift_caps";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&sk LSHIFT>, <&caps_word>;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = &sk LSHIFT, &caps_word;    // First tap = sticky shift, double tap = enable Caps Word
 };
 ls_caps: sticky_momentary_layer {
   compatible = "zmk,behavior-hold-tap";
@@ -50,21 +50,11 @@ ls_caps: sticky_momentary_layer {
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
   flavor = "hold-preferred";
-  bindings = <&mt>, <&td_lshift_caps>;  // Hold for momentary, tap for tap-dance behavior ex:&lshift_caps
+  bindings = &mt LSHIFT, &td_lshift_caps;  // Hold for momentary Shift,
+                                           // Tap for tap-dance behavior ex: &lshift_caps
 };
 
 
-
-// NOT USED
-// lower_td: tap_dance_mod_tap {
-//   compatible = "zmk,behavior-tap-dance";
-//   #binding-cells = <0>;
-// //   flavor = "tap-preferred";
-//   tapping-term-ms = <220>;
-//   bindings =
-//       <&lt LOWER  &to LOWER>      // Tap-Hold, Tap
-//     , <&to LOWER>;               // Double-Tap
-// };
 
 // td_alt: tab_dance_alt {
 //         label = "TAP_DANCE_ALT";
