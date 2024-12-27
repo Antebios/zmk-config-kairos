@@ -41,7 +41,8 @@ td_lshift_caps: td_lshift_caps {
   label = "td_lshift_caps";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = &sk LSHIFT, &caps_word;
+  // bindings = &sk LSHIFT, &caps_word;
+  bindings = <&sk>, <&caps_word>;
   // First tap = sticky shift, double tap = enable Caps Word
 };
 // as: auto_shift {
