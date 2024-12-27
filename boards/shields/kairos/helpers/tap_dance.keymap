@@ -9,8 +9,11 @@ ht: hold_tap {
 };
 
 
-
-td_nav_layer: tap_dance_layer {
+// Lower key:
+// Hold = Temporary Layer 1, then released when Lower key is released
+// Tap  = Layer 1 active, then after next key press Layer 1 is released
+// Double Tap = Layer 1 is active and locked
+td_nav_layer: td_nav_layer {
   compatible = "zmk,behavior-tap-dance";
   label = "TAP_DANCE_LAYER";
   #binding-cells = <0>;
@@ -29,15 +32,68 @@ slmo_nav: sticky_momentary_layer {
 
 
 
-// NOT USED
-// lower_td: tap_dance_mod_tap {
+// Left Shift:
+// Hold = Temporary Left Shift, then released when Shift key is released
+// Tap  = Shift is active, then after next key press Shift is released
+// Double Tap = Layer 1 is active and locked
+// td_lshift_caps: td_lshift_caps {
+//   compatible = "zmk,behavior-tap-dance";
+//   label = "td_lshift_caps";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = &sk LSHIFT, &caps_word;    // First tap = sticky shift, double tap = enable Caps Word
+// };
+// ls_caps: ls_caps {
+//   compatible = "zmk,behavior-hold-tap";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   quick-tap-ms = <0>;
+//   flavor = "hold-preferred";
+//   bindings = <&mt LSHIFT>, <&sk LSHIFT>;  // Hold for momentary Shift,
+//                                       // Tap for tap-dance behavior ex: &lshift_caps
+// };
+
+
+// td_semi: td_semi {
 //   compatible = "zmk,behavior-tap-dance";
 //   #binding-cells = <0>;
-// //   flavor = "tap-preferred";
-//   tapping-term-ms = <220>;
-//   bindings =
-//       <&lt LOWER  &to LOWER>      // Tap-Hold, Tap
-//     , <&to LOWER>;               // Double-Tap
+//   tapping-term-ms = <300>;
+//   bindings = <&kp SEMICOLON>, <&kp COLON>;
+// };
+
+// td_quote: td_quote {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
+// };
+
+// td_comma: td_comma {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp COMMA>, <&kp LESS_THAN>;
+// };
+
+// td_period: td_period {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp PERIOD>, <&kp GREATER_THAN>;
+// };
+
+// td_fslash: td_fslash {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp SLASH>, <&kp QUESTION>;
+// };
+
+// td_bslash: td_bslash {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp BACKSLASH>, <&kp PIPE>;
 // };
 
 // td_alt: tab_dance_alt {
