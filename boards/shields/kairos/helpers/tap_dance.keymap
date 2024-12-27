@@ -51,47 +51,47 @@ slmo_nav: slmo_nav {
 // };
 
 
-td_semi: td_semi {
-  compatible = "zmk,behavior-tap-dance";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&kp SEMICOLON>, <&kp COLON>;
-};
+// td_semi: td_semi {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp SEMICOLON>, <&kp COLON>;
+// };
 
-td_quote: td_quote {
-  compatible = "zmk,behavior-tap-dance";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
-};
+// td_quote: td_quote {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
+// };
 
-td_comma: td_comma {
-  compatible = "zmk,behavior-tap-dance";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&kp COMMA>, <&kp LESS_THAN>;
-};
+// td_comma: td_comma {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp COMMA>, <&kp LESS_THAN>;
+// };
 
-td_period: td_period {
-  compatible = "zmk,behavior-tap-dance";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&kp PERIOD>, <&kp GREATER_THAN>;
-};
+// td_period: td_period {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp PERIOD>, <&kp GREATER_THAN>;
+// };
 
-td_fslash: td_fslash {
-  compatible = "zmk,behavior-tap-dance";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&kp SLASH>, <&kp QUESTION>;
-};
+// td_fslash: td_fslash {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp SLASH>, <&kp QUESTION>;
+// };
 
-td_bslash: td_bslash {
-  compatible = "zmk,behavior-tap-dance";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&kp BACKSLASH>, <&kp PIPE>;
-};
+// td_bslash: td_bslash {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&kp BACKSLASH>, <&kp PIPE>;
+// };
 
 // td_alt: tab_dance_alt {
 //         label = "TAP_DANCE_ALT";
