@@ -1,4 +1,4 @@
-raise_layer {
+functions_layer {
   label = "FUNCTIONS";
   display-name = "Functions";
   bindings = <

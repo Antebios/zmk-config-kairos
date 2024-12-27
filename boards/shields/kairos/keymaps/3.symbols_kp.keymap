@@ -1,4 +1,4 @@
-raise_layer {
+symkp_layer {
   label = "SYMBOL_KP";
   display-name = "Symbols_KeyPad";
   bindings = <
