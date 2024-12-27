@@ -40,15 +40,15 @@ slmo_nav: slmo_nav {
 //   tapping-term-ms = <300>;
 //   bindings = &sk LSHIFT, &caps_word;    // First tap = sticky shift, double tap = enable Caps Word
 // };
-ls_caps: ls_caps {
-  compatible = "zmk,behavior-hold-tap";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  quick-tap-ms = <0>;
-  flavor = "hold-preferred";
-  bindings = <&mt LSHIFT>, <&sk LSHIFT>;  // Hold for momentary Shift,
-                                      // Tap for tap-dance behavior ex: &lshift_caps
-};
+// ls_caps: ls_caps {
+//   compatible = "zmk,behavior-hold-tap";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   quick-tap-ms = <0>;
+//   flavor = "hold-preferred";
+//   bindings = <&mt LSHIFT>, <&sk LSHIFT>;  // Hold for momentary Shift,
+//                                       // Tap for tap-dance behavior ex: &lshift_caps
+// };
 
 
 td_semi: td_semi {
