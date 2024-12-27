@@ -60,16 +60,15 @@ td_comma td_period {
   label = "td_period";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = &kp COMMA, &kp LESS_THAN;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp COMMA>, <&kp LESS_THAN>;    // First tap = sticky shift, double tap = enable Caps Word
 };
-
 
 td_period: td_period {
   compatible = "zmk,behavior-tap-dance";
   label = "td_period";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = &kp PERIOD, &kp GREATER_THAN;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp PERIOD>, <&kp GREATER_THAN>;    // First tap = sticky shift, double tap = enable Caps Word
 };
 
 td_fslash: td_fslash {
@@ -77,7 +76,7 @@ td_fslash: td_fslash {
   label = "td_fslash";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = &kp SLASH, &kp QUESTION;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp SLASH>, <&kp QUESTION>;    // First tap = sticky shift, double tap = enable Caps Word
 };
 
 td_bslash: td_bslash {
@@ -85,7 +84,7 @@ td_bslash: td_bslash {
   label = "td_bslash";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = &kp BACKSLASH, &kp PIPE;    // First tap = sticky shift, double tap = enable Caps Word
+  bindings = <&kp BACKSLASH>, <&kp PIPE>;    // First tap = sticky shift, double tap = enable Caps Word
 };
 
 // td_alt: tab_dance_alt {
