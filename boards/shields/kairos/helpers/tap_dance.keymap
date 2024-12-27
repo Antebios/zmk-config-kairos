@@ -1,5 +1,4 @@
 ht: hold_tap {
-  label = "hold_tap";
   compatible = "zmk,behavior-hold-tap";
   #binding-cells = <2>;
   flavor = "tap-preferred";
@@ -22,7 +21,6 @@ td_nav_layer: td_nav_layer {
 };
 slmo_nav: slmo_nav {
   compatible = "zmk,behavior-hold-tap";
-  label = "STICKY_MOMENTARY_LAYER";
   #binding-cells = <2>;
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
@@ -45,7 +43,6 @@ slmo_nav: slmo_nav {
 // };
 ls_caps: ls_caps {
   compatible = "zmk,behavior-hold-tap";
-  label = "AutoShift";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
