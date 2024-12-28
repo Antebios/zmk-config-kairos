@@ -5,3 +5,4 @@
 // #define osl(layer) &sl layer
 #define MO_TOG(layer) &mo_tog layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 
+#define AS(keycode) &as keycode keycode     // Autoshift Macro

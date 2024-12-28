@@ -4,6 +4,8 @@
     "*.dbclient-js": "javascript",
     "MLTable": "yaml",
     "Dockerfile2016": "dockerfile",
-    "*.overlay": "cpp"
+    "*.dtsi": "cpp",
+    "*.overlay": "cpp",
+    "*.keymap": "cpp"
   }
 }
