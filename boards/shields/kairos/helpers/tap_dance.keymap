@@ -64,7 +64,8 @@ as: auto_shift {
     tapping_term_ms = <135>;
     quick_tap_ms = <0>;
     flavor = "tap-preferred";
-    bindings = <&kp>, <&td_lshift_caps>;
+    // bindings = <&kp>, <&td_lshift_caps>;
+    bindings = <&kp>, <&sk>;
 };
 
 
