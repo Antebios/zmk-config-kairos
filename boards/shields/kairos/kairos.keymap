@@ -44,6 +44,5 @@
             #include "keymaps/2.functions.keymap"
             #include "keymaps/3.symbols_kp.keymap"
             #include "keymaps/4.utils.keymap"
-            // #include "keymaps/4.utils.keymap"
     };
 };
