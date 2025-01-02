@@ -48,7 +48,7 @@ slmo_nav: slmo_nav {
 // };
 td_lshift_caps: td_lshift_caps {
   compatible = "zmk,behavior-tap-dance";
-  label = "td_lshift_caps";
+  // label = "td_lshift_caps";
   #binding-cells = <2>;
   tapping-term-ms = <300>;
   // quick-tap-ms = <0>;
