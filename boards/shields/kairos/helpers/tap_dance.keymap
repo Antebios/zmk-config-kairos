@@ -34,31 +34,17 @@ slmo_nav: slmo_nav {
 
 // Left Shift:
 // Hold = Temporary Left Shift, then released when Shift key is released
-// Tap  = Shift is active, then after next key press Shift is released
-// Double Tap = Layer 1 is active and locked
-// td_lshift_caps: td_lshift_caps {
-//   compatible = "zmk,behavior-tap-dance";
-//   label = "td_lshift_caps";
-//   #binding-cells = <0>;
-//   tapping-term-ms = <300>;
-//   // bindings = &sk LSHIFT, &caps_word;
-//   // bindings = <&sk>, <&caps_word>;
-//   bindings = <&caps_word>, <&caps_word>;
-//   // First tap = sticky shift, double tap = enable Caps Word
-// };
-
+// Tap  = ticky Shift is active, then after next key press Shift is released
+// Double Tap = Caps Word is enabledS
 td_lshift_caps: td_lshift_caps {
   compatible = "zmk,behavior-tap-dance";
   // label = "td_lshift_caps";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  // quick-tap-ms = <0>;
-  // flavor = "hold-preferred";
   bindings = <&sk LSHIFT>, <&caps_word>;
 };
-
 // Hold for momentary Shift,
-// Tap for tap-dance behavior ex: &lshift_caps
+// Tap for tap-dance behavior ex: &td_lshift_capsS
 as: auto_shift {
     compatible = "zmk,behavior-hold-tap";
     // label = "AUTO_LSHIFT";

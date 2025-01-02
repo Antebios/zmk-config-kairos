@@ -1,2 +1,6 @@
-// NOT USED
+// NOT USEDS
 #define n &none
+
+&caps_word {
+    continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
+};
