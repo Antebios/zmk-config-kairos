@@ -8,7 +8,7 @@ functions_layer {
 // |       |  F11    |   F4    |   F5   |   F6   |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
   &none      &kp F11    &kp DLLR  &kp LBKT &kp RBKT  &none     &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
 // | BASE  |  F10    |   F1    |   F2   |   F3   |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &to 0      &kp F10    &kp CARET &kp LBRC &kp RBRC  &none     &kp KP_DOT      &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
+  &to 0      &kp F10    &kp CARET &kp LBRC &kp RBRC  &none     &kp DOT      &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
 //                             |    ▼   |    ▼   |    ▼   | █ |       ▼       |     ▼    |    0    |
                                  &trans  &trans    &trans         &trans       &trans     &kp N0
     >;
