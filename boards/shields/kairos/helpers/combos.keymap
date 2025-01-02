@@ -33,17 +33,17 @@ COMBO(vscode_source_control , &kp LC(LS(G)) &kp G, 34 35, BASE)
 // Print Screen
 COMBO_ALL(print_screen , &kp PRINTSCREEN, 11 23)
 // Back Tick `
-COMBO_ALL(back_tick , &kp GRAVE, 1 2 3)
+COMBO_ALL(back_tick , &kp GRAVE, 0 1 2)
 // Tilde ~
 COMBO_ALL(tilde , &kp TILDE, 12 13 14)
 // Dash or Minus -
 COMBO_ALL(minus , &kp MINUS, 6 7)
 // Underscore _
-COMBO_ALL(underscore , &kp UNDERSCORE, 8 9)
+COMBO_ALL(underscore , &kp UNDERSCORE, 7 8)
 // Plus +
 COMBO_ALL(plus , &kp PLUS, 18 19)
 // Equal =
-COMBO_ALL(equal , &kp EQUAL, 20 21)
+COMBO_ALL(equal , &kp EQUAL, 19 20)
 
 COMBO_ALL(wkshell , &vscode_cmd_pallet2, 4 5)
 COMBO_ALL(hmmp , &vscode_cmd_pallet3, 16 17)
