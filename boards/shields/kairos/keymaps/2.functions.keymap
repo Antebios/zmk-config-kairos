@@ -6,7 +6,7 @@ functions_layer {
 // |       |  F12    |   F7    |   F8   |   F9   |        | █ |       /       |    7    |    8    |    9    |     -      |     _      |
   &none      &kp F12    &kp F7   &kp F8  &kp F9    &none       &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
 // |       |  F11    |   F4    |   F5   |   F6   |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
-  &none      &kp F11    &kp F2   &kp fv5 &kp F6    &none       &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
+  &none      &kp F11    &kp F2   &kp F5 &kp F6    &none       &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
 // | BASE  |  F10    |   F1    |   F2   |   F3   |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
   &to 0      &kp F10    &kp F1   &kp F2  &kp F3    &none       &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
 //                             |    ▼   |    ▼   |    ▼   | █ |       ▼       |     ▼    |    0    |
