@@ -48,6 +48,18 @@ COMBO_ALL(equal , &kp EQUAL, 19 20)
 COMBO_ALL(wkshell , &vscode_cmd_pallet2, 4 5)
 COMBO_ALL(hmmp , &vscode_cmd_pallet3, 16 17)
 
+
+// BUTTON INDEXES
+//                  ^                              ^
+// | 0  | 1  | 2  | 3  | 4  | 5  | ___ | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
+COMBO(shc_undo, &kp LC(Z), 24 25, BASE)
+COMBO(shc_cut, &kp LC(X), 25 26, BASE)
+COMBO(shc_copy, &kp LC(C), 26 27, BASE)
+COMBO(shc_paste, &kp LC(V), 27 28, BASE)
+
 // BLUETOOTH CLEAR
 // COMBO(bt_clr, &bt BT_CLR, 24 29, 4)
 
