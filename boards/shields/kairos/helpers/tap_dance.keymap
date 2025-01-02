@@ -1,5 +1,5 @@
 ht: hold_tap {
-  label = "hold_tap";
+  // label = "hold_tap";
   compatible = "zmk,behavior-hold-tap";
   #binding-cells = <2>;
   flavor = "tap-preferred";
@@ -15,14 +15,14 @@ ht: hold_tap {
 // Double Tap = Layer 1 is active and locked
 td_nav_layer: td_nav_layer {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_LAYER";
+  // label = "TAP_DANCE_LAYER";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
 };
 slmo_nav: slmo_nav {
   compatible = "zmk,behavior-hold-tap";
-  label = "STICKY_MOMENTARY_LAYER";
+  // label = "STICKY_MOMENTARY_LAYER";
   #binding-cells = <2>;
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
@@ -61,7 +61,7 @@ slmo_nav: slmo_nav {
 // Tap for tap-dance behavior ex: &lshift_caps
 as: auto_shift {
     compatible = "zmk,behavior-hold-tap";
-    label = "AUTO_LSHIFT";
+    // label = "AUTO_LSHIFT";
     #binding-cells = <2>;
     tapping_term_ms = <135>;
     quick_tap_ms = <0>;
@@ -75,7 +75,7 @@ as: auto_shift {
 
 td_semi: td_semi {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_SEMI";
+  // label = "TAP_DANCE_SEMI";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&kp SEMICOLON>, <&kp COLON>;
@@ -83,7 +83,7 @@ td_semi: td_semi {
 
 td_quote: td_quote {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_QUOTE";
+  // label = "TAP_DANCE_QUOTE";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
@@ -91,7 +91,7 @@ td_quote: td_quote {
 
 td_comma: td_comma {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_COMMA";
+  // label = "TAP_DANCE_COMMA";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&kp COMMA>, <&kp LESS_THAN>;
@@ -99,7 +99,7 @@ td_comma: td_comma {
 
 td_period: td_period {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_PERIOD";
+  // label = "TAP_DANCE_PERIOD";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&kp PERIOD>, <&kp GREATER_THAN>;
@@ -107,7 +107,7 @@ td_period: td_period {
 
 td_fslash: td_fslash {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_FSLASH";
+  // label = "TAP_DANCE_FSLASH";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&kp SLASH>, <&kp QUESTION>;
@@ -115,7 +115,7 @@ td_fslash: td_fslash {
 
 td_bslash: td_bslash {
   compatible = "zmk,behavior-tap-dance";
-  label = "TAP_DANCE_BSLASH";
+  // label = "TAP_DANCE_BSLASH";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
   bindings = <&kp BACKSLASH>, <&kp PIPE>;
