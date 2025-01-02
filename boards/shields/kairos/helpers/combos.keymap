@@ -45,8 +45,8 @@ COMBO_ALL(plus , &kp PLUS, 18 19)
 // Equal =
 COMBO_ALL(equal , &kp EQUAL, 20 21)
 
-COMBO_ALL(wkshell , &p2, 4 5)
-COMBO_ALL(hmmp , &p1, 16 17)
+COMBO_ALL(wkshell , &p1_macro, 4 5)
+COMBO_ALL(hmmp , &p2_macro, 16 17)
 
 // BLUETOOTH CLEAR
 // COMBO(bt_clr, &bt BT_CLR, 24 29, 4)
