@@ -65,3 +65,27 @@ COMBO(shc_paste, &kp LC(V), 27 28, BASE)
 
 // RESET
 // COMBO_ALL(reset_r_e_s, &sys_reset, 3 4 14)
+
+
+// Here are some of the most frequently used Visual Studio Code keyboard shortcuts, listed in descending order of usage:
+// Ctrl+Shift+P or F1: Show Command Palette
+// Ctrl+P: Quick Open, Go to File
+// Ctrl+Shift+N: New Window/Instance
+// Ctrl+Shift+W: Close Window/Instance
+// Ctrl+,: Open User Settings
+// Ctrl+K Ctrl+S: Open Keyboard Shortcuts
+// Ctrl+X: Cut Line (Empty Selection)
+// Ctrl+C: Copy Line (Empty Selection)
+// Ctrl+V: Paste
+// Ctrl+Z: Undo
+// Ctrl+Shift+Z: Redo
+// Alt+Z: Toggle Word Wrap
+// Ctrl+/: Toggle Line Comment
+// Ctrl+K Ctrl+C: Add Line Comment
+// Ctrl+K Ctrl+U: Remove Line Comment
+// Shift+Alt+A: Toggle Block Comment
+// Ctrl+D: Add Selection to Next Find Match
+// Ctrl+U: Undo Last Cursor Operation
+// Alt+←: Go Back
+// Alt+→: Go Forward
+
