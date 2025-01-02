@@ -4,12 +4,12 @@ functions_layer {
   bindings = <
 // -----------------------------------------------------------------------------------------
 // |       |  F12    |   F7    |   F8   |   F9   |        | █ |       /       |    7    |    8    |    9    |     -      |     _      |
-  &none      &kp F12    &kp AT    &kp LPAR &kp RPAR  &none      &kp KP_DIVIDE   &kp N7   &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
+  &none      &kp F12    &kp AT    &kp LPAR &kp RPAR  &none     &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
 // |       |  F11    |   F4    |   F5   |   F6   |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
-  &none      &kp F11    &kp DLLR  &kp LBKT &kp RBKT  &none      &kp KP_MULTIPLY &kp N4   &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
+  &none      &kp F11    &kp DLLR  &kp LBKT &kp RBKT  &none     &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
 // | BASE  |  F10    |   F1    |   F2   |   F3   |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &to 0      &kp F10    &kp CARET &kp LBRC &kp RBRC  &none      &kp KP_DOT      &kp N1   &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
+  &to 0      &kp F10    &kp CARET &kp LBRC &kp RBRC  &none     &kp KP_DOT      &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
 //                             |    ▼   |    ▼   |    ▼   | █ |       ▼       |     ▼    |    0    |
-                                 &trans  &trans    &trans         &trans       &trans   &trans
+                                 &trans  &trans    &trans         &trans       &trans     &kp N0
     >;
 };

@@ -4,12 +4,12 @@ symkp_layer {
   bindings = <
 // -----------------------------------------------------------------------------------------
 // |   `   |   !     |    @    |   (    |   )    |   &    | █ |       /       |    7    |    8    |    9    |     -      |     _      |
-  &kp GRAVE  &kp EXCL  &kp AT    &kp LPAR &kp RPAR &kp AMPS    &kp KP_DIVIDE   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MINUS &kp UNDER
+  &kp GRAVE  &kp EXCL  &kp AT    &kp LPAR &kp RPAR &kp AMPS    &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
 // |   ~   |   #     |    $    |   [    |   ]    |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
-  &kp TILDE  &kp HASH  &kp DLLR  &kp LBKT &kp RBKT  &none      &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp PLUS     &kp KP_EQUAL
+  &kp TILDE  &kp HASH  &kp DLLR  &kp LBKT &kp RBKT  &none      &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp PLUS     &kp EQUAL
 // |  "|"  |   %     |   ^     |   {    |   }    |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &kp PIPE   &kp PRCNT &kp CARET &kp LBRC &kp RBRC  &none      &kp KP_DOT      &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_COMMA &kp  ENTER
+  &kp PIPE   &kp PRCNT &kp CARET &kp LBRC &kp RBRC  &none      &kp KP_DOT      &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
 //                               |  ▼   |   ▼  |    ▼     | █ |    Return     |          |    0    |
-                                &kp LGUI &trans  &kp SPACE         &kp RET       &none    &kp KP_N0
+                                &trans &trans  &kp SPACE         &kp RET       &none    &kp N0
     >;
 };
