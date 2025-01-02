@@ -21,7 +21,7 @@ COMBO(vscode_explorer , &kp LC(LS(E)), 10 11, BASE)
 // Search
 COMBO(vscode_serch , &kp LC(LS(F)), 22 23, BASE)
 // Source Control
-COMBO(vscode_source_control , &kp LC(LS(G)) &kp G, 34 35, BASE)
+COMBO(vscode_source_control , &vscode_source_control, 34 35, BASE)
 
 
 // BUTTON INDEXES

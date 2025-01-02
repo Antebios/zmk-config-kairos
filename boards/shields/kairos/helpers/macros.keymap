@@ -40,6 +40,20 @@ vscode_cmd_pallet: vscode_cmd_pallet {
     , <&macro_release &kp LSHFT>;
 };
 
+// Shift + Control + P = Command Pallet
+vscode_source_control: vscode_source_control {
+  label = "vsc_source_control";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_press &kp LSHFT>
+    , <&macro_press &kp LCTRL>
+    , <&macro_tap &kp G>
+    , <&macro_release &kp LCTRL>
+    , <&macro_release &kp LSHFT>
+    , <&macro_tap &kp G>;
+};
+
 
 // =======================================
 vscode_cmd_pallet2: vscode_cmd_pallet2 {
