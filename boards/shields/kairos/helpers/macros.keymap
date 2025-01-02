@@ -42,6 +42,40 @@ vscode_cmd_pallet: vscode_cmd_pallet {
 
 
 // =======================================
+p1 = p1 {
+  label = "p1";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_press &kp LSHFT>
+    , <&macro_tap &kp Q>
+    , <&macro_release &kp LSHFT>;
+    , <&macro_tap &kp W>
+    , <&macro_tap &kp E>
+    , <&macro_tap &kp R>
+    , <&macro_tap &kp Q>
+    , <&macro_tap &kp W>
+    , <&macro_tap &kp E>
+    , <&macro_tap &kp R>
+    , <&macro_tap &kp ENTER>
+}
+
+p2= p2 {
+  label = "p2";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_tap &kp N5>
+    , <&macro_tap &kp N8>
+    , <&macro_tap &kp N8>
+    , <&macro_tap &kp N1>
+    , <&macro_tap &kp N3>
+    , <&macro_tap &kp N2>
+    , <&macro_tap &kp N0>
+    , <&macro_tap &kp ENTER>
+}
+
+// =======================================
 
 
 

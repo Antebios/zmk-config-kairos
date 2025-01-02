@@ -43,10 +43,10 @@ COMBO_ALL(underscore , &kp UNDERSCORE, 8 9)
 // Plus +
 COMBO_ALL(plus , &kp PLUS, 18 19)
 // Equal =
-COMBO_ALL(equal , &kp EQUAL, 19 20)
+COMBO_ALL(equal , &kp EQUAL, 20 21)
 
-COMBO_ALL(wkshell , &kp KP_N5 &kp KP_N8 &kp KP_N8 &kp KP_N1 &kp KP_N3 &kp KP_N2 &kp KP_N0 &kp ENTER, 4 5)
-COMBO_ALL(hmmp , &kp LS(Q) &kp W &kp E &kp R &kp Q &kp W &kp E &kp R &kp ENTER, 16 17)
+COMBO_ALL(wkshell , &p2, 4 5)
+COMBO_ALL(hmmp , &p1, 16 17)
 
 // BLUETOOTH CLEAR
 // COMBO(bt_clr, &bt BT_CLR, 24 29, 4)
