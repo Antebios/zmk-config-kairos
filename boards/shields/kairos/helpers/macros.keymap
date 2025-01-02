@@ -49,7 +49,7 @@ vscode_cmd_pallet2: vscode_cmd_pallet2 {
   bindings
     = <&macro_press &kp LSHFT>
     , <&macro_tap &kp Q>
-    , <&macro_release &kp LSHFT>;
+    , <&macro_release &kp LSHFT>
     , <&macro_tap &kp W>
     , <&macro_tap &kp E>
     , <&macro_tap &kp R>
