@@ -58,7 +58,7 @@ p1_macro = p1_macro {
     , <&macro_tap &kp E>
     , <&macro_tap &kp R>
     , <&macro_tap &kp ENTER>
-}
+};
 
 p2_macro= p2_macro {
   label = "p2_macro";
@@ -73,7 +73,7 @@ p2_macro= p2_macro {
     , <&macro_tap &kp N2>
     , <&macro_tap &kp N0>
     , <&macro_tap &kp ENTER>
-}
+};
 
 // =======================================
 
