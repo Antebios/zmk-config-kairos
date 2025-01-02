@@ -11,6 +11,6 @@ base_layer {
 // | SHFT  |  Z    |  X   |  C  |  V   |  B  |     |  N  |  M   |  ,<  |  .>  |  /?  |  \|  |
   AS(LSHFT) &kp Z &kp X  &kp C &kp V  &kp B       &kp N &kp M  &td_comma &td_period &td_fslash &td_bslash
 //               | Lower  | Raise  |  SPC    |    |  ENT |  ↑   |  ↓   |
-             &slmo_nav 1 1  &mo 2   &kp SPACE    &kp RET  &mo 3  &mo 4
+             &slmo_nav 1 1  &mo 2   &kp SPACE    &kp ENTER  &mo 3  &mo 4
   >;
 };
