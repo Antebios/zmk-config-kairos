@@ -8,6 +8,7 @@ ht: hold_tap {
   bindings = <&kp>, <&kp>;
 };
 
+//=======================================================================
 
 // Lower key:
 // Hold = Temporary Layer 1, then released when Lower key is released
@@ -28,6 +29,27 @@ slmo_nav: slmo_nav {
   quick-tap-ms = <0>;
   flavor = "hold-preferred";
   bindings = <&mo>, <&td_nav_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+};
+
+//=======================================================================
+
+// Raise key:
+// Hold = Temporary Layer 2, then released when Lower key is released
+// Tap  = Layer 1 active, then after next key press Layer 1 is released
+// Double Tap = Layer 1 is active and locked
+td_func_layer: td_func_layer {
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = <&sl 1>, <&to 1>, <&to 4>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
+};
+slmo_func: slmo_func {
+  compatible = "zmk,behavior-hold-tap";
+  #binding-cells = <2>;
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "hold-preferred";
+  bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
 };
 
 
@@ -55,6 +77,14 @@ as: auto_shift {
 
 
 
+
+td_equal: td_equal {
+  compatible = "zmk,behavior-tap-dance";
+  // label = "TAP_DANCE_EQUAL";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = <&kp EQUAL>, <&kp PLUS>;
+};
 
 td_semi: td_semi {
   compatible = "zmk,behavior-tap-dance";
