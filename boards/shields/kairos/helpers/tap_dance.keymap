@@ -131,7 +131,7 @@ td_semi_second_tap: td_semi_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&kp COLON>, <&kp COLON>; // tap-then-hold, 2xtap
+    bindings = <&kp>, <&kp>; // tap-then-hold, 2xtap
 };
 td_semi_first_tap: td_semi_first_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -145,7 +145,7 @@ td_semicolon: td_semicolon {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_semi_first_tap RGUI SEMICOLON>, <&td_semi_second_tap LCTRL LCTRL>;
+  bindings = <&td_semi_first_tap RGUI SEMICOLON>, <&td_semi_second_tap COLON COLON>;
 };
 
 
