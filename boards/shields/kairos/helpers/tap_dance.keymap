@@ -83,7 +83,8 @@ tap_and_hold_demo: tap_and_hold_demo {
   tapping-term-ms = <600>;
   quick-tap-ms = <500>;
   flavor = "hold-preferred";
-  bindings = <&kp>, <&double_tap_and_hold_demo>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+  // bindings = <&kp>, <&double_tap_and_hold_demo>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+  bindings = <&kp>, <&td_demo_hold1>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
 };
 
 //=======================================================================
