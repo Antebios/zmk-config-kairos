@@ -3,7 +3,7 @@ utils_layer {
   display-name = "Utils";
   bindings = <
 //╭─────────────────┬─────────────────┬─────────────────┬─────────────────┬──────────────────┬───────────────────╮  ╭──────────────────┬──────────────────┬──────────────────┬──────────────┬──────────────┬───────────────╮
-    &bt BT_SEL 0    &bt BT_PRV      &bt BT_NXT       &bt BT_CLR_ALL  &ext_power EP_OFF &ext_power EP_ON     &ext_power EP_ON &ext_power EP_OFF &rgb_ug RGB_TOG                &kp C_BRI_UP  &kp C_VOL_UP
+    &bt BT_SEL 0    &bt BT_PRV      &bt BT_NXT       &bt BT_CLR_ALL  &ext_power EP_OFF &ext_power EP_ON     &ext_power EP_ON &ext_power EP_OFF &rgb_ug RGB_TOG   &none        &kp C_BRI_UP  &kp C_VOL_UP
 //├─────────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────────┼───────────────────┤  ├──────────────────┼──────────────────┼──────────────────┼──────────────┼──────────────┼───────────────┤
     &bt BT_SEL 1    &rgb_ug RGB_TOG &rgb_ug RGB_HUI  &rgb_ug RGB_SAI &rgb_ug RGB_BRI   &rgb_ug RGB_SPI      &none            &none             &none             &none        &kp C_BRI_DN  &kp C_VOL_DN
 //├─────────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────────┼───────────────────┤  ├──────────────────┼──────────────────┼──────────────────┼──────────────┼──────────────┼───────────────┤
