@@ -93,21 +93,38 @@ tap_and_hold_demo: tap_and_hold_demo {
 // Hold = Temporary Left Shift, then released when Shift key is released
 // Tap  = sticky Shift is active, then after next key press Shift is released
 // Double Tap = Caps Word is enabled
-td_lshift_caps: td_lshift_caps {
-  compatible = "zmk,behavior-tap-dance";
-  // label = "td_lshift_caps";
-  #binding-cells = <0>;
-  tapping-term-ms = <300>;
-  bindings = <&sk LSHIFT>, <&caps_word>;
-};
-// Hold for momentary Shift,
-// Tap for tap-dance behavior ex: &td_lshift_caps
-as: auto_shift {
+// td_lshift_caps: td_lshift_caps {
+//   compatible = "zmk,behavior-tap-dance";
+//   // label = "td_lshift_caps";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&sk LSHIFT>, <&caps_word>;
+// };
+// // Hold for momentary Shift,
+// // Tap for tap-dance behavior ex: &td_lshift_caps
+// as: auto_shift {
+//     compatible = "zmk,behavior-hold-tap";
+//     #binding-cells = <2>;
+//     tapping_term_ms = <300>;
+//     flavor = "tap-preferred";
+//     bindings = <&kp>, <&td_lshift_caps>;
+// };
+
+
+
+kp_sk: kp_sk {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
-    tapping_term_ms = <300>;
+    tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&kp>, <&td_lshift_caps>;
+    bindings = <&kp>, <&sk>;
+};
+
+td_lshift_caps: td_lshift_caps {
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = <&kp_sk LSHIFT LSHIFT>, <&caps_word>;
 };
 
 
