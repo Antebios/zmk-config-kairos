@@ -118,6 +118,37 @@ td_lshift_caps: td_lshift_caps {
 };
 
 
+///=======================================================================
+
+// Left Semicolon
+// Hold = Right GUI
+// Tap  = Semicolon (;)
+// Double Tap = Colon (:)
+// Double Hold = nothing
+
+td_semi_second_tap: td_semi_second_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&none>, <&kp COLON>; // tap-then-hold, 2xtap
+};
+td_semi_first_tap: td_semi_first_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&kp>, <&sk>; // hold, 1xtap
+};
+
+td_semi_caps: td_semi_caps {
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = <&td_semi_first_tap RGUI SEMICOLON>, <&td_semi_second_tap LCTRL LCTRL>;
+};
+
+
 //=======================================================================
 
 

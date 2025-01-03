@@ -1,6 +1,7 @@
 // Home row key mods
 #define HRML(k1, k2, k3, k4) &ht LGUI k1  &ht LALT k2  &ht LSHFT k3  &ht LCTRL k4
-#define HRMR(k1, k2, k3, k4) &ht RCTRL k1  &ht RSHFT k2  &ht RALT k3  &ht RGUI k4
+// #define HRMR(k1, k2, k3, k4) &ht RCTRL k1  &ht RSHFT k2  &ht RALT k3  &ht RGUI k4
+#define HRMR(k1, k2, k3, k4) &ht RCTRL k1  &ht RSHFT k2  &ht RALT k3
 
 // #define osl(layer) &sl layer
 #define MO_TOG(layer) &mo_tog layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
@@ -13,3 +14,5 @@
 #define tdRaise() &slmo_func 2 2
 
 #define ASTD() &td_lshift_caps
+#define SEMITD() &td_semicolon
+
