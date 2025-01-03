@@ -141,7 +141,7 @@ td_semi_first_tap: td_semi_first_tap {
     bindings = <&kp>, <&sk>; // hold, 1xtap
 };
 
-td_semi_caps: td_semi_caps {
+td_semicolon: td_semicolon {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
