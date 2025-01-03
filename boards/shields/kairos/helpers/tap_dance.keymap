@@ -52,7 +52,30 @@ slmo_func: slmo_func {
   bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
 };
 
+//=======================================================================
 
+// Raise key:
+// Hold        = Temporary <w>, then released when Lower key is released
+// Tap         = <x> active, then after next key press <x> is released
+// Double Tap  = <y> is active and locked
+// Double Hold = <z> is active and locked
+// Triple Tap  = <0> is active and locked
+// td_func_layer: td_func_layer {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
+// };
+// slmo_func: slmo_func {
+//   compatible = "zmk,behavior-hold-tap";
+//   #binding-cells = <2>;
+//   tapping-term-ms = <300>;
+//   quick-tap-ms = <0>;
+//   flavor = "hold-preferred";
+//   bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+// };
+
+//=======================================================================
 
 // Left Shift:
 // Hold = Temporary Left Shift, then released when Shift key is released
@@ -76,6 +99,7 @@ as: auto_shift {
 };
 
 
+//=======================================================================
 
 
 td_equal: td_equal {
@@ -133,6 +157,8 @@ td_bslash: td_bslash {
   tapping-term-ms = <300>;
   bindings = <&kp BACKSLASH>, <&kp PIPE>;
 };
+
+//=======================================================================
 
 // td_alt: tab_dance_alt {
 //         label = "TAP_DANCE_ALT";
