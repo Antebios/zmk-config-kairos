@@ -120,7 +120,7 @@ td_lshift_second_tap: td_lshift_second_tap {
     bindings = <&kp>, <&sk>;
 };
 td_lshift_first_tap: td_lshift_first_tap {
-    compatible = "zmk,behavior-hold-tap";f
+    compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
