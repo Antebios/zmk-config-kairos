@@ -172,3 +172,22 @@ log_off: log_off {
                 , <&macro_tap &kp L>
                 , <&macro_release &kp LEFT_WIN>;
 };
+
+// =======================================
+
+td_demo_hold1: td_demo_hold1 {
+        // label = "ZM_tab_prev";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+                = <&macro_tap &kp N1>;
+};
+
+
+td_demo_hold2: td_demo_hold2 {
+        // label = "ZM_tab_prev";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+                = <&macro_tap &kp N2>;
+};
