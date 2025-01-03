@@ -117,14 +117,14 @@ td_lshift_second_tap: td_lshift_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&kp>, <&caps_word>;
+    bindings = <&kp>, <&caps_word>; // tap-then-hold, 2xtap
 };
 td_lshift_first_tap: td_lshift_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&kp>, <&sk>;
+    bindings = <&kp>, <&sk>; // hold, 1xtap
 };
 
 td_lshift_caps: td_lshift_caps {
