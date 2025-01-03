@@ -131,7 +131,7 @@ td_lshift_caps: td_lshift_caps {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_lshift_first_tap LSHIFT LSHIFT>, <&td_lshift_second_tap LCTRL none>;
+  bindings = <&td_lshift_first_tap LSHIFT LSHIFT>, <&td_lshift_second_tap LCTRL LCTRL>;
 };
 
 
