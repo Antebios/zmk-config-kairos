@@ -60,20 +60,31 @@ slmo_func: slmo_func {
 // Double Tap  = <y> is active and locked
 // Double Hold = <z> is active and locked
 // Triple Tap  = <0> is active and locked
+
 // td_func_layer: td_func_layer {
 //   compatible = "zmk,behavior-tap-dance";
 //   #binding-cells = <0>;
 //   tapping-term-ms = <300>;
 //   bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
 // };
-// slmo_func: slmo_func {
-//   compatible = "zmk,behavior-hold-tap";
-//   #binding-cells = <2>;
-//   tapping-term-ms = <300>;
-//   quick-tap-ms = <0>;
-//   flavor = "hold-preferred";
-//   bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
-// };
+
+double_tap_and_hold_demo: double_tap_and_hold_demo {
+  compatible = "zmk,behavior-hold-tap";
+  #binding-cells = <2>;
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "hold-preferred";
+  bindings = <&kp N2>, <&kp N3>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+};
+
+tap_and_hold_demo: tap_and_hold_demo {
+  compatible = "zmk,behavior-hold-tap";
+  #binding-cells = <2>;
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "hold-preferred";
+  bindings = <&mo>, <&double_tap_and_hold_demo>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+};
 
 //=======================================================================
 
