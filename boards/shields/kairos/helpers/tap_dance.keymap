@@ -41,7 +41,7 @@ td_func_layer: td_func_layer {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&sl 1>, <&to 1>, <&to 4>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
+  bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
 };
 slmo_func: slmo_func {
   compatible = "zmk,behavior-hold-tap";
