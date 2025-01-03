@@ -7,7 +7,7 @@
 
 // ENTER
 COMBO_ALL(enter_left, &kp ENTER, 37 38)
-COMBO_ALL(enter_right, &kp ENTER, 39 40)
+COMBO_ALL(space_right, &kp SPACE, 39 40)
 
 
 // BUTTON INDEXES
