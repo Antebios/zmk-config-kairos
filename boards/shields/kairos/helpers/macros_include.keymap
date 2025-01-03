@@ -11,3 +11,5 @@
 #define tdLower() &slmo_nav 1 1
 // Raise Tap Dance
 #define tdRaise() &slmo_func 2 2
+
+#define ASTD() &tap_and_hold_demo LSHIFT LSHIFT
