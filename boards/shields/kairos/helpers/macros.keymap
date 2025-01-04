@@ -5,6 +5,43 @@
 // ***===--- Visual Studio Code ---===***
 // ======================================
 
+// Toggle Primary Sidebar = Control + B
+vscode_tog_primary_sb: vscode_tog_primary_sb {
+  label = "vsc_console";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_press &kp LCTRL>
+    , <&macro_tap &kp BE>
+    , <&macro_release &kp LCTRL>;
+};
+
+// Toggle Secondary Sidebar = Control + Alt + B
+vscode_tog_secondary_sb: vscode_tog_secondary_sb {
+  label = "vsc_console";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_press &kp LCTRL>
+    , <&macro_press &kp LALT>
+    , <&macro_tap &kp B>
+    , <&macro_release &kp LALT>
+    , <&macro_release &kp LCTRL>;
+};
+
+// Toggle Bottom Panel = Control + J
+vscode_tog_panel: vscode_tog_panel {
+  label = "vsc_panel";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_press &kp LCTRL>
+    , <&macro_tap &kp J>
+    , <&macro_release &kp LCTRL>;
+};
+
+// ======================================
+
 // Control + ` = Toggle VS Code Console
 vscode_tog_console: vscode_tog_console {
   label = "vsc_console";
