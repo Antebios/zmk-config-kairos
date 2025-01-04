@@ -129,6 +129,44 @@ td_raise_key: td_raise_key {
 
 //=======================================================================
 
+// Down key:
+// Hold = Temporary Down layer, then released when Down layer is released
+// Tap  = sticky Down is active, then after next key press Down is released
+// Double Tap = Activate Down layer
+// Double Hold = nothing
+// // Triple Tap = Left Alt is sticky, then after next key press Left Alt is released
+// // Triple Hold = Left Alt is active while held, then released when Down layer is released
+
+// td_down_key_third_tap: td_down_key_third_tap {
+//     compatible = "zmk,behavior-hold-tap";
+//     #binding-cells = <2>;
+//     tapping-term-ms = <300>;
+//     flavor = "tap-preferred";
+//     bindings = <&mo>, <&to>; // 2xtap-then-hold = Utils layer hold, 3xtap = activate Utils
+// };
+td_down_key_second_tap: td_down_key_second_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
+};
+td_down_key_first_tap: td_down_key_first_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer NAV
+};
+
+td_down_key: td_down_key {
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+  tapping-term-ms = <300>;
+  bindings = <&td_down_key_first_tap 3 3>, <&td_down_key_second_tap 3 3>;
+  // , <&td_down_key_third_tap 4 4>
+};
+
 //=======================================================================
 
 // Left Shift:
