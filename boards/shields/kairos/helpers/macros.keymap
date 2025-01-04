@@ -12,7 +12,7 @@ vscode_tog_primary_sb: vscode_tog_primary_sb {
   #binding-cells = <0>;
   bindings
     = <&macro_press &kp LCTRL>
-    , <&macro_tap &kp BE>
+    , <&macro_tap &kp B>
     , <&macro_release &kp LCTRL>;
 };
 
