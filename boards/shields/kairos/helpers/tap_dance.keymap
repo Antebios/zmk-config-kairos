@@ -51,7 +51,7 @@ td_lower_key_second_tap: td_lower_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
+    bindings = <&mo>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
 };
 td_lower_key_first_tap: td_lower_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -65,7 +65,7 @@ td_lower_key: td_lower_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_lower_key_first_tap 1 1>, <&td_lower_key_second_tap 1 1>, <&td_lower_key_third_tap LEFT_ALT LEFT_ALT>;
+  bindings = <&td_lower_key_first_tap 1 1>, <&td_lower_key_second_tap 3 1>, <&td_lower_key_third_tap LEFT_ALT LEFT_ALT>;
 };
 
 //=======================================================================
