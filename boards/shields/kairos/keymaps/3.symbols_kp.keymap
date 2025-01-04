@@ -3,13 +3,13 @@ symkp_layer {
   display-name = "Symbols_KeyPad";
   bindings = <
 // -----------------------------------------------------------------------------------------
-// |   `   |   !     |    @    |   (    |   )    |   &    | █ |       /       |    7    |    8    |    9    |     -      |     _      |
-  &kp GRAVE  &kp EXCL  &kp AT    &kp LPAR &kp RPAR &kp AMPS    &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
-// |   ~   |   #     |    $    |   [    |   ]    |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
-  &kp TILDE  &kp HASH  &kp DLLR  &kp LBKT &kp RBKT  &none      &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp PLUS     &kp EQUAL
-// |  "|"  |   %     |   ^     |   {    |   }    |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &kp PIPE   &kp PRCNT &kp CARET &kp LBRC &kp RBRC  &none      &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
-//                               |  ▼   |   ▼  |    ▼     | █ |    Return     |          |    0    |
-                                &trans &trans  &kp SPACE         &kp RET       &none    &kp N0
+// |   `   |   !     |    @     |   &     |   (    |   )    | █ |       /       |    7    |    8    |    9    |     -      |     _      |
+  &kp GRAVE  &kp EXCL  &kp AT    &kp AMPS  &kp LPAR &kp RPAR     &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
+// |   ~   |   #     |    $     |   *     |   [    |   ]    | █ |       *       |    4    |    5    |    6    |     +      |     =      |
+  &kp TILDE  &kp HASH  &kp DLLR  &kp ASTRK &kp LBKT &kp RBKT     &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp PLUS     &kp EQUAL
+// |  "|"  |   %     |   ^      |         |   {    |   }    | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
+  &kp PIPE   &kp PRCNT &kp CARET &none     &kp LBRC &kp RBRC     &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
+//                               |   ▼    |   ▼  |    ▼     | █ |    Return     |         |    0    |
+                                &trans     &trans &kp SPACE      &kp RET         &none     &kp N0
     >;
 };
