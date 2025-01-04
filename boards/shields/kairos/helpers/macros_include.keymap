@@ -12,8 +12,8 @@
 // #define tdLower() &slmo_nav 1 1
 #define tdLower() &td_lower_key
 // Raise Tap Dance
-// #define tdRaise() &slmo_func 2 2
-#define tdRaise() &td_raise_key
+#define tdRaise() &slmo_func 2 2
+// #define tdRaise() &td_raise_key
 
 #define ASTD() &td_lshift_caps
 #define SEMITD() &td_semicolon
