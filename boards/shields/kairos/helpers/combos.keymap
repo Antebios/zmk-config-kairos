@@ -22,11 +22,18 @@ COMBO_ALL(esc_left, &kp ESC, 2 3)
 // DELETE
 COMBO_ALL(delete, &kp DELETE, 0 1)
 
-// Control + ` = Toggle VS Code Console
+// Toggle Primary Sidebar = Control + B
+COMBO(vscode_tog_primary_sb, &vscode_tog_primary_sb, 8 9, BASE)
+// Toggle Secondary Sidebar = Control + Alt + B
+COMBO(vscode_tog_secondary_sb, &vscode_tog_secondary_sb, 20 21, BASE)
+// Toggle Bottom Panel = Control + J
+COMBO(vscode_tog_panel, &vscode_tog_panel, 32 33, BASE)
+
+// Toggle VS Code Console = Control + `
 COMBO(vscode_tog_console, &vscode_tog_console, 9 10, BASE)
-// Shift + Control + ` = New VS Code Console
+// New VS Code Console = Shift + Control + `
 COMBO(vscode_new_console, &vscode_new_console, 21 22, BASE)
-// Shift + Control + P = Command Pallet
+// Command Pallet = Shift + Control + P
 COMBO(vscode_cmd_pallet, &vscode_cmd_pallet, 33 34, BASE)
 // File Explorer
 COMBO(vscode_explorer , &kp LC(LS(E)), 10 11, BASE)
