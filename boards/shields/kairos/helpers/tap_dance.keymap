@@ -11,27 +11,6 @@ ht: hold_tap {
 //=======================================================================
 
 // Lower key:
-// Hold = Temporary Layer 1, then released when Lower key is released
-// Tap  = Layer 1 active, then after next key press Layer 1 is released
-// Double Tap = Layer 1 is active and locked
-// td_nav_layer: td_nav_layer {
-//   compatible = "zmk,behavior-tap-dance";
-//   // label = "TAP_DANCE_LAYER";
-//   #binding-cells = <0>;
-//   tapping-term-ms = <300>;
-//   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
-// };
-// slmo_nav: slmo_nav {
-//   compatible = "zmk,behavior-hold-tap";
-//   // label = "STICKY_MOMENTARY_LAYER";
-//   #binding-cells = <2>;
-//   tapping-term-ms = <300>;
-//   quick-tap-ms = <0>;
-//   flavor = "hold-preferred";
-//   bindings = <&mo>, <&td_nav_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
-// };
-
-// Lower key:
 // Hold = Temporary Lower layer, then released when Lower layer is released
 // Tap  = sticky Lower is active, then after next key press Lower is released
 // Double Tap = Activate Lower layer
@@ -71,32 +50,12 @@ td_lower_key: td_lower_key {
 //=======================================================================
 
 // Raise key:
-// Hold = Temporary Layer 2, then released when Lower key is released
-// Tap  = Layer 1 active, then after next key press Layer 1 is released
-// Double Tap = Layer 1 is active and locked
-// td_func_layer: td_func_layer {
-//   compatible = "zmk,behavior-tap-dance";
-//   #binding-cells = <0>;
-//   tapping-term-ms = <300>;
-//   bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
-// };
-// slmo_func: slmo_func {
-//   compatible = "zmk,behavior-hold-tap";
-//   #binding-cells = <2>;
-//   tapping-term-ms = <300>;
-//   quick-tap-ms = <0>;
-//   flavor = "hold-preferred";
-//   bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
-// };
-
-
-// Raise key:
 // Hold = Temporary Raise layer, then released when Raise layer is released
 // Tap  = sticky Raise is active, then after next key press Raise is released
 // Double Tap = Activate Raise layer
 // Double Hold = nothing
-// Triple Tap = Left Alt is sticky, then after next key press Left Alt is released
-// Triple Hold = Left Alt is active while held, then released when Raise layer is released
+// Triple Tap = Activate Utils layer
+// Triple Hold = Layer Utils is active while held, then released when Raise key is released
 
 td_raise_key_third_tap: td_raise_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -134,16 +93,16 @@ td_raise_key: td_raise_key {
 // Tap  = sticky Down is active, then after next key press Down is released
 // Double Tap = Activate Down layer
 // Double Hold = nothing
-// // Triple Tap = Left Alt is sticky, then after next key press Left Alt is released
-// // Triple Hold = Left Alt is active while held, then released when Down layer is released
+// Triple Tap = Activate Navigate layer
+// Triple Hold = Layer Navigate is active while held, then released when Raise key is released
 
-// td_down_key_third_tap: td_down_key_third_tap {
-//     compatible = "zmk,behavior-hold-tap";
-//     #binding-cells = <2>;
-//     tapping-term-ms = <300>;
-//     flavor = "tap-preferred";
-//     bindings = <&mo>, <&to>; // 2xtap-then-hold = Utils layer hold, 3xtap = activate Utils
-// };
+td_down_key_third_tap: td_down_key_third_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&mo>, <&to>; // 2xtap-then-hold = NAV layer hold, 3xtap = activate NAV
+};
 td_down_key_second_tap: td_down_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -163,8 +122,7 @@ td_down_key: td_down_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_down_key_first_tap 3 3>, <&td_down_key_second_tap 3 3>;
-  // , <&td_down_key_third_tap 4 4>
+  bindings = <&td_down_key_first_tap 3 3>, <&td_down_key_second_tap 3 3>, <&td_down_key_third_tap 1 1>;
 };
 
 //=======================================================================
@@ -174,16 +132,16 @@ td_down_key: td_down_key {
 // Tap  = sticky Up is active, then after next key press Up is released
 // Double Tap = Activate Up layer
 // Double Hold = nothing
-// // Triple Tap = Left Alt is sticky, then after next key press Left Alt is released
-// // Triple Hold = Left Alt is active while held, then released when Up layer is released
+// Triple Tap = Activate Functions layer
+// Triple Hold = Layer Functions is active while held, then released when Raise key is released
 
-// td_up_key_third_tap: td_up_key_third_tap {
-//     compatible = "zmk,behavior-hold-tap";
-//     #binding-cells = <2>;
-//     tapping-term-ms = <300>;
-//     flavor = "tap-preferred";
-//     bindings = <&mo>, <&to>; // 2xtap-then-hold = Utils layer hold, 3xtap = activate Utils
-// };
+td_up_key_third_tap: td_up_key_third_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&mo>, <&to>; // 2xtap-then-hold = Func layer hold, 3xtap = activate Func
+};
 td_up_key_second_tap: td_up_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -196,15 +154,14 @@ td_up_key_first_tap: td_up_key_first_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer Utils
+    bindings = <&mo>, <&sl>; // hold = layer 4 until release, 1xtap = sticky layer Utils
 };
 
 td_up_key: td_up_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_up_key_first_tap 4 4>, <&td_up_key_second_tap 4 4>;
-  // , <&td_up_key_third_tap 4 4>
+  bindings = <&td_up_key_first_tap 4 4>, <&td_up_key_second_tap 4 4>, <&td_up_key_third_tap 2 2>;
 };
 
 //=======================================================================
