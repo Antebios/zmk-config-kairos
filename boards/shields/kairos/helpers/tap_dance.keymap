@@ -14,21 +14,58 @@ ht: hold_tap {
 // Hold = Temporary Layer 1, then released when Lower key is released
 // Tap  = Layer 1 active, then after next key press Layer 1 is released
 // Double Tap = Layer 1 is active and locked
-td_nav_layer: td_nav_layer {
+// td_nav_layer: td_nav_layer {
+//   compatible = "zmk,behavior-tap-dance";
+//   // label = "TAP_DANCE_LAYER";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
+// };
+// slmo_nav: slmo_nav {
+//   compatible = "zmk,behavior-hold-tap";
+//   // label = "STICKY_MOMENTARY_LAYER";
+//   #binding-cells = <2>;
+//   tapping-term-ms = <300>;
+//   quick-tap-ms = <0>;
+//   flavor = "hold-preferred";
+//   bindings = <&mo>, <&td_nav_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+// };
+
+// Lower key:
+// Hold = Temporary Lower layer, then released when Lower layer is released
+// Tap  = sticky Lower is active, then after next key press Lower is released
+// Double Tap = Activate Lower layer
+// Double Hold = nothing
+// Triple Tap = Left Alt is sticky, then after next key press Left Alt is released
+// Triple Hold = Left Alt is active while held, then released when Lower layer is released
+
+td_lower_key_third_tap: td_lower_key_third_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&kp>, <&sk>; // 2xtap-then-hold = LALT hold, 3xtap = LALT sticky key
+};
+td_lower_key_second_tap: td_lower_key_second_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
+};
+td_lower_key_first_tap: td_lower_key_first_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&mo>, <&sl>; // hold = layer 1 until release, 1xtap = sickty layer NAV
+};
+
+td_lower_key: td_lower_key {
   compatible = "zmk,behavior-tap-dance";
-  // label = "TAP_DANCE_LAYER";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&sl 1>, <&to 1>;    // First tap = sticky layer 1, double tap = switch to layer 1; hardcoded not optimal...
-};
-slmo_nav: slmo_nav {
-  compatible = "zmk,behavior-hold-tap";
-  // label = "STICKY_MOMENTARY_LAYER";
-  #binding-cells = <2>;
-  tapping-term-ms = <300>;
-  quick-tap-ms = <0>;
-  flavor = "hold-preferred";
-  bindings = <&mo>, <&td_nav_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+  bindings = <&td_lower_key_first_tap 1 1>, <&td_lower_key_second_tap 1 1>, <&td_lower_key_third_tap LEFT_ALT LEFT_ALT>;
 };
 
 //=======================================================================
@@ -53,39 +90,6 @@ slmo_func: slmo_func {
 };
 
 //=======================================================================
-
-// Raise key:
-// Hold        = Temporary <w>, then released when Lower key is released
-// Tap         = <x> active, then after next key press <x> is released
-// Double Tap  = <y> is active and locked
-// Double Hold = <z> is active and locked
-// Triple Tap  = <0> is active and locked
-
-// td_func_layer: td_func_layer {
-//   compatible = "zmk,behavior-tap-dance";
-//   #binding-cells = <0>;
-//   tapping-term-ms = <300>;
-//   bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
-// };
-
-double_tap_and_hold_demo: double_tap_and_hold_demo {
-  compatible = "zmk,behavior-hold-tap";
-  #binding-cells = <2>;
-  tapping-term-ms = <300>;
-  quick-tap-ms = <0>;
-  flavor = "hold-preferred";
-  bindings = <&td_demo_hold1>, <&td_demo_hold2>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
-};
-
-tap_and_hold_demo: tap_and_hold_demo {
-  compatible = "zmk,behavior-hold-tap";
-  #binding-cells = <2>;
-  tapping-term-ms = <600>;
-  quick-tap-ms = <500>;
-  flavor = "hold-preferred";
-  // bindings = <&kp>, <&double_tap_and_hold_demo>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
-  bindings = <&kp>, <&td_demo_hold1>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
-};
 
 //=======================================================================
 
