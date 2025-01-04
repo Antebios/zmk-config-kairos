@@ -58,7 +58,7 @@ td_lower_key_first_tap: td_lower_key_first_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&mo>, <&sl>; // hold = layer 1 until release, 1xtap = sickty layer NAV
+    bindings = <&mo>, <&sl>; // hold = layer 1 until release, 1xtap = sticky layer NAV
 };
 
 td_lower_key: td_lower_key {
@@ -74,19 +74,57 @@ td_lower_key: td_lower_key {
 // Hold = Temporary Layer 2, then released when Lower key is released
 // Tap  = Layer 1 active, then after next key press Layer 1 is released
 // Double Tap = Layer 1 is active and locked
-td_func_layer: td_func_layer {
+// td_func_layer: td_func_layer {
+//   compatible = "zmk,behavior-tap-dance";
+//   #binding-cells = <0>;
+//   tapping-term-ms = <300>;
+//   bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
+// };
+// slmo_func: slmo_func {
+//   compatible = "zmk,behavior-hold-tap";
+//   #binding-cells = <2>;
+//   tapping-term-ms = <300>;
+//   quick-tap-ms = <0>;
+//   flavor = "hold-preferred";
+//   bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+// };
+
+
+// Raise key:
+// Hold = Temporary Raise layer, then released when Raise layer is released
+// Tap  = sticky Raise is active, then after next key press Raise is released
+// Double Tap = Activate Raise layer
+// Double Hold = nothing
+// Triple Tap = Left Alt is sticky, then after next key press Left Alt is released
+// Triple Hold = Left Alt is active while held, then released when Raise layer is released
+
+td_raise_key_third_tap: td_raise_key_third_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&mo>, <&to>; // 2xtap-then-hold = LALT hold, 3xtap = LALT sticky key
+};
+td_raise_key_second_tap: td_raise_key_second_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
+};
+td_raise_key_first_tap: td_raise_key_first_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <300>;
+    flavor = "tap-preferred";
+    bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer NAV
+};
+
+td_raise_key: td_raise_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&sl 2>, <&to 2>, <&to 4>;    // First tap = sticky layer 2, double tap = switch to layer 2; hardcoded not optimal...
-};
-slmo_func: slmo_func {
-  compatible = "zmk,behavior-hold-tap";
-  #binding-cells = <2>;
-  tapping-term-ms = <300>;
-  quick-tap-ms = <0>;
-  flavor = "hold-preferred";
-  bindings = <&mo>, <&td_func_layer>;  // Hold for momentary, tap for tap-dance behavior ex:&slmo 1 2
+  bindings = <&td_raise_key_first_tap 2 2>, <&td_raise_key_second_tap 2 2>, <&td_raise_key_third_tap 4 4>;
 };
 
 //=======================================================================
