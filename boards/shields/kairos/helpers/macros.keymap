@@ -1,7 +1,9 @@
 
 
 
-// =======================================
+// ======================================
+// ***===--- Visual Studio Code ---===***
+// ======================================
 
 // Control + ` = Toggle VS Code Console
 vscode_tog_console: vscode_tog_console {
@@ -89,9 +91,63 @@ vscode_cmd_pallet3: vscode_cmd_pallet3 {
     , <&macro_tap &kp ENTER>;
 };
 
-// =======================================
+
+// ======================================
+// ***===---    Git Commands    ---===***
+// ======================================
+
+git_pull: git_pull {
+  label = "git_pull";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_tap &kp G &kp I &kp T>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp P &kp U &kp L &kp L>
+    , <&macro_tap &kp ENTER>;
+};
+git_pull_rebase: git_pull_rebase {
+  label = "git_pull_rebase";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_tap &kp G &kp I &kp T>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp P &kp U &kp L &kp L>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp MINUS &kp MINUS &kp R &kp E &kp B &kp A &kp S &kp E>
+    , <&macro_tap &kp ENTER>;
+};
+git_push: git_push {
+  label = "git_pull";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_tap &kp G &kp I &kp T>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp P &kp U &kp S &kp H>
+    , <&macro_tap &kp ENTER>;
+};
+
+git_commit_start: git_commit_start {
+  label = "git_pull";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_tap &kp G &kp I &kp T>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp C &kp O &kp M &kp M &kp I &kp T>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp MINUS &kp M>
+    , <&macro_tap &kp SPACE>
+    , <&macro_tap &kp DOUBLE_QUOTES>;
+};
 
 
+
+// ======================================
+// ***===---        Misc        ---===***
+// ======================================
 
 tab_prev: tab_prev {
         label = "ZM_tab_prev";
