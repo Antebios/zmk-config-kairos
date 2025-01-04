@@ -2,14 +2,24 @@ functions_layer {
   label = "FUNCTIONS";
   display-name = "Functions";
   bindings = <
-// -----------------------------------------------------------------------------------------
-// |       |  F12    |   F7    |   F8   |   F9   |        | █ |       /       |    7    |    8    |    9    |     -      |     _      |
-  &none      &kp F12    &kp F7   &kp F8  &kp F9    &none       &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
-// |       |  F11    |   F4    |   F5   |   F6   |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
-  &none      &kp F11    &kp F4   &kp F5 &kp F6    &none        &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
-// | BASE  |  F10    |   F1    |   F2   |   F3   |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &to 0      &kp F10    &kp F1   &kp F2  &kp F3    &none       &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
-//                             |    ▼   |    ▼   |    ▼   | █ |       ▼       |     ▼    |    0    |
-                                 &trans  &trans    &trans         &trans       &trans     &kp N0
+// // -----------------------------------------------------------------------------------------
+// // |       |  F12    |   F7    |   F8   |   F9   |        | █ |       /       |    7    |    8    |    9    |     -      |     _      |
+//   &none      &kp F12    &kp F7   &kp F8  &kp F9    &none       &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
+// // |       |  F11    |   F4    |   F5   |   F6   |        | █ |       *       |    4    |    5    |    6    |     +      |     =      |
+//   &none      &kp F11    &kp F4   &kp F5 &kp F6    &none        &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL
+// // | BASE  |  F10    |   F1    |   F2   |   F3   |        | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
+//   &to 0      &kp F10    &kp F1   &kp F2  &kp F3    &none       &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
+// //                             |    ▼   |    ▼   |    ▼   | █ |       ▼       |     ▼    |    0    |
+//                                  &trans  &trans    &trans         &trans       &trans     &kp N0
+
+// -----------------------------------------------------------------------------------------------------------------------------
+// |  /         |    7    |    8    |    9    |     -      |     _       | █ |      |  F7    |   F8    |   F9   |   F12   |        |
+  &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER         &none   &kp F7    &kp F8   &kp F9  &kp F12    &none
+// |  *         |    4    |    5    |    6    |     +      |     =       | █ |      |  F4    |   F5    |   F6   |   F11   |        |
+  &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp KP_PLUS  &kp EQUAL         &none   &kp F4    &kp F5   &kp F6  &kp F11    &none
+// |  .         |    1    |    2    |    3    |     ,      |   ENTER     | █ | BASE |  F1    |   F2    |   F3   |   F10   |        |
+  &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER      &to 0   &kp F1    &kp F2   &kp F3  &kp F10    &none
+//                                  |    ▼     |    ▼      |    ▼         | █ |       ▼       |     ▼    |    0    |
+                                     &kp N0      &trans       &trans           &trans       &trans     &trans
     >;
 };
