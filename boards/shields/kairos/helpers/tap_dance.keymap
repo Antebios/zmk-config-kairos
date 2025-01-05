@@ -221,7 +221,7 @@ td_semi_first_tap: td_semi_first_tap {
 td_semicolon: td_semicolon {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
-  tapping-term-ms = <150>;
+  tapping-term-ms = <300>;
   bindings = <&td_semi_first_tap RGUI SEMICOLON>, <&td_semi_second_tap COLON COLON>;
 };
 

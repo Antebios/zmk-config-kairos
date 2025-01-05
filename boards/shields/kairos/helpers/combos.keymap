@@ -9,6 +9,7 @@
 COMBO_ALL(enter_left, &kp ENTER, 37 38)
 COMBO_ALL(space_right, &kp SPACE, 39 40)
 
+
 // ESC
 COMBO_ALL(esc_left, &kp ESC, 2 3)
 // DELETE
