@@ -7,7 +7,7 @@
 
 // Toggle Primary Sidebar = Control + B
 vscode_tog_primary_sb: vscode_tog_primary_sb {
-  label = "vsc_console";
+  label = "vscode_tog_primary_sb";
   compatible = "zmk,behavior-macro";
   #binding-cells = <0>;
   bindings
@@ -18,7 +18,7 @@ vscode_tog_primary_sb: vscode_tog_primary_sb {
 
 // Toggle Secondary Sidebar = Control + Alt + B
 vscode_tog_secondary_sb: vscode_tog_secondary_sb {
-  label = "vsc_console";
+  label = "vscode_tog_secondary_sb";
   compatible = "zmk,behavior-macro";
   #binding-cells = <0>;
   bindings
@@ -31,7 +31,7 @@ vscode_tog_secondary_sb: vscode_tog_secondary_sb {
 
 // Toggle Bottom Panel = Control + J
 vscode_tog_panel: vscode_tog_panel {
-  label = "vsc_panel";
+  label = "vscode_tog_panel";
   compatible = "zmk,behavior-macro";
   #binding-cells = <0>;
   bindings
