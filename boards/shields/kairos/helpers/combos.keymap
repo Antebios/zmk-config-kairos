@@ -9,6 +9,10 @@
 COMBO_ALL(enter_left, &kp ENTER, 37 38)
 COMBO_ALL(space_right, &kp SPACE, 39 40)
 
+// ESC
+COMBO_ALL(esc_left, &kp ESC, 2 3)
+// DELETE
+COMBO_ALL(delete, &kp DELETE, 0 1)
 
 // BUTTON INDEXES
 //                  ^                              ^
@@ -16,11 +20,6 @@ COMBO_ALL(space_right, &kp SPACE, 39 40)
 // | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
 // | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
 //                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
-
-// ESC
-COMBO_ALL(esc_left, &kp ESC, 2 3)
-// DELETE
-COMBO_ALL(delete, &kp DELETE, 0 1)
 
 // Toggle Primary Sidebar = Control + B
 COMBO(vscode_tog_primary_sb, &vscode_tog_primary_sb, 8 9, BASE)
