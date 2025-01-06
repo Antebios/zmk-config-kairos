@@ -22,21 +22,21 @@ td_lower_key_third_tap: td_lower_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <150>;
-    flavor = "balanced";
+    flavor = "hold-preferred";
     bindings = <&kp>, <&sk>; // 2xtap-then-hold = LALT hold, 3xtap = LALT sticky key
 };
 td_lower_key_second_tap: td_lower_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <150>;
-    flavor = "balanced";
+    flavor = "hold-preferred";
     bindings = <&mo>, <&to>; // tap-then-hold = layer 3 hold, 2xtap = activate layer NAV
 };
 td_lower_key_first_tap: td_lower_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <150>;
-    flavor = "balanced";
+    flavor = "hold-preferred";
     bindings = <&mo>, <&sl>; // hold = layer 1 until release, 1xtap = sticky layer NAV
 };
 
