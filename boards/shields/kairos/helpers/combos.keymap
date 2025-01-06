@@ -85,8 +85,9 @@ COMBO(shc_paste, &kp LC(V), 27 28, BASE)
 // COMBO(bt_clr, &bt BT_CLR, 24 29, 4)
 
 // RESET
-// COMBO_ALL(reset_r_e_s, &sys_reset, 3 4 14)
-
+COMBO_ALL(reset_r_e_s, &sys_reset, 23 27 38)
+// RESET to Default layer
+COMBO_ALL(reset_BASE, &to BASE, 36 37 38)
 
 // Here are some of the most frequently used Visual Studio Code keyboard shortcuts, listed in descending order of usage:
 // Ctrl+Shift+P or F1: Show Command Palette
