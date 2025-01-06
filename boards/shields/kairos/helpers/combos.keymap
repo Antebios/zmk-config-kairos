@@ -42,7 +42,7 @@ COMBO(vscode_search , &kp LC(LS(F)), 22 23, BASE)
 // Source Control
 COMBO(vscode_source_control , &vscode_source_control, 34 35, BASE)
 // New Window
-COMBO(vscode_new window , &kp LC(LS(N)), 9 11, BASE)
+COMBO(vscode_new_window , &kp LC(LS(N)), 9 11, BASE)
 
 
 // BUTTON INDEXES
