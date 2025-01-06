@@ -43,7 +43,7 @@ td_lower_key_first_tap: td_lower_key_first_tap {
 td_lower_key: td_lower_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
-  tapping-term-ms = <150>;
+  tapping-term-ms = <220>;
   bindings = <&td_lower_key_first_tap 1 1>, <&td_lower_key_second_tap 3 1>, <&td_lower_key_third_tap LEFT_ALT LEFT_ALT>;
 };
 
