@@ -30,7 +30,7 @@ td_lower_key_second_tap: td_lower_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&mo>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
+    bindings = <&mo>, <&to>; // tap-then-hold = layer 3 hold, 2xtap = activate layer NAV
 };
 td_lower_key_first_tap: td_lower_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -69,7 +69,7 @@ td_raise_key_second_tap: td_raise_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
+    bindings = <&mo>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
 };
 td_raise_key_first_tap: td_raise_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -83,7 +83,7 @@ td_raise_key: td_raise_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_raise_key_first_tap 2 2>, <&td_raise_key_second_tap 2 2>, <&td_raise_key_third_tap 4 4>;
+  bindings = <&td_raise_key_first_tap 2 2>, <&td_raise_key_second_tap 4 2>, <&td_raise_key_third_tap 4 4>;
 };
 
 //=======================================================================
@@ -108,7 +108,7 @@ td_down_key_second_tap: td_down_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer Symbols
+    bindings = <&mo>, <&to>; // tap-then-hold = lzyer 1 hold, 2xtap = activate layer Symbols
 };
 td_down_key_first_tap: td_down_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -122,7 +122,7 @@ td_down_key: td_down_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_down_key_first_tap 3 3>, <&td_down_key_second_tap 3 3>, <&td_down_key_third_tap 1 1>;
+  bindings = <&td_down_key_first_tap 3 3>, <&td_down_key_second_tap 1 3>, <&td_down_key_third_tap 1 1>;
 };
 
 //=======================================================================
@@ -147,7 +147,7 @@ td_up_key_second_tap: td_up_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
-    bindings = <&none>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer Utils
+    bindings = <&mo>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer Utils
 };
 td_up_key_first_tap: td_up_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
@@ -161,7 +161,7 @@ td_up_key: td_up_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_up_key_first_tap 4 4>, <&td_up_key_second_tap 4 4>, <&td_up_key_third_tap 2 2>;
+  bindings = <&td_up_key_first_tap 4 4>, <&td_up_key_second_tap 2 4>, <&td_up_key_third_tap 2 2>;
 };
 
 //=======================================================================
