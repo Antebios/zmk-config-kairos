@@ -22,21 +22,21 @@ td_lower_key_third_tap: td_lower_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&kp>, <&sk>; // 2xtap-then-hold = LALT hold, 3xtap = LALT sticky key
 };
 td_lower_key_second_tap: td_lower_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // tap-then-hold = layer 3 hold, 2xtap = activate layer NAV
 };
 td_lower_key_first_tap: td_lower_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&sl>; // hold = layer 1 until release, 1xtap = sticky layer NAV
 };
 
@@ -61,21 +61,21 @@ td_raise_key_third_tap: td_raise_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // 2xtap-then-hold = Utils layer hold, 3xtap = activate Utils
 };
 td_raise_key_second_tap: td_raise_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer NAV
 };
 td_raise_key_first_tap: td_raise_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer NAV
 };
 
@@ -100,21 +100,21 @@ td_down_key_third_tap: td_down_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // 2xtap-then-hold = NAV layer hold, 3xtap = activate NAV
 };
 td_down_key_second_tap: td_down_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // tap-then-hold = lzyer 1 hold, 2xtap = activate layer Symbols
 };
 td_down_key_first_tap: td_down_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer Symbols
 };
 
@@ -139,21 +139,21 @@ td_up_key_third_tap: td_up_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // 2xtap-then-hold = Func layer hold, 3xtap = activate Func
 };
 td_up_key_second_tap: td_up_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&to>; // tap-then-hold = nothing, 2xtap = activate layer Utils
 };
 td_up_key_first_tap: td_up_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&mo>, <&sl>; // hold = layer 4 until release, 1xtap = sticky layer Utils
 };
 
@@ -176,14 +176,14 @@ td_lshift_second_tap: td_lshift_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&kp>, <&caps_word>; // tap-then-hold, 2xtap
 };
 td_lshift_first_tap: td_lshift_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&kp>, <&sk>; // hold, 1xtap
 };
 
@@ -207,14 +207,14 @@ td_semi_second_tap: td_semi_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
     bindings = <&none>, <&kp>; // tap-then-hold, 2xtap
 };
 td_semi_first_tap: td_semi_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
-    tapping-term-ms = <150>;
-    flavor = "tap-preferred";
+    tapping-term-ms = <220>;
+    flavor = "balanced";
     bindings = <&kp>, <&sk>; // hold, 1xtap
 };
 
