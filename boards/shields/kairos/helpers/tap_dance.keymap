@@ -30,21 +30,21 @@ td_lower_key_second_tap: td_lower_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <150>;
     flavor = "hold-preferred";
-    bindings = <&mo>, <&to>; // tap-then-hold = layer 3 hold, 2xtap = activate layer NAV
+    bindings = <&mo>, <&to>; // tap-then-hold = layer SYMBOL_KP hold, 2xtap = activate layer NAV
 };
 td_lower_key_first_tap: td_lower_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <150>;
     flavor = "hold-preferred";
-    bindings = <&mo>, <&sl>; // hold = layer 1 until release, 1xtap = sticky layer NAV
+    bindings = <&mo>, <&sl>; // hold = layer NAVIGATION until release, 1xtap = sticky layer NAV
 };
 
 td_lower_key: td_lower_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <220>;
-  bindings = <&td_lower_key_first_tap 1 1>, <&td_lower_key_second_tap 3 1>, <&td_lower_key_third_tap LEFT_ALT LEFT_ALT>;
+  bindings = <&td_lower_key_first_tap NAVIGATION NAVIGATION>, <&td_lower_key_second_tap SYMBOL_KP NAVIGATION>, <&td_lower_key_third_tap LEFT_ALT LEFT_ALT>;
 };
 
 //=======================================================================
@@ -69,21 +69,21 @@ td_raise_key_second_tap: td_raise_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&to>; // tap-then-hold = layer 4 hold, 2xtap = activate layer Functions
+    bindings = <&mo>, <&to>; // tap-then-hold = layer UTILS hold, 2xtap = activate layer FUNCTIONS
 };
 td_raise_key_first_tap: td_raise_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer KP_SYMBOLS
+    bindings = <&mo>, <&sl>; // hold = layer FUNCTIONS until release, 1xtap = sticky layer KP_SYMBOLS
 };
 
 td_raise_key: td_raise_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_raise_key_first_tap 2 2>, <&td_raise_key_second_tap 4 2>, <&td_raise_key_third_tap 4 4>;
+  bindings = <&td_raise_key_first_tap FUNCTIONS FUNCTIONS>, <&td_raise_key_second_tap UTILS FUNCTIONS>, <&td_raise_key_third_tap UTILS UTILS>;
 };
 
 //=======================================================================
@@ -108,21 +108,21 @@ td_down_key_second_tap: td_down_key_second_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&to>; // tap-then-hold = layer 1 hold, 2xtap = activate layer Symbols
+    bindings = <&mo>, <&to>; // tap-then-hold = layer NAVIGATION hold, 2xtap = activate layer SYMBOL_KP
 };
 td_down_key_first_tap: td_down_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&sl>; // hold = layer 2 until release, 1xtap = sticky layer Symbols
+    bindings = <&mo>, <&sl>; // hold = layer FUNCTIONS until release, 1xtap = sticky layer SYMBOL_KP
 };
 
 td_down_key: td_down_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_down_key_first_tap 3 3>, <&td_down_key_second_tap 1 3>, <&td_down_key_third_tap 1 1>;
+  bindings = <&td_down_key_first_tap SYMBOL_KP SYMBOL_KP>, <&td_down_key_second_tap NAVIGATION SYMBOL_KP>, <&td_down_key_third_tap NAVIGATION NAVIGATION>;
 };
 
 //=======================================================================
@@ -140,28 +140,28 @@ td_up_key_third_tap: td_up_key_third_tap {
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&to>; // 2xtap-then-hold = Func layer hold, 3xtap = activate Func
+    bindings = <&mo>, <&to>; // 2xtap-then-hold = FUNCTIONS layer hold, 3xtap = activate FUNCTIONS
 };
 td_up_key_second_tap: td_up_key_second_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&to>; // tap-then-hold = layer 2 hold, 2xtap = activate layer Utils
+    bindings = <&mo>, <&to>; // tap-then-hold = layer FUNCTIONS hold, 2xtap = activate layer UTILS
 };
 td_up_key_first_tap: td_up_key_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     tapping-term-ms = <300>;
     flavor = "balanced";
-    bindings = <&mo>, <&sl>; // hold = layer 4 until release, 1xtap = sticky layer Utils
+    bindings = <&mo>, <&sl>; // hold = layer UTILS until release, 1xtap = sticky layer UTILS
 };
 
 td_up_key: td_up_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_up_key_first_tap 4 4>, <&td_up_key_second_tap 2 4>, <&td_up_key_third_tap 2 2>;
+  bindings = <&td_up_key_first_tap UTILS UTILS>, <&td_up_key_second_tap FUNCTIONS UTILS>, <&td_up_key_third_tap FUNCTIONS FUNCTIONS>;
 };
 
 //=======================================================================

@@ -3,13 +3,13 @@ navigation_layer {
   display-name = "Navigate";
   bindings = <
 // -----------------------------------------------------------------------------------------
-// |  DELETE |       |          |      ↑   |           | PAGE_UP   | █ | MSWHL UP   | MSSCR LEFT   |      ↑       | MSSCR RIGHT   |      |      |
-  &kp DELETE  &none     &none    &kp UP_ARROW    &none  &kp PAGE_UP        &msc SCRL_UP &msc SCRL_LEFT &mmv MOVE_UP   &msc SCRL_RIGHT &none  &none
-// |  INSERT |       |   ←      |      ↓   |  →        | PAGE_DOWN | █ | MSWHL DN   |       ←      |      ↓       |     →         |      |      |
-  &kp INSERT  &none   &kp LEFT   &kp DOWN   &kp RIGHT   &kp PAGE_DOWN      &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
-// | BASE    |       |          |          |    HOME   |    END    | █ |            | LEFT BTN     |  MIDDLE BTN  |  RIGHT BTN    |      |      |
-  &to 0       &none     &none       &none   &kp HOME    &kp END            &none       &mkp LCLK       &mkp MCLK      &mkp RCLK     &none  &none
-//                              |      ▼   |      ▼    |     ▼     | █ |      ▼     |       ▼      |   ▼   |
-                                    &trans    &trans      &trans           &trans      &trans       &trans
+// |  DELETE |       |          |      ↑   |           | PAGE_UP   | █ | MSWHL UP     | MSSCR LEFT   |      ↑       | MSSCR RIGHT   |      |      |
+  &kp DELETE  &none     &none    &kp UP_ARROW    &none  &kp PAGE_UP     &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP   &msc SCRL_RIGHT &none  &none
+// |  INSERT |       |   ←      |      ↓   |  →        | PAGE_DOWN | █ | MSWHL DN     |       ←      |      ↓       |     →         |      |      |
+  &kp INSERT  &none   &kp LEFT   &kp DOWN   &kp RIGHT   &kp PAGE_DOWN   &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none  &none
+// | BASE    |       |          |          |    HOME   |    END    | █ |              | LEFT BTN     |  MIDDLE BTN  |  RIGHT BTN    |      |      |
+  &to 0       &none     &none       &none   &kp HOME    &kp END         &none          &mkp LCLK      &mkp MCLK      &mkp RCLK       &none  &none
+//                              |      ▼   |      ▼    |     ▼     | █ |      ▼       |       ▼      |   ▼   |
+                                    &trans    &trans      &trans            &trans         &trans     &trans
   >;
 };
