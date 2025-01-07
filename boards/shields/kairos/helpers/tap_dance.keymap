@@ -166,6 +166,17 @@ td_up_key: td_up_key {
 
 //=======================================================================
 
+
+
+td_left_space_key: td_left_space_key {
+  compatible = "zmk,behavior-tap-dance";
+  #binding-cells = <0>;
+  tapping-term-ms = <220>;
+  bindings = <&mo>, <&kp>;
+};
+
+//=======================================================================
+
 // Left Shift:
 // Hold = Temporary Left Shift, then released when Shift key is released
 // Tap  = sticky Shift is active, then after next key press Shift is released
