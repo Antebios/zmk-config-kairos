@@ -37,12 +37,16 @@ COMBO(vscode_new_console, &vscode_new_console, 21 22, BASE)
 COMBO(vscode_cmd_pallet, &vscode_cmd_pallet, 33 34, BASE)
 // File Explorer
 COMBO(vscode_explorer , &kp LC(LS(E)), 10 11, BASE)
-// Search
-COMBO(vscode_search , &kp LC(LS(F)), 22 23, BASE)
+// Search-Right
+COMBO(vscode_search_left , &kp LC(LS(F)), 22 23, BASE)
+// Search-Left
+COMBO(vscode_search_right , &kp LC(LS(F)), 16 38, BASE)
+// Find
+COMBO(vscode_find , &kp LC(F), 16 29, BASE)
 // Source Control
 COMBO(vscode_source_control , &vscode_source_control, 34 35, BASE)
 // New Window
-COMBO(vscode_new_window , &kp LC(LS(N)), 9 11, BASE)
+COMBO(vscode_new_window , &kp LC(LS(N)), 15 16, BASE)
 
 
 // BUTTON INDEXES
