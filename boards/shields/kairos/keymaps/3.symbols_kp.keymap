@@ -8,7 +8,7 @@ symkp_layer {
 // |   `    |    $     |    %     |    ^    |   [    |   ]    | █ |       *       |    4    |    5    |    6    |     +      |     =      |
   &kp GRAVE  &kp DLLR   &kp PRCNT  &kp CARET &kp LBKT &kp RBKT     &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp PLUS     &kp EQUAL
 // |   ~    |    &     |     *    |   "|"   |   {    |   }    | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &kp TILDE   &kp AMPS   &kp ASTRK  &kp PIP   &kp LBRC &kp RBRC     &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
+  &kp TILDE   &kp AMPS   &kp ASTRK  &kp PIPE   &kp LBRC &kp RBRC     &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
 //                                |    ▼    |    ▼   |    ▼   | █ |    Return     |         |    0    |
                                     &trans     &trans &kp SPACE      &kp RET         &none     &kp N0
     >;
