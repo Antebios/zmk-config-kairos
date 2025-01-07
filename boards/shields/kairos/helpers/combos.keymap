@@ -56,7 +56,8 @@ COMBO(vscode_new_window , &kp LC(LS(N)), 15 16, BASE)
 // | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
 //                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
 // Print Screen
-COMBO_ALL(print_screen , &kp PRINTSCREEN, 11 23)
+COMBO_ALL(print_screen1 , &kp PRINTSCREEN, 11 23)
+COMBO_ALL(print_screen2 , &kp PRINTSCREEN, 0 12)
 // Back Tick `
 COMBO_ALL(back_tick , &kp GRAVE, 0 1 2)
 // Tilde ~
