@@ -21,4 +21,5 @@
 #define tdDown() &td_down_key
 // Up Tap Dance
 #define tdUp() &td_up_key
-
+// Left Space
+#define tdLeftSpace() &td_left_space_key 3 SPACE
