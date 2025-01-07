@@ -22,4 +22,4 @@
 // Up Tap Dance
 #define tdUp() &td_up_key
 // Left Space
-#define tdLeftSpace() &td_left_space_key 3 SPACE
+#define tdLeftSpace() &td_left_space_key SYMBOL_KP SPACE
