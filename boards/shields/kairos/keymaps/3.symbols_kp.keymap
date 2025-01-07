@@ -1,7 +1,7 @@
 symkp_layer {
   label = "SYMBOL_KP";
   display-name = "Symbols_KeyPad";
-  bindings = <!
+  bindings = <
 // -----------------------------------------------------------------------------------------
 // |  BSPC  |    !     |    @     |    #    |   (    |   )    | █ |       /       |    7    |    8    |    9    |     -      |     _      |
   &kp BSPC  &kp EXCL    &kp AT     &kp HASH  &kp LPAR &kp RPAR     &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
