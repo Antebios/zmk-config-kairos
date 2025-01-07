@@ -1,15 +1,15 @@
 symkp_layer {
   label = "SYMBOL_KP";
   display-name = "Symbols_KeyPad";
-  bindings = <
+  bindings = <!
 // -----------------------------------------------------------------------------------------
 // |  BSPC  |    !     |    @     |    #    |   (    |   )    | █ |       /       |    7    |    8    |    9    |     -      |     _      |
   &kp BSPC  &kp EXCL    &kp AT     &kp HASH  &kp LPAR &kp RPAR     &kp KP_DIVIDE   &kp N7    &kp N8    &kp N9    &kp KP_MINUS &kp UNDER
 // |   `    |    $     |    %     |    ^    |   [    |   ]    | █ |       *       |    4    |    5    |    6    |     +      |     =      |
   &kp GRAVE  &kp DLLR   &kp PRCNT  &kp CARET &kp LBKT &kp RBKT     &kp KP_MULTIPLY &kp N4    &kp N5    &kp N6    &kp PLUS     &kp EQUAL
 // |   ~    |    &     |     *    |   "|"   |   {    |   }    | █ |       .       |    1    |    2    |    3    |     ,      |   ENTER    |
-  &kp TILDE   &kp AMPS   &kp ASTRK  &kp PIPE   &kp LBRC &kp RBRC     &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
-//                                |    ▼    |    ▼   |    ▼   | █ |    Return     |         |    0    |
-                                    &trans     &trans &kp SPACE      &kp RET         &none     &kp N0
+  &kp TILDE   &kp AMPS   &kp ASTRK  &kp PIPE &kp LBRC &kp RBRC     &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
+//                                |   BSPC  |    ▼   |    ▼   | █ |    Return     |         |    0    |
+                                   &kp BSPC  &trans   &kp SPACE    &kp RET         &none     &kp N0
     >;
 };
