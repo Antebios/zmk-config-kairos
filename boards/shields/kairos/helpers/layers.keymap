@@ -4,6 +4,7 @@
 #define FUNCTIONS 2
 #define SYMBOL_KP 3
 #define UTILS 4
+#define MIRROR 5
 // #define NUMBER 3
 // #define EXTRA 4
 // #define UBER 5
