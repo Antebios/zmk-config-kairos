@@ -110,6 +110,8 @@ vscode_cmd_pallet2: vscode_cmd_pallet2 {
     , <&macro_tap &kp W>
     , <&macro_tap &kp E>
     , <&macro_tap &kp R>
+    , <&macro_tap &kp AT_SIGN>
+    , <&macro_tap &kp N2>
     , <&macro_tap &kp ENTER>;
 };
 

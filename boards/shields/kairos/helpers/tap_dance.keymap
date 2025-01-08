@@ -57,6 +57,14 @@ td_lower_key: td_lower_key {
 // Triple Tap = Activate Utils layer
 // Triple Hold = Layer Utils is active while held, then released when Raise key is released
 
+td_raise_key_fourth_tap: td_raise_key_fourth_tap {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <200>;
+    flavor = "balanced";
+    bindings = <&mo>, <&to>; // 2xtap-then-hold = COMBOS layer hold, 3xtap = activate layer COMBOS
+};
+
 td_raise_key_third_tap: td_raise_key_third_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -83,7 +91,7 @@ td_raise_key: td_raise_key {
   compatible = "zmk,behavior-tap-dance";
   #binding-cells = <0>;
   tapping-term-ms = <300>;
-  bindings = <&td_raise_key_first_tap FUNCTIONS FUNCTIONS>, <&td_raise_key_second_tap UTILS FUNCTIONS>, <&td_raise_key_third_tap UTILS UTILS>;
+  bindings = <&td_raise_key_first_tap FUNCTIONS FUNCTIONS>, <&td_raise_key_second_tap UTILS FUNCTIONS>, <&td_raise_key_third_tap UTILS UTILS>, <&td_raise_key_fourth_tap COMBOS COMBOS>;
 };
 
 //=======================================================================

@@ -23,30 +23,41 @@ COMBO_ALL(delete, &kp DELETE, 0 1)
 //                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
 
 // Toggle Primary Sidebar = Control + B
-COMBO(vscode_tog_primary_sb, &vscode_tog_primary_sb, 8 9, BASE)
+COMBO(vscode_tog_primary_sb1, &vscode_tog_primary_sb, 8 9, BASE)
+COMBO(vscode_tog_primary_sb2, &vscode_tog_primary_sb, 2 3, COMBOS)
 // Toggle Secondary Sidebar = Control + Alt + B
-COMBO(vscode_tog_secondary_sb, &vscode_tog_secondary_sb, 20 21, BASE)
+COMBO(vscode_tog_secondary_sb1, &vscode_tog_secondary_sb, 20 21, BASE)
+COMBO(vscode_tog_secondary_sb2, &vscode_tog_secondary_sb, 14 15, COMBOS)
 // Toggle Bottom Panel = Control + J
-COMBO(vscode_tog_panel, &vscode_tog_panel, 32 33, BASE)
+COMBO(vscode_tog_panel1, &vscode_tog_panel, 32 33, BASE)
+COMBO(vscode_tog_panel2, &vscode_tog_panel, 26 27, COMBOS)
 
 // Toggle VS Code Console = Control + `
-COMBO(vscode_tog_console, &vscode_tog_console, 9 10, BASE)
+COMBO(vscode_tog_console1, &vscode_tog_console, 9 10, BASE)
+COMBO(vscode_tog_console2, &vscode_tog_console, 1 2, COMBOS)
 // New VS Code Console = Shift + Control + `
-COMBO(vscode_new_console, &vscode_new_console, 21 22, BASE)
+COMBO(vscode_tog_console1, &vscode_new_console, 9 10, BASE)
+COMBO(vscode_tog_console2, &vscode_new_console, 13 14, COMBOS)
 // Command Pallet = Shift + Control + P
-COMBO(vscode_cmd_pallet, &vscode_cmd_pallet, 33 34, BASE)
+COMBO(vscode_cmd_pallet1, &vscode_cmd_pallet, 33 34, BASE)
+COMBO(vscode_cmd_pallet2, &vscode_cmd_pallet, 25 26, COMBOS)
 // File Explorer
-COMBO(vscode_explorer , &kp LC(LS(E)), 10 11, BASE)
+COMBO(vscode_explorer1, &kp LC(LS(E)), 10 11, BASE)
+COMBO(vscode_explorer2, &kp LC(LS(E)), 0 1, COMBOS)
 // Search-Right
-COMBO(vscode_search_left , &kp LC(LS(F)), 22 23, BASE)
+COMBO(vscode_search_left1, &kp LC(LS(F)), 22 23, BASE)
+COMBO(vscode_search_left2, &kp LC(LS(F)), 12 13, COMBOS)
 // Search-Left
 COMBO(vscode_search_right , &kp LC(LS(F)), 16 38, BASE)
+// COMBO(vscode_search_right , &kp LC(LS(F)), 16 38, COMBOS)
 // Find
-COMBO(vscode_find , &kp LC(F), 16 29, BASE)
+COMBO(vscode_find1, &kp LC(F), 16 29, BASE)
 // Source Control
-COMBO(vscode_source_control , &vscode_source_control, 34 35, BASE)
+COMBO(vscode_source_control1, &vscode_source_control, 34 35, BASE)
+COMBO(vscode_source_control2, &vscode_source_control, 24 25, COMBOS)
 // New Window
-COMBO(vscode_new_window , &kp LC(LS(N)), 15 16, BASE)
+COMBO(vscode_new_window1, &kp LC(LS(N)), 15 16, BASE)
+COMBO(vscode_new_window2, &kp LC(LS(N)), 15 16, COMBOS)
 
 
 // BUTTON INDEXES
