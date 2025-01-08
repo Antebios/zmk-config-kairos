@@ -36,8 +36,8 @@ COMBO(vscode_tog_panel2, &vscode_tog_panel, 26 27, COMBOS)
 COMBO(vscode_tog_console1, &vscode_tog_console, 9 10, BASE)
 COMBO(vscode_tog_console2, &vscode_tog_console, 1 2, COMBOS)
 // New VS Code Console = Shift + Control + `
-COMBO(vscode_tog_console1, &vscode_new_console, 9 10, BASE)
-COMBO(vscode_tog_console2, &vscode_new_console, 13 14, COMBOS)
+COMBO(vscode_new_console1, &vscode_new_console, 21 22, BASE)
+COMBO(vscode_new_console2, &vscode_new_console, 13 14, COMBOS)
 // Command Pallet = Shift + Control + P
 COMBO(vscode_cmd_pallet1, &vscode_cmd_pallet, 33 34, BASE)
 COMBO(vscode_cmd_pallet2, &vscode_cmd_pallet, 25 26, COMBOS)
