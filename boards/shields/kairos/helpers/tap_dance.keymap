@@ -235,7 +235,7 @@ td_semi_first_tap: td_semi_first_tap {
     #binding-cells = <2>;
     tapping-term-ms = <220>;
     flavor = "balanced";
-    bindings = <&kp>, <&sk>; // hold, 1xtap
+    bindings = <&kp>, <&kp>; // hold, 1xtap
 };
 
 td_semicolon: td_semicolon {
