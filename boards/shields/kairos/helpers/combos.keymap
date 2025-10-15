@@ -84,6 +84,7 @@ COMBO_ALL(equal , &kp EQUAL, 19 20)
 
 COMBO_ALL(wkshell , &vscode_cmd_pallet2, 4 5)
 COMBO_ALL(hmmp , &vscode_cmd_pallet3, 16 17)
+COMBO_ALL(hmmp2 , &vscode_cmd_pallet4, 28 29)
 
 
 // BUTTON INDEXES
