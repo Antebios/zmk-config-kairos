@@ -130,6 +130,22 @@ vscode_cmd_pallet3: vscode_cmd_pallet3 {
     , <&macro_tap &kp ENTER>;
 };
 
+vscode_cmd_pallet3: vscode_cmd_pallet4 {
+  label = "vsc_cmd_pallet3";
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings
+    = <&macro_tap &kp N5>
+    , <&macro_tap &kp N8>
+    , <&macro_tap &kp N8>
+    , <&macro_tap &kp N1>
+    , <&macro_tap &kp N3>
+    , <&macro_tap &kp N2>
+    , <&macro_tap &kp N0>
+    , <&macro_tap &kp N0>
+    , <&macro_tap &kp ENTER>;
+};
+
 
 // ======================================
 // ***===---    Git Commands    ---===***
