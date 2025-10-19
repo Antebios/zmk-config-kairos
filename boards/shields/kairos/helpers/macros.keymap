@@ -131,7 +131,7 @@ vscode_cmd_pallet3: vscode_cmd_pallet3 {
 };
 
 vscode_cmd_pallet4: vscode_cmd_pallet4 {
-  label = "vsc_cmd_pallet3";
+  label = "vsc_cmd_pallet4";
   compatible = "zmk,behavior-macro";
   #binding-cells = <0>;
   bindings
