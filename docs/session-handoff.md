@@ -6,6 +6,9 @@ chat transcript. Update it when the checkpoint, gates or repository state change
 
 ## Read First
 
+For day-to-day configuration edits and builds, use
+[the repository guide](repository-guide.md).
+
 1. [Development plan](kairos-development-plan.md): approved scope and exclusions.
 2. [Development log](development-log.md): decisions, hardware map, dependency
    provenance, test evidence and open issue closure conditions.

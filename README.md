@@ -4,6 +4,9 @@ Continuing this work in another session or on another computer? Start with the
 [session handoff](docs/session-handoff.md), including how to transfer uncommitted
 files and recreate the original build baseline without this machine's `/tmp`.
 
+For editing keys, navigating the configuration, running builds/tests and working
+with Git, see [Using This Repository](docs/repository-guide.md).
+
 Shared firmware for the existing 42-key Kairos and a 44-key Kairos with dedicated
 left Enter and right Space. Both use a left central and BLE right peripheral,
 with USB/Bluetooth host output on the left. Board target: `nice_nano_v2`.

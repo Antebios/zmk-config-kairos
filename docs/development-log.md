@@ -268,3 +268,16 @@ A plain remote clone is therefore not a complete checkpoint. Transfer options
 include reviewed publication or worktree archives containing untracked files;
 no transfer, commit, push, build, flash or hardware change was executed here.
 Preserved existing document edits and left source/scripts/tests unchanged.
+Documentation validation passed: local handoff links resolve, shell examples
+pass `sh -n`, and whitespace checks pass. Firmware builds were not rerun for
+that documentation-only checkpoint.
+
+### 2026-10-01: Repository Usage Guide
+
+Added [repository-guide.md](repository-guide.md), linked from the README and
+handoff. It covers the configuration/upstream distinction, active shared file
+structure, key/layer/combo/macro/timing edits, model-specific settings, full and
+focused Docker build/test commands, outputs, CI limitations, failure diagnosis,
+Git review and development-record upkeep. It preserves the trackpad gates and
+warns against disabling preservation checks or automatically accepting snapshots.
+No firmware source, test, script, Git commit/push or hardware state was changed.
