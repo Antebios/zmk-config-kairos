@@ -37,6 +37,13 @@ For day-to-day configuration edits and builds, use
   Existing keyboard mouse buttons/movement/scrolling are not trackpad acceptance.
 - HW-01 (exact ribbon/pinout), HW-02 (series resistors/pull-ups), DRV-01 (exact
   protocol/driver) and ACCEPT-01 (physical keyboard acceptance) remain open.
+- The [GitLab pipeline](../.gitlab-ci.yml) and [build helper](../scripts/build-gitlab.sh)
+  provide four fresh-workspace builds in the digest-pinned amd64 image, firmware
+  checks and 30-day successful artifacts with checksums/provenance. Native tests
+  are excluded from CI. See [GitLab usage](repository-guide.md#build-with-gitlab).
+  Homelab CI Lint and the first hosted pipeline remain unverified; no GitLab
+  project URL or credentials have been supplied. No Kubernetes/DinD changes are
+  required. Preserve the local full regression gate for shared behavior changes.
 - No flashing, bond clearing, hardware modification, Git commit or push was
   performed by the implementation or this documentation update. Do not add a
   custom driver or hardware redesign without separate approval. RP2040/Elite-Pi
@@ -48,15 +55,18 @@ For day-to-day configuration edits and builds, use
 | --- | --- |
 | Firmware remote | `https://github.com/Antebios/zmk-config-kairos.git` |
 | Current local branch | `feature/kairo-44-trackpad` |
-| Firmware HEAD / original configuration baseline | `7268ea34f01bc4bb29cdd53dcc3c3a9901ed2dd2` |
+| Original configuration baseline | `7268ea34f01bc4bb29cdd53dcc3c3a9901ed2dd2` |
+| Firmware HEAD before GitLab implementation | `430b675` (inspect current HEAD before transfer) |
 | ZMK upstream pinned commit | `edf5c0814fd3ea202e43aad2d68fd32e882a518c` (v0.3.0) |
 | Hardware parent remote | `https://github.com/Antebios/keyboards.git` |
 | Hardware parent HEAD | `b1c3429f02d2d331f5b72e9d9eca63b3ac761592` |
 | Required hardware subdirectory | `kairos44_choc_trackpad-flip/` |
 
-The firmware implementation, scripts, tests and docs are **uncommitted**, with
-new directories still untracked. A plain clone of the firmware remote is not
-sufficient until the work is deliberately published or copied. The hardware
+The worktree was clean at `430b675` before GitLab implementation. The new CI
+files and related documentation are local changes until deliberately committed
+and published or copied. Inspect current Git status rather than assuming an
+old checkpoint's changes are still uncommitted. A remote clone cannot restore
+unpublished commits or local files. The hardware
 subdirectory is also untracked in its parent repository at this checkpoint;
 the parent commit does not capture it. Other user changes exist in that parent
 repository; do not reset, stage or overwrite them as part of resuming.

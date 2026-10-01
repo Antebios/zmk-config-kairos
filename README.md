@@ -36,6 +36,12 @@ and a 22-LED chain per half. No RP2040/Elite-Pi target is provided.
 dispatch use that revision. GitHub-hosted CI has not been run as part of this
 local implementation; all four targets have compiled locally.
 
+The [GitLab pipeline](.gitlab-ci.yml) builds the same four targets and validates
+generated firmware before publishing named UF2s, checksums and dependency/build
+provenance. Artifacts expire after 30 days, subject to GitLab retention settings.
+See [GitLab build/download instructions](docs/repository-guide.md#build-with-gitlab)
+for the Kubernetes runner prerequisites and selecting the correct flash files.
+
 ## Shared Layers And Typing
 
 | ID  | Layer      | Direct BASE access                         |

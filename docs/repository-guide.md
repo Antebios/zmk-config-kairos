@@ -18,6 +18,7 @@ check the current Git state before choosing a transfer method.
 | [build.yaml](../build.yaml) | Model/side build matrix and artifact names |
 | [config/west.yml](../config/west.yml) | Pinned upstream ZMK version and imported dependencies |
 | [Build workflow](../.github/workflows/build.yml) | GitHub Actions reusable workflow, pinned to the same ZMK commit |
+| [GitLab pipeline](../.gitlab-ci.yml) / [CI build helper](../scripts/build-gitlab.sh) | Four isolated firmware builds, validation and downloadable UF2 artifacts |
 | [zephyr/module.yml](../zephyr/module.yml) | Exposes this repository as a module with a custom board/shield root |
 | [Legacy keymap wrapper](../boards/shields/kairos/kairos.keymap) | Selects the common keymap with no extra keys |
 | [44-key wrapper](../boards/shields/kairos44/kairos44.keymap) | Adds Enter/Space and transparent extra-key expansions |
@@ -165,6 +166,72 @@ macros, combo positions/actions and timing contracts. An approved deliberate
 change may require updating its specific expectations and relevant native
 fixture; document the changed contract, keep unaffected comparisons, and do
 not simply disable preservation checks to get a pass.
+
+## Build With GitLab
+
+The root [GitLab pipeline](../.gitlab-ci.yml) runs four independent jobs on an
+untagged Kubernetes runner using Linux amd64 nodes. It builds directly in the
+digest-pinned ZMK image; no DinD service, privileged job or Docker socket is
+needed. Existing DinD configuration can remain unchanged. Jobs need outbound
+HTTPS/DNS access to Docker Hub and the GitHub repositories imported by
+[config/west.yml](../config/west.yml). Allow enough pod CPU, memory and ephemeral
+disk for west dependency clones and compilation; each job has a one-hour timeout,
+also subject to the runner/project timeout. No shared cache is required.
+
+1. Review and publish the intended repository branch to your GitLab project.
+  This guide does not perform a commit or push. The default CI configuration
+  path must be `.gitlab-ci.yml`; no secret CI variables are required for these
+  public build dependencies.
+2. Use GitLab's **Build -> Pipeline editor -> Validate** (CI Lint) to validate
+  the configuration on your installed GitLab version. Then push the branch
+  or use **Build -> Pipelines -> New pipeline** and select that branch.
+3. Inspect all four `firmware` jobs. Branch/tag pushes, merge requests and manual
+  branch pipelines are supported; an open merge request suppresses the duplicate
+  branch push pipeline. The runner must accept untagged jobs.
+4. After all four jobs succeed, download each job's artifact archive from the
+  pipeline/job page. Extract it and choose only your keyboard model's matching
+  left/right pair, from the same pipeline commit.
+
+| Target | File within its artifact directory |
+| --- | --- |
+| 42 left | `artifacts/kairos42-left/kairos42-left.uf2` |
+| 42 right | `artifacts/kairos42-right/kairos42-right.uf2` |
+| 44 left | `artifacts/kairos44-left-keyboard-only/kairos44-left-keyboard-only.uf2` |
+| 44 right | `artifacts/kairos44-right-keyboard-only/kairos44-right-keyboard-only.uf2` |
+
+Each archive includes `SHA256SUMS`, `build-info.txt` (configuration commit,
+target, image, timestamp and CI URLs) and `west-manifest.yml` (resolved dependency
+commits). Run `sha256sum -c SHA256SUMS` inside the extracted target directory
+before flashing. Follow [the flashing and acceptance instructions](../README.md);
+the pipeline never flashes a controller. The 44-key outputs remain keyboard-only.
+
+Artifacts are uploaded only when that job's build, generated-firmware validator
+and packaging checks succeed, with `expire_in: 30 days`. GitLab may keep the
+latest successful artifacts longer according to project/instance settings.
+A successful individual job is not evidence that all four jobs succeeded.
+Native regressions and original-baseline comparisons are intentionally not in
+this pipeline; run the full local gate after shared behavior changes.
+
+The helper copies the repository manifest into a temporary west workspace,
+fetches dependencies, registers Zephyr with CMake, reads board/shield settings
+from `build.yaml`, then validates before packaging. If adding/removing targets,
+update the pipeline's artifact-name list and helper's model/side mapping as well
+as `build.yaml`; unsupported boards/build options fail rather than being ignored.
+
+To replay one actual CI job locally without a pre-existing west workspace:
+
+```sh
+image=zmkfirmware/zmk-build-arm@sha256:edb1c953438c6f720ddb79c3762f3972013b7fbbaf4fff3592fc869983e7afc5
+docker run --rm --entrypoint sh --user "$(id -u):$(id -g)" \
+  -e HOME=/tmp -e ARTIFACT_NAME=kairos44-right-keyboard-only \
+  -e ZMK_BUILD_IMAGE="$image" -v "$PWD:/config" -w /config \
+  "$image" scripts/build-gitlab.sh
+```
+
+Repeat with the other three artifact names for all targets. Outputs go to the
+ignored local `artifacts/` directory; the temporary dependency workspace is
+removed on exit. A local replay does not prove GitLab scheduling, image pulls,
+network policies or artifact uploads; the first homelab pipeline remains a gate.
 
 ## Outputs And Troubleshooting
 
