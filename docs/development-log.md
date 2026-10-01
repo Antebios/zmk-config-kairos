@@ -281,3 +281,9 @@ focused Docker build/test commands, outputs, CI limitations, failure diagnosis,
 Git review and development-record upkeep. It preserves the trackpad gates and
 warns against disabling preservation checks or automatically accepting snapshots.
 No firmware source, test, script, Git commit/push or hardware state was changed.
+
+Documentation checks passed: all local links resolve, the guide's shell examples
+pass `sh -n`, editor diagnostics are clear, and Git whitespace checks pass.
+The example build/test commands match the checked-in verification script; they
+were not executed for this documentation-only change. No firmware tests were
+rerun, and no commit or push command was run by the assistant.

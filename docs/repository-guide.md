@@ -8,7 +8,8 @@ current directory is the root of this configuration repository unless stated.
 For keyboard operation and flashing, use [the user guide](../README.md). To
 restore the current uncommitted work on another computer, follow
 [the session handoff](session-handoff.md) before these instructions. A plain
-remote clone does not yet include the uncommitted implementation.
+remote clone cannot restore any uncommitted or unpublished checkpoint files;
+check the current Git state before choosing a transfer method.
 
 ## Find The Right File
 
