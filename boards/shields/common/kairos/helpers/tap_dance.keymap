@@ -3,8 +3,8 @@ ht: hold_tap {
   compatible = "zmk,behavior-hold-tap";
   #binding-cells = <2>;
   flavor = "tap-preferred";
-  tapping-term-ms = <200>;
-  quick-tap-ms = <200>;
+  tapping-term-ms = <HRM_TAPPING_TERM_MS>;
+  quick-tap-ms = <HRM_QUICK_TAP_MS>;
   bindings = <&kp>, <&kp>;
 };
 
@@ -179,7 +179,7 @@ td_up_key: td_up_key {
 td_left_space_key: td_left_space_key {
   compatible = "zmk,behavior-hold-tap";
   #binding-cells = <2>;
-  tapping-term-ms = <220>;
+  tapping-term-ms = <THUMB_TAPPING_TERM_MS>;
   flavor = "balanced";
   bindings = <&mo>, <&kp>;
 };
@@ -233,7 +233,7 @@ td_semi_second_tap: td_semi_second_tap {
 td_semi_first_tap: td_semi_first_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
-    tapping-term-ms = <220>;
+    tapping-term-ms = <SEMICOLON_TAPPING_TERM_MS>;
     flavor = "balanced";
     bindings = <&kp>, <&kp>; // hold, 1xtap
 };
