@@ -11,5 +11,6 @@ symkp_layer {
   &kp TILDE   &kp AMPS   &kp ASTRK  &kp PIPE &kp LBRC &kp RBRC     &kp DOT         &kp N1    &kp N2    &kp N3    &kp COMMA    &kp KP_ENTER
 //                                |   BSPC  |    ▼   |    ▼   | █ |    Return     |         |    0    |
                                    &kp BSPC  &trans   &kp SPACE    &kp RET         &none     &kp N0
+    KAIROS_EXTRA_KEYS
     >;
 };

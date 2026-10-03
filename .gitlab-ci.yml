@@ -1,0 +1,34 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH || $CI_COMMIT_TAG'
+
+stages:
+  - build
+
+variables:
+  ZMK_BUILD_IMAGE: "zmkfirmware/zmk-build-arm@sha256:edb1c953438c6f720ddb79c3762f3972013b7fbbaf4fff3592fc869983e7afc5"
+
+firmware:
+  stage: build
+  image:
+    name: "$ZMK_BUILD_IMAGE"
+    entrypoint: [""]
+  timeout: 1 hour
+  parallel:
+    matrix:
+      - ARTIFACT_NAME:
+          - kairos42-left
+          - kairos42-right
+          - kairos44-left-keyboard-only
+          - kairos44-right-keyboard-only
+  script:
+    - sh scripts/build-gitlab.sh
+  artifacts:
+    name: "$ARTIFACT_NAME-$CI_COMMIT_SHORT_SHA"
+    when: on_success
+    expire_in: 30 days
+    paths:
+      - "artifacts/$ARTIFACT_NAME/"

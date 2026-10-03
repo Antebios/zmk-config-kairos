@@ -1,0 +1,6 @@
+#define L_EXTRA_ENTER 42
+#define R_EXTRA_SPACE 43
+#define KAIROS_EXTRA_BASE &kp ENTER &kp SPACE
+#define KAIROS_EXTRA_KEYS &trans &trans
+
+#include "../common/kairos/keymap.keymap"

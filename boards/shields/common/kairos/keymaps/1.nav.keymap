@@ -4,12 +4,13 @@ navigation_layer {
   bindings = <
 // -----------------------------------------------------------------------------------------
 // |  DELETE |       |          |      ↑   |           | PAGE_UP   | █ | MSWHL UP     | MSSCR LEFT   |      ↑       | MSSCR RIGHT   |      |      |
-  &kp DELETE  &none     &none    &kp UP_ARROW    &none  &kp PAGE_UP     &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP   &msc SCRL_RIGHT &none  &none
+  &kp DELETE  &to UTILS &sl FUNCTIONS &kp UP_ARROW &sl SYMBOL_KP &kp PAGE_UP &msc SCRL_UP &msc SCRL_LEFT &mmv MOVE_UP &msc SCRL_RIGHT &none &none
 // |  INSERT |       |   ←      |      ↓   |  →        | PAGE_DOWN | █ | MSWHL DN     |       ←      |      ↓       |     →         |      |      |
-  &kp INSERT  &none   &kp LEFT   &kp DOWN   &kp RIGHT   &kp PAGE_DOWN   &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none  &none
+  &kp INSERT  &sl UTILS &kp LEFT &kp DOWN &kp RIGHT &kp PAGE_DOWN &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
 // | BASE    |       |          |          |    HOME   |    END    | █ |              | LEFT BTN     |  MIDDLE BTN  |  RIGHT BTN    |      |      |
-  &to 0       &none     &none       &none   &kp HOME    &kp END         &none          &mkp LCLK      &mkp MCLK      &mkp RCLK       &none  &none
+  &to BASE &sk LALT &kp LALT &mo MIRROR &kp HOME &kp END &mo COMBOS &mkp LCLK &mkp MCLK &mkp RCLK &none &none
 //                              |      ▼   |      ▼    |     ▼     | █ |      ▼       |       ▼      |   ▼   |
                                     &trans    &trans      &trans            &trans         &trans     &trans
+  KAIROS_EXTRA_KEYS
   >;
 };

@@ -1,0 +1,130 @@
+// BUTTON INDEXES
+//                  ^                              ^
+// | 0  | 1  | 2  | 3  | 4  | 5  | ___ | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
+
+// ENTER
+COMBO_ALL(enter_left, &kp ENTER, L_RAISE L_SPACE)
+COMBO_ALL(space_right, &kp SPACE, R_ENTER R_DOWN)
+
+
+// ESC
+COMBO(esc_left, &kp ESC, L_TOP_2 L_TOP_3, BASE NAVIGATION FUNCTIONS SYMBOL_KP UTILS MIRROR)
+// DELETE
+COMBO(delete, &kp DELETE, L_TOP_0 L_TOP_1, BASE NAVIGATION FUNCTIONS SYMBOL_KP UTILS MIRROR)
+
+// BUTTON INDEXES
+//                  ^                              ^
+// | 0  | 1  | 2  | 3  | 4  | 5  | ___ | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
+
+// Toggle Primary Sidebar = Control + B
+COMBO(vscode_tog_primary_sb1, &vscode_tog_primary_sb, R_TOP_2 R_TOP_3, BASE)
+COMBO(vscode_tog_primary_sb2, &vscode_tog_primary_sb, L_TOP_2 L_TOP_3, COMBOS)
+// Toggle Secondary Sidebar = Control + Alt + B
+COMBO(vscode_tog_secondary_sb1, &vscode_tog_secondary_sb, R_HOME_2 R_HOME_3, BASE)
+COMBO(vscode_tog_secondary_sb2, &vscode_tog_secondary_sb, L_HOME_2 L_HOME_3, COMBOS)
+// Toggle Bottom Panel = Control + J
+COMBO(vscode_tog_panel1, &vscode_tog_panel, R_BOTTOM_2 R_BOTTOM_3, BASE)
+COMBO(vscode_tog_panel2, &vscode_tog_panel, L_BOTTOM_2 L_BOTTOM_3, COMBOS)
+
+// Toggle VS Code Console = Control + `
+COMBO(vscode_tog_console1, &vscode_tog_console, R_TOP_3 R_TOP_4, BASE)
+COMBO(vscode_tog_console2, &vscode_tog_console, L_TOP_1 L_TOP_2, COMBOS)
+// New VS Code Console = Shift + Control + `
+COMBO(vscode_new_console1, &vscode_new_console, R_HOME_3 R_HOME_4, BASE)
+COMBO(vscode_new_console2, &vscode_new_console, L_HOME_1 L_HOME_2, COMBOS)
+// Command Pallet = Shift + Control + P
+COMBO(vscode_cmd_pallet1, &vscode_cmd_pallet, R_BOTTOM_3 R_BOTTOM_4, BASE)
+COMBO(vscode_cmd_pallet2, &vscode_cmd_pallet, L_BOTTOM_1 L_BOTTOM_2, COMBOS)
+// File Explorer
+COMBO(vscode_explorer1, &kp LC(LS(E)), R_TOP_4 R_TOP_5, BASE)
+COMBO(vscode_explorer2, &kp LC(LS(E)), L_TOP_0 L_TOP_1, COMBOS)
+// Search-Right
+COMBO(vscode_search_left1, &kp LC(LS(F)), R_HOME_4 R_HOME_5, BASE)
+COMBO(vscode_search_left2, &kp LC(LS(F)), L_HOME_0 L_HOME_1, COMBOS)
+// Search-Left
+COMBO(vscode_search_right , &kp LC(LS(F)), L_HOME_4 L_SPACE, BASE)
+// COMBO(vscode_search_right , &kp LC(LS(F)), 16 38, COMBOS)
+// Find
+COMBO(vscode_find1, &kp LC(F), L_HOME_4 L_BOTTOM_5, BASE)
+// Source Control
+COMBO(vscode_source_control1, &vscode_source_control, R_BOTTOM_4 R_BOTTOM_5, BASE)
+COMBO(vscode_source_control2, &vscode_source_control, L_BOTTOM_0 L_BOTTOM_1, COMBOS)
+// New Window
+COMBO(vscode_new_window1, &kp LC(LS(N)), L_HOME_3 L_HOME_4, BASE)
+COMBO(vscode_new_window2, &kp LC(LS(N)), L_HOME_3 L_HOME_4, COMBOS)
+
+
+// BUTTON INDEXES
+//                  ^                              ^
+// | 0  | 1  | 2  | 3  | 4  | 5  | ___ | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
+// Print Screen
+COMBO_ALL(print_screen1 , &kp PRINTSCREEN, R_TOP_5 R_HOME_5)
+COMBO_ALL(print_screen2 , &kp PRINTSCREEN, L_TOP_0 L_HOME_0)
+// Back Tick `
+COMBO_ALL(back_tick , &kp GRAVE, L_TOP_0 L_TOP_1 L_TOP_2)
+// Tilde ~
+COMBO_ALL(tilde , &kp TILDE, L_HOME_0 L_HOME_1 L_HOME_2)
+// Dash or Minus -
+COMBO_ALL(minus , &kp MINUS, R_TOP_0 R_TOP_1)
+// Underscore _
+COMBO_ALL(underscore , &kp UNDERSCORE, R_TOP_1 R_TOP_2)
+// Plus +
+COMBO_ALL(plus , &kp PLUS, R_HOME_0 R_HOME_1)
+// Equal =
+COMBO_ALL(equal , &kp EQUAL, R_HOME_1 R_HOME_2)
+
+COMBO_ALL(wkshell , &vscode_cmd_pallet2, L_TOP_4 L_TOP_5)
+COMBO_ALL(hmmp , &vscode_cmd_pallet3, L_HOME_4 L_HOME_5)
+COMBO_ALL(hmmp2 , &vscode_cmd_pallet4, L_BOTTOM_4 L_BOTTOM_5)
+
+
+// BUTTON INDEXES
+//                  ^                              ^
+// | 0  | 1  | 2  | 3  | 4  | 5  | ___ | 6  | 7  | 8  | 9  | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 | ___ | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 | ___ | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 | ___ | 39 | 40 | 41 |
+COMBO(shc_undo, &kp LC(Z), L_BOTTOM_0 L_BOTTOM_1, BASE)
+COMBO(shc_cut, &kp LC(X), L_BOTTOM_1 L_BOTTOM_2, BASE)
+COMBO(shc_copy, &kp LC(C), L_BOTTOM_2 L_BOTTOM_3, BASE)
+COMBO(shc_paste, &kp LC(V), L_BOTTOM_3 L_BOTTOM_4, BASE)
+
+// BLUETOOTH CLEAR
+// COMBO(bt_clr, &bt BT_CLR, 24 29, 4)
+
+// RESET
+COMBO_ALL(reset_r_e_s, &sys_reset, R_HOME_5 L_BOTTOM_3 L_SPACE)
+// RESET to Default layer
+COMBO_ALL(reset_BASE, &to BASE, L_LOWER L_RAISE L_SPACE)
+
+// Here are some of the most frequently used Visual Studio Code keyboard shortcuts, listed in descending order of usage:
+// Ctrl+Shift+P or F1: Show Command Palette
+// Ctrl+P: Quick Open, Go to File
+// Ctrl+Shift+N: New Window/Instance
+// Ctrl+Shift+W: Close Window/Instance
+// Ctrl+,: Open User Settings
+// Ctrl+K Ctrl+S: Open Keyboard Shortcuts
+// Ctrl+X: Cut Line (Empty Selection)
+// Ctrl+C: Copy Line (Empty Selection)
+// Ctrl+V: Paste
+// Ctrl+Z: Undo
+// Ctrl+Shift+Z: Redo
+// Alt+Z: Toggle Word Wrap
+// Ctrl+/: Toggle Line Comment
+// Ctrl+K Ctrl+C: Add Line Comment
+// Ctrl+K Ctrl+U: Remove Line Comment
+// Shift+Alt+A: Toggle Block Comment
+// Ctrl+D: Add Selection to Next Find Match
+// Ctrl+U: Undo Last Cursor Operation
+// Alt+←: Go Back
+// Alt+→: Go Forward
+
