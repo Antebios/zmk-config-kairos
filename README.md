@@ -7,9 +7,26 @@ files and recreate the original build baseline without this machine's `/tmp`.
 For editing keys, navigating the configuration, running builds/tests and working
 with Git, see [Using This Repository](docs/repository-guide.md).
 
+For every Kairos44 layer, combo, tap/hold action and macro, see the single
+[Kairos44 Printable Reference](docs/kairos44-reference.md).
+
 Shared firmware for the existing 42-key Kairos and a 44-key Kairos with dedicated
 left Enter and right Space. Both use a left central and BLE right peripheral,
 with USB/Bluetooth host output on the left. Board target: `nice_nano_v2`.
+
+### Kairos44 SuperMini Controller
+
+The pictured SuperMini nRF52840 uses the same visible connector GPIO mapping as
+the pinned nice!nano board definition. Keep `nice_nano_v2` for both Kairos44
+targets; this selects nRF52840 firmware, not a different processor. The existing
+`pro_micro` matrix mappings and raw display/RGB GPIOs need no remapping for this
+pinout. For example, D6 maps to P1.00, D7 to P0.11, and D18 to P1.15; markings
+such as `100`, `011`, and `115` on the controller are raw port/pin labels.
+
+Photos do not verify the bootloader, battery charging or external-power control
+circuit. Confirm a compatible UF2 bootloader and the board's power specifications
+before flashing or connecting a battery. Do not assume every SuperMini revision
+is electrically identical to nice!nano v2.
 
 **The new 44-key firmware is keyboard-only.** Its right Cirque trackpad is not
 enabled. Exact `TM040040-2024-302` ribbon wiring, bus electrical requirements and
@@ -90,10 +107,12 @@ by the native regression.
 
 The legacy reset-to-BASE chord is the three original left thumbs together:
 **Lower + Raise + original left Space** (positions 36/37/38). It works on all
-seven layers, including locked layers. NAVIGATION, FUNCTIONS, SYMBOL_KP, UTILS
-and COMBOS also have an explicit BASE return on the left bottom outer key
-(physical Shift). Use the chord for MIRROR. Escape/Delete combos exclude COMBOS
-so that layer's existing same-chord VS Code actions can run.
+seven layers, including locked layers. NAVIGATION, UTILS and COMBOS also have
+an explicit BASE return on the left bottom outer key (physical Shift).
+FUNCTIONS returns to BASE on physical right N; its Shift position sends keypad
+Enter. Use the chord for locked SYMBOL_KP or MIRROR. SYMBOL_KP's Shift position
+sends tilde. Escape/Delete combos exclude COMBOS so that layer's existing
+same-chord VS Code actions can run.
 
 On the 44-key model, the extra upper inner thumb is S4 on each half: Enter at
 42 on the left and Space at 43 on the right. Both are transparent on other
@@ -175,7 +194,85 @@ remain necessary.
 5. Recover a locked layer with Lower + Raise + original left Space, not the new
    right Space. Bootloader/reset remains a separate hardware procedure.
 
-No flashing or bond clearing was performed during implementation.
+### Kairos44 Pairing Recovery: Verified 2026-10-02
+
+The left typed normally, but the right produced no characters. Right-side USB
+diagnostics showed key presses/releases reaching the split handler, followed by
+`Error notifying -128` (`ENOTCONN`). In this pinned ZMK/Zephyr version, that
+notification path had no connected, subscribed recipient. Left-side diagnostics
+showed Bluetooth scanning but no usable split connection during the test.
+LED activity alone did not establish that the halves were connected.
+
+No functional matrix, pin or split-role code change was needed. Resetting both
+halves' saved settings and restoring their firmware made the tested right-side
+Y, H, N, Enter and Space keys type through the left's USB connection. A separate
+host-profile clear and fresh laptop pairing then restored wireless typing from
+both halves. This is consistent with stale/incomplete pairing state, not proof
+of a particular corrupted bond. Diagnostic firmware only added logging; normal
+CI firmware had not yet been flashed and retested at this verification point.
+
+**Normal firmware update: preserve bonds.** Double-tapping reset to enter the
+UF2 bootloader does not itself clear settings. Flash only the matching
+`kairos44-left-keyboard-only` and `kairos44-right-keyboard-only` images. Do not
+flash settings-reset firmware, invoke `BT_CLR_ALL`, or forget the laptop's
+keyboard entry as part of a routine update.
+
+#### Recover The Half-To-Half Split Bond
+
+Use this deliberate recovery only if the right cannot type through the left,
+including with the left connected by USB. It erases saved settings and bonds
+on both controllers, including the left's laptop/phone bonds.
+
+1. Obtain both matching keyboard UF2s before starting. Build ZMK's stock
+   `settings_reset` shield for `nice_nano_v2` from the pinned checkout. From an
+   initialized ZMK checkout containing `app/` and its fetched west dependencies:
+
+   ```sh
+   west zephyr-export
+   west build -p always -s app -d build-settings-reset -b nice_nano_v2 -- -DSHIELD=settings_reset
+   ```
+
+   The reset UF2 is `build-settings-reset/zephyr/zmk.uf2`. This repository's CI
+   does not publish it. The stock shield enables
+   `CONFIG_ZMK_SETTINGS_RESET_ON_START` and disables BLE so it cannot re-pair
+   while reset firmware is installed.
+2. Double-tap reset on the left, identify its bootloader drive, and copy the
+   reset UF2 to it. Let it reboot and run the reset firmware. Leave the left
+   running that firmware while clearing the right.
+3. Repeat on the right: enter its bootloader, flash the reset UF2, and let it
+   boot. Both halves must actually run reset firmware, not merely enter their
+   bootloaders. Keep only one bootloader drive mounted at a time to avoid
+   confusing identically named `NICENANO` volumes.
+4. Enter the right's bootloader again and flash its matching keyboard UF2.
+   Then enter the left's bootloader and flash its matching keyboard UF2.
+   Keep both halves powered and nearby. They establish the split bond
+   automatically; do not pair the right separately in laptop Bluetooth settings.
+5. Keep the left connected by USB and test right-side keys in a text editor.
+   If they type, the split link works. Then forget the laptop's old keyboard
+   entry and pair with the left on the desired host profile. Unplug the left's
+   USB, keep it powered on battery, and verify typing from both halves.
+
+#### Recover Only Laptop/Phone Pairing
+
+If the right already types through the left over USB, do not reset both halves
+just to repair a host connection. In this pinned ZMK version, `BT_CLR_ALL`
+clears only the left's host profiles, preserves its split bond, and selects
+profile index 0 (user-facing Profile 1).
+
+1. On the left, hold Lower, tap physical Q, then release both to lock UTILS.
+2. Tap physical E to invoke `BT_CLR_ALL`. This clears all host profiles, so
+   every previously paired laptop/phone will need pairing again.
+3. Tap the far-left bottom-row Shift-position key to return to BASE.
+4. Forget/remove the old Kairos/Kairos44 entry on the laptop, then scan and
+   pair with the left again. Power-cycling alone does not clear saved bonds.
+5. On Linux, verify `bluetoothctl info <keyboard-MAC>` reports `Paired: yes`,
+   `Bonded: yes` and `Connected: yes`; ensure the device is trusted. The UI's
+   "Paired" grouping was misleading in this incident: BlueZ initially reported
+   no bond. An initial authentication failure was followed by successful
+   bonding, so verify the final state rather than trusting the first message.
+6. With the left's USB unplugged and both halves powered, test typing from
+   both halves. USB normally takes priority while the left is plugged in,
+   so USB typing alone does not verify wireless host output.
 
 ## Hardware Acceptance Still Required
 
