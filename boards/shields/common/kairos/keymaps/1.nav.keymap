@@ -1,0 +1,28 @@
+navigation_layer {
+  label = "NAVIGATION";
+  display-name = "Navigate";
+  bindings = <
+// -----------------------------------------------------------------------------------------
+#ifdef KAIROS_TRACKPAD_NAV
+  &kp DELETE  &to UTILS &sl FUNCTIONS &kp UP_ARROW &sl SYMBOL_KP &kp PAGE_UP &nav_scroll SCRL_UP MOVE_Y(64) &nav_scroll SCRL_LEFT MOVE_X(-64) &mmv MOVE_UP &nav_scroll SCRL_RIGHT MOVE_X(64) &kp HOME &kp END
+#else
+// |  DELETE |       |          |      ↑   |           | PAGE_UP   | █ | MSWHL UP     | MSSCR LEFT   |      ↑       | MSSCR RIGHT   |      |      |
+  &kp DELETE  &to UTILS &sl FUNCTIONS &kp UP_ARROW &sl SYMBOL_KP &kp PAGE_UP &msc SCRL_UP &msc SCRL_LEFT &mmv MOVE_UP &msc SCRL_RIGHT &none &none
+#endif
+// |  INSERT |       |   ←      |      ↓   |  →        | PAGE_DOWN | █ | MSWHL DN     |       ←      |      ↓       |     →         |      |      |
+#ifdef KAIROS_TRACKPAD_NAV
+  &kp INSERT  &sl UTILS &kp LEFT &kp DOWN &kp RIGHT &kp PAGE_DOWN &nav_scroll SCRL_DOWN MOVE_Y(-64) &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
+#else
+  &kp INSERT  &sl UTILS &kp LEFT &kp DOWN &kp RIGHT &kp PAGE_DOWN &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
+#endif
+#ifdef KAIROS_TRACKPAD_NAV
+  &to BASE &pointer_scroll POINTER_SCROLL LALT &mkp RCLK &mkp MCLK &mkp LCLK &pointer_cycle_fast POINTER_HOLD_PRECISION 0 &mo COMBOS &none &none &none &none &none
+#else
+// | BASE    |       |          |          |    HOME   |    END    | █ |              | LEFT BTN     |  MIDDLE BTN  |  RIGHT BTN    |      |      |
+  &to BASE &sk LALT &kp LALT &mo MIRROR &kp HOME &kp END &mo COMBOS &mkp LCLK &mkp MCLK &mkp RCLK &none &none
+#endif
+//                              |      ▼   |      ▼    |     ▼     | █ |      ▼       |       ▼      |   ▼   |
+                                    &trans    &trans      &trans            &trans         &trans     &trans
+  KAIROS_EXTRA_KEYS
+  >;
+};

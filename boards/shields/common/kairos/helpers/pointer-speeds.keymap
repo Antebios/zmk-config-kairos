@@ -1,0 +1,162 @@
+#define POINTER_ROW &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+#ifndef POINTER_LAYER
+#define POINTER_LAYER(NAME, TITLE, NEXT) \
+    NAME { \
+        label = TITLE; \
+        display-name = TITLE; \
+        bindings = <POINTER_ROW POINTER_ROW \
+                    &trans &trans &trans &trans &trans NEXT \
+                    &trans &trans &trans &trans &trans &trans \
+                    &trans &trans &trans &trans &trans &trans KAIROS_EXTRA_KEYS>; \
+    };
+#endif
+
+#define POINTER_CONTEXT(NAME, SOURCE, TARGET) \
+    NAME##_fast { if-layers = <POINTER_FAST SOURCE>; then-layer = <TARGET>; }; \
+    NAME##_precision { if-layers = <POINTER_PRECISION SOURCE>; then-layer = <TARGET>; }; \
+    NAME##_hold_precision { if-layers = <POINTER_HOLD_PRECISION SOURCE>; then-layer = <TARGET>; }; \
+    NAME##_scroll { if-layers = <POINTER_SCROLL SOURCE>; then-layer = <TARGET>; }; \
+    NAME##_extra_precision { if-layers = <POINTER_EXTRA_PRECISION SOURCE>; then-layer = <TARGET>; }; \
+    NAME##_extra_scroll { if-layers = <POINTER_EXTRA_SCROLL SOURCE>; then-layer = <TARGET>; };
+
+#define POINTER_CYCLE(NAME, ACTION) \
+    NAME: NAME { \
+        compatible = "zmk,behavior-hold-tap"; \
+        #binding-cells = <2>; \
+        tapping-term-ms = <200>; \
+        flavor = "tap-preferred"; \
+        bindings = <&mo>, <&ACTION>; \
+    };
+
+/ {
+    behaviors {
+        POINTER_CYCLE(pointer_cycle_fast, pointer_next_fast)
+        POINTER_CYCLE(pointer_cycle_precision, pointer_next_precision)
+        POINTER_CYCLE(pointer_cycle_normal, pointer_next_normal)
+
+        pointer_thumb: pointer_thumb {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+
+        pointer_scroll: pointer_scroll {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&sk>;
+        };
+
+        nav_scroll_step: nav_scroll_step {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_HWHEEL>;
+            y-input-code = <INPUT_REL_WHEEL>;
+            trigger-period-ms = <16>;
+            time-to-max-speed-ms = <0>;
+            acceleration-exponent = <0>;
+        };
+
+        pointer_layer_on: pointer_layer_on {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            toggle-mode = "on";
+        };
+
+        pointer_layer_off: pointer_layer_off {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            toggle-mode = "off";
+        };
+    };
+
+    macros {
+        pointer_next_fast: pointer_next_fast {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_tap &pointer_layer_off POINTER_PRECISION
+                        &pointer_layer_on POINTER_FAST>;
+        };
+
+        pointer_next_precision: pointer_next_precision {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_tap &pointer_layer_off POINTER_FAST
+                        &pointer_layer_on POINTER_PRECISION>;
+        };
+
+        pointer_next_normal: pointer_next_normal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_tap &pointer_layer_off POINTER_FAST
+                        &pointer_layer_off POINTER_PRECISION>;
+        };
+
+        nav_scroll: nav_scroll {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            wait-ms = <0>;
+            tap-ms = <20>;
+            bindings = <&macro_param_2to1 &macro_tap
+                        &nav_scroll_step MACRO_PLACEHOLDER
+                        &macro_param_1to1 &macro_press
+                        &msc MACRO_PLACEHOLDER
+                        &macro_pause_for_release
+                        &macro_param_1to1 &macro_release
+                        &msc MACRO_PLACEHOLDER>;
+        };
+    };
+
+    nav_scroll_step_listener {
+        compatible = "zmk,input-listener";
+        device = <&nav_scroll_step>;
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        POINTER_CONTEXT(base, BASE, POINTER_BASE)
+        nav_fast { if-layers = <POINTER_FAST NAVIGATION>; then-layer = <POINTER_NAV_FAST>; };
+        nav_precision { if-layers = <POINTER_PRECISION NAVIGATION>; then-layer = <POINTER_NAV_PRECISION>; };
+        nav_hold_precision { if-layers = <POINTER_HOLD_PRECISION NAVIGATION>; then-layer = <POINTER_NAV_PRECISION>; };
+        nav_scroll { if-layers = <POINTER_SCROLL NAVIGATION>; then-layer = <POINTER_NAV_SCROLL>; };
+        nav_extra_precision { if-layers = <POINTER_EXTRA_PRECISION NAVIGATION>; then-layer = <POINTER_NAV_PRECISION>; };
+        nav_extra_scroll { if-layers = <POINTER_EXTRA_SCROLL NAVIGATION>; then-layer = <POINTER_NAV_SCROLL>; };
+        POINTER_CONTEXT(functions, FUNCTIONS, POINTER_FUNCTIONS)
+        POINTER_CONTEXT(symbols, SYMBOL_KP, POINTER_SYMBOLS)
+        POINTER_CONTEXT(utils, UTILS, POINTER_UTILS)
+        POINTER_CONTEXT(mirror, MIRROR, POINTER_MIRROR)
+        POINTER_CONTEXT(combos, COMBOS, POINTER_COMBOS)
+    };
+
+    keymap {
+        POINTER_LAYER(pointer_fast_layer, "Fast", &trans)
+        POINTER_LAYER(pointer_precision_layer, "Precision", &trans)
+        POINTER_LAYER(pointer_hold_precision_layer, "Hold Precise", &trans)
+        POINTER_LAYER(pointer_scroll_layer, "Scroll", &trans)
+        POINTER_LAYER(pointer_extra_precision_layer, "Thumb Precise", &trans)
+        POINTER_LAYER(pointer_extra_scroll_layer, "Thumb Scroll", &trans)
+        POINTER_LAYER(pointer_base_layer, "Base", &trans)
+        POINTER_LAYER(pointer_nav_scroll_layer, "Navigate Scroll", &trans)
+        POINTER_LAYER(pointer_nav_fast_layer, "Navigate Fast", &pointer_cycle_precision POINTER_HOLD_PRECISION 0)
+        POINTER_LAYER(pointer_nav_precision_layer, "Navigate Precise", &pointer_cycle_normal POINTER_HOLD_PRECISION 0)
+        POINTER_LAYER(pointer_functions_layer, "Functions", &trans)
+        POINTER_LAYER(pointer_symbols_layer, "Symbols", &trans)
+        POINTER_LAYER(pointer_utils_layer, "Utilities", &trans)
+        POINTER_LAYER(pointer_mirror_layer, "Mirror", &trans)
+        POINTER_LAYER(pointer_combos_layer, "Combos", &trans)
+    };
+};
+
+#undef POINTER_CONTEXT
+#undef POINTER_CYCLE
+#undef POINTER_LAYER
+#undef POINTER_ROW

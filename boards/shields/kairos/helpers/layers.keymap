@@ -1,8 +1,0 @@
-// LAYERS NAMES
-#define BASE 0
-#define NAVIGATION 1
-#define FUNCTIONS 2
-#define SYMBOL_KP 3
-#define UTILS 4
-#define MIRROR 5
-#define COMBOS 6

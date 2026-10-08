@@ -11,15 +11,9 @@
 #define ASTD() &td_lshift_caps
 #define SEMITD() &td_semicolon
 
-// Lower Tap Dance
-// #define tdLower() &slmo_nav 1 1
-#define tdLower() &td_lower_key
-// Raise Tap Dance
-// #define tdRaise() &slmo_func 2 2
-#define tdRaise() &td_raise_key
-// Down Tap Dance
-#define tdDown() &td_down_key
-// Up Tap Dance
-#define tdUp() &td_up_key
+#define tdLower() &mo NAVIGATION
+#define tdRaise() &mo FUNCTIONS
+#define tdDown() &mo SYMBOL_KP
+#define tdUp() &mo UTILS
 // Left Space
 #define tdLeftSpace() &td_left_space_key SYMBOL_KP SPACE

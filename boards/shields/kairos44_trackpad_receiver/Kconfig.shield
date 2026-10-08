@@ -1,0 +1,3 @@
+config SHIELD_KAIROS44_TRACKPAD_RECEIVER
+    def_bool $(shields_list_contains,kairos44_trackpad_receiver)
+    depends on SHIELD_KAIROS44_LEFT

@@ -1,0 +1,38 @@
+#ifdef KAIROS_TRACKPAD_NAV
+#define COMBO_BASE BASE POINTER_BASE
+#define COMBO_NAV NAVIGATION POINTER_NAV_SCROLL POINTER_NAV_FAST POINTER_NAV_PRECISION
+#define COMBO_FUNCTIONS FUNCTIONS POINTER_FUNCTIONS
+#define COMBO_SYMBOLS SYMBOL_KP POINTER_SYMBOLS
+#define COMBO_UTILS UTILS POINTER_UTILS
+#define COMBO_MIRROR MIRROR POINTER_MIRROR
+#define COMBO_COMBOS COMBOS POINTER_COMBOS
+#define COMBO_ALL_LAYERS 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+#else
+#define COMBO_BASE BASE
+#define COMBO_NAV NAVIGATION
+#define COMBO_FUNCTIONS FUNCTIONS
+#define COMBO_SYMBOLS SYMBOL_KP
+#define COMBO_UTILS UTILS
+#define COMBO_MIRROR MIRROR
+#define COMBO_COMBOS COMBOS
+#define COMBO_ALL_LAYERS 0 1 2 3 4 5 6
+#endif
+
+// COMBO FOR LAYERS
+#define COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
+        combo_##NAME { \
+                timeout-ms = <50>; \
+                bindings = <BINDINGS>; \
+                key-positions = <KEYPOS>; \
+                layers = <LAYERS>; \
+        };
+
+// COMBO FOR ALL LAYERS
+#define COMBO_ALL(NAME, BINDINGS, KEYPOS) \
+        combo_##NAME { \
+                timeout-ms = <50>; \
+                bindings = <BINDINGS>; \
+                key-positions = <KEYPOS>; \
+                layers = <COMBO_ALL_LAYERS>; \
+        };
+
