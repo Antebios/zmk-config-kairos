@@ -1,0 +1,61 @@
+#define KAIROS_TRACKPAD_NAV
+
+#include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
+
+/ {
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        trackpad_split: input@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+            device = <&trackpad>;
+        };
+    };
+};
+
+&pinctrl {
+    kairos44_trackpad_default: kairos44_trackpad_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 31)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 29)>;
+            bias-pull-up;
+        };
+    };
+
+    kairos44_trackpad_sleep: kairos44_trackpad_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 31)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 29)>;
+            low-power-enable;
+        };
+    };
+};
+
+&i2c0 {
+    status = "disabled";
+};
+
+&spi1 {
+    status = "disabled";
+};
+
+&i2c1 {
+    compatible = "nordic,nrf-twim";
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_STANDARD>;
+    pinctrl-0 = <&kairos44_trackpad_default>;
+    pinctrl-1 = <&kairos44_trackpad_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    trackpad: trackpad@2a {
+        compatible = "cirque,pinnacle";
+        reg = <0x2a>;
+        dr-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+        rotate-90;
+        y-invert;
+    };
+};

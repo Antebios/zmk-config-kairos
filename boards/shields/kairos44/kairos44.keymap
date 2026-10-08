@@ -1,0 +1,10 @@
+#define L_EXTRA_ENTER 42
+#define R_EXTRA_SPACE 43
+#ifdef KAIROS_TRACKPAD_NAV
+#define KAIROS_EXTRA_BASE &pointer_thumb POINTER_EXTRA_SCROLL ENTER &pointer_thumb POINTER_EXTRA_PRECISION SPACE
+#else
+#define KAIROS_EXTRA_BASE &kp ENTER &kp SPACE
+#endif
+#define KAIROS_EXTRA_KEYS &trans &trans
+
+#include "../common/kairos/keymap.keymap"

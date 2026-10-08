@@ -1,0 +1,5 @@
+/Mouse movement set to 0\/0$/d
+s/.*hid_listener_keycode/kp/p
+s/.*mo_keymap_binding/mo/p
+s/.*zmk_hid_mouse_scroll_set: Mouse scroll set to/scroll/p
+s/.*zmk_hid_mouse_movement_set: Mouse movement set to/move/p

@@ -11,5 +11,6 @@ base_layer {
   ASTD()  &kp Z &kp X  &kp C &kp V  &kp B           &kp N &kp M  &td_comma &td_period &td_fslash &td_bslash
 //               | Lower  | Raise  |  SPC    |  █  |  ENT |  ↓   |  ↑   |
              tdLower()  tdRaise() tdLeftSpace()     &kp ENTER tdDown()  tdUp()
+  KAIROS_EXTRA_BASE
   >;
 };

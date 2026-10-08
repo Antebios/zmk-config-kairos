@@ -1,0 +1,41 @@
+#define KAIROS_TRACKPAD_NAV
+
+#include "../common/kairos/helpers/layers.keymap"
+#include <input/processors/scaler.dtsi>
+#include <input/processors/code_mapper.dtsi>
+#include <input/processors/transform.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+
+/ {
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        trackpad_split: input@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+        };
+    };
+
+    trackpad_listener: trackpad_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackpad_split>;
+
+        scroll {
+            layers = <POINTER_SCROLL POINTER_EXTRA_SCROLL>;
+            input-processors = <&zip_xy_scaler 1 16
+                                &zip_xy_transform INPUT_TRANSFORM_Y_INVERT
+                                &zip_xy_to_scroll_mapper>;
+        };
+
+        precision {
+            layers = <POINTER_PRECISION POINTER_HOLD_PRECISION POINTER_EXTRA_PRECISION>;
+            input-processors = <&zip_xy_scaler 1 4>;
+        };
+
+        fast {
+            layers = <POINTER_FAST>;
+            input-processors = <&zip_xy_scaler 2 1>;
+        };
+    };
+};

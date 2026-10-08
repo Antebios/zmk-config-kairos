@@ -32,5 +32,6 @@ functions_layer {
 //                                  |   BSPC   |    ▼    |    ▼    | █ |          ▼    |   ▼    |   ▼    |
                                       &kp BSPC      &trans  &trans        &trans &trans   &trans
 
+                      KAIROS_EXTRA_KEYS
     >;
 };
