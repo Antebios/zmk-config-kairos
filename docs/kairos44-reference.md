@@ -568,9 +568,9 @@ instructions are in the README's pairing-recovery section.
 - RGB firmware declares 22 LEDs per half; UTILS provides its controls. Shared
   configuration enables idle auto-off. LED activity is not proof of a split bond.
 - Nice!view support is configured only on the left. The right has no display.
-  Left display hardware and operation were not verified during recovery.
-  The left configuration enables layer, battery and output status widgets;
-  numerical battery percentage is disabled.
+  The user confirmed the default screen works on 2026-10-08. The new trackpad
+  receiver image uses the four-row screen below; flashing and physical screen
+  acceptance are pending. Keyboard-only images retain their default widgets.
 - Cirque trackpad support is opt-in. The user confirmed pointing, both-half
   typing, USB-only cold boot and touch after RGB idle on the working power/
   pull-up firmware on 2026-10-07. New orientation settings and the 2026-10-08
@@ -581,6 +581,73 @@ instructions are in the README's pairing-recovery section.
 - Recovery verified the installed right Y, H, N, Enter and Space switches and
   typing from both halves over Bluetooth. It did not certify every switch,
   every combo, application shortcut, power control, display or sleep/wake path.
+
+## Nice!view Status Screen
+
+Only the Kairos44 LEFT trackpad receiver uses this portrait status layout. Text
+is composed in a 68 x 160 logical frame and rotated 90 degrees clockwise into
+the nice!view's native 160 x 68 buffer.
+
+| Portrait lines | Example | Meaning |
+| --- | ------- | ------- |
+| Battery | `BATTERY:`, `L:85%`, `R:90%`, `USB PWR` | Both percentages and left USB power |
+| Host/link | `HOST:`, `B1+`, `LINK: R+` | Selected host profile and RIGHT connection |
+| Modifiers | `MOD:`, `G-A-S-C` | Held GUI, Alt, Shift, Ctrl slots |
+| Locks | `LOCK:`, `C-N-S` | Host Caps, Num, Scroll LED slots |
+| Layer/pointer | `LAYER:`, `NAV`, `PAD:`, `PREC` | Operational layer and effective pointer mode |
+
+Each line is limited to eight 8-pixel glyphs; the 16 lines use a 9-pixel
+vertical stride, fitting within the 160-pixel portrait height.
+
+The host entry shows `USB` for selected USB output. BLE profiles are numbered
+from 1: `B1+` means connected, `B1-` means bonded but disconnected, and `B1?`
+means an open profile. `R+`/`R-` describes the RIGHT split connection, not
+trackpad sensor health. RIGHT USB/charging status is not available and is not
+inferred. `BATTERY:`, `HOST:`, `LINK:`, `MOD:`, `LOCK:`, `LAYER:` and `PAD:`
+headings end in colons and label the following value. Battery values use `L:`
+and `R:` prefixes; `R:OFF` means disconnected and `R:--` means connected but
+awaiting a report. Four modifier slots follow the LEFT home row left-to-right:
+GUI, Alt, Shift, Ctrl. Uppercase means active, `G---` is GUI and `---C` is Ctrl;
+`-` means inactive. Three lock slots
+are Caps, Num, Scroll in that order (`C-N-S` means all three on). `???` marks
+unknown host lock state until an LED report arrives. Held modifiers follow
+keycode-state transitions; locks follow host HID LED reports.
+
+`--` means no usable battery reading has been observed. A disconnected RIGHT
+shows `R OFF`; its cached reading is cleared on detected disconnect and a new
+report is needed after reconnect. Link polling is once per second; battery
+sampling uses the existing 60-second interval. An unchanged reported percentage
+does not expire during idle. The two 3200 mAh batteries require no capacity
+setting: percentages are voltage-derived estimates, particularly imperfect
+while USB-powered. The left USB tag does not claim charging or remaining hours.
+
+SCROLL takes priority over PREC, then FAST, then NORMAL, matching the input
+listener. Both extra thumbs held therefore show SCROLL; releasing Enter while
+Space remains held shows PREC. Keymaps and trackpad configuration are unchanged.
+
+### Implemented Now
+
+The LEFT Kairos44 trackpad receiver presents both battery readings, host/profile,
+RIGHT split-link status, held modifiers, host lock LEDs, operational layer and
+effective pointer mode in the portrait layout. It uses no external display
+widget or host application.
+Physical readability and lock reports still need hardware acceptance.
+
+### Future Candidates
+
+These are ideas only; none is included in the current firmware:
+
+- Optional low-battery emphasis, after observing voltage-derived readings on
+  both 3200 mAh batteries and choosing a threshold.
+- An idle-only nice!view animation inspired by
+  [Furglitch's fork](https://github.com/Furglitch/zmk-niceview), with the status
+  screen restored on activity.
+- A WPM number or graph from
+  [zmk-nice-oled](https://github.com/mctechnology17/zmk-nice-oled), if typing
+  speed proves useful without obscuring operational status.
+- Host time, volume, layout, weather or media. The referenced nice-oled
+  implementation requires a RAW-HID companion on the host, so this would be a
+  separate integration with platform and maintenance costs.
 
 ## Source Of Truth
 
@@ -593,6 +660,7 @@ If firmware changes, update this document before relying on a printed copy.
 - [Macro definitions](../boards/shields/common/kairos/helpers/macros.keymap)
 - [Pointer speed layers and transitions](../boards/shields/common/kairos/helpers/pointer-speeds.keymap)
 - [Trackpad speed scaling](../boards/shields/kairos44_trackpad_receiver/kairos44_trackpad_receiver.overlay)
+- [Dual-half status screen](../src/display/kairos44_status.c)
 - [Tap/hold and tap-dance definitions](../boards/shields/common/kairos/helpers/tap_dance.keymap)
 - [Active helper bindings](../boards/shields/common/kairos/helpers/macros_include.keymap)
 - [Recovery and flashing instructions](../README.md#kairos44-pairing-recovery-verified-2026-10-02)

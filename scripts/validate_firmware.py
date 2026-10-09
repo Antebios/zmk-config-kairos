@@ -302,6 +302,23 @@ def validate(build_dir, key_count, side, baseline_dir, dtlib, trackpad=False):
         assert "nice_view" not in tree.label2node
         assert not enabled(tree.label2node["spi0"])
         assert not enabled(tree.label2node["i2c0"])
+    dual_status = trackpad and key_count == 44 and side == "left"
+    assert ("CONFIG_KAIROS44_STATUS_DISPLAY=y" in config) == dual_status
+    fetching = "CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING=y"
+    assert (fetching in config) == dual_status
+    assert ("CONFIG_ZMK_HID_INDICATORS=y" in config) == dual_status
+    if dual_status:
+        assert "CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y" in config
+        assert "CONFIG_ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN=y" not in config
+        assert "CONFIG_NICE_VIEW_WIDGET_STATUS=y" not in config
+        assert "CONFIG_LV_FONT_UNSCII_8=y" in config
+        assert "CONFIG_LV_USE_LABEL=y" in config
+        assert "CONFIG_LV_USE_CANVAS=y" in config
+        display = node_reference(chosen.props["zephyr,display"], dtlib)
+        assert display.props["width"].to_num() == 160
+        assert display.props["height"].to_num() == 68
+    if trackpad and side == "right":
+        assert "CONFIG_BT_BAS=y" in config
     strip = node_reference(chosen.props["zmk,underglow"], dtlib)
     assert strip.props["chain-length"].to_num() == (21 if key_count ==
                                                     42 else 22)

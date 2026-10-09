@@ -1,5 +1,78 @@
 # Kairos44 Right Trackpad
 
+## Dual-Half Nice!view Portrait Layout Updated (2026-10-09)
+
+The user confirmed that the default LEFT nice!view screen works. The approved
+custom receiver screen now shows both battery percentages, selected USB/BLE
+output and 1-based BLE profile status, RIGHT split-link status, operational layer,
+held GUI/Alt/Shift/Ctrl in the LEFT home-row order, host Caps/Num/Scroll LED state, and effective pointer
+mode. See the [printable reference](kairos44-reference.md#niceview-status-screen)
+for the portrait line sequence, future ideas and caveats. The renderer composes
+a 68 x 160 logical frame (16 lines, at most eight 8-pixel glyphs per line) and
+rotates it 90 degrees clockwise into the nice!view's native 160 x 68 framebuffer.
+Canvas pixel mapping uses a bounded 68 x 160 to 160 x 68 transform; the panel
+driver orientation and wiring are unchanged.
+
+Only the LEFT trackpad receiver opts into the repository display module and
+central battery fetching. RIGHT already has `CONFIG_BT_BAS=y`, including the
+currently flashed diagnostic build; no RIGHT reflash is required. The four
+keyboard-only variants retain their screen behavior. Neither keymap, sensor,
+orientation, rail policy, display wiring nor bonds/settings were changed.
+
+Battery events are captured before display initialization. RIGHT source0 must
+have an actual report before a percentage is shown; the central getter's
+zero-initialized persistent cache is not treated as a fresh sample. Detected
+disconnects invalidate it. Read-only transport polling does not replace ZMK's
+connection callback. Rendering is on the display queue, with 10 ms event
+coalescing and once-per-second link polling; unchanged frames are not redrawn.
+Both installed batteries are 3200 mAh, but no capacity calibration or runtime
+estimate is added. A USB power tag is not a charging indication.
+
+Modifier indicators aggregate pinned-ZMK keycode state transitions, including
+explicit/implicit modifiers and direct modifier key usages. Lock indicators
+consume host HID LED reports; `???` is shown until a real report arrives
+rather than treating the zero-initialized cache as known-off. The receiver opts
+into `CONFIG_ZMK_HID_INDICATORS=y` for this. Portrait modifier slots follow the
+LEFT home-row order GUI, Alt, Shift, Ctrl; lock slots are Caps, Num, Scroll.
+The headings `BATTERY:`, `HOST:`, `LINK:`, `MOD:`, `LOCK:`, `LAYER:` and `PAD:`
+are colon-terminated. Battery values use `L:` and `R:` prefixes (`R:OFF` when
+disconnected, `R:--` while connected and awaiting a report). Portrait output abbreviates
+the operational layers (`FUNCTIONS` as `FUNC`, `SYMBOL_KP` as `SYM-KP`).
+
+Portable tests cover unknown versus valid0%, invalid/source filtering,
+disconnect/reconnect and unchanged-reading retention, USB/BLE profiles, all
+seven operational layers, portrait labels and line bounds, four corners of the
+90-degree coordinate map, pointer priority, overlapping modifier counts and
+lock LED mapping. The LEFT build, compiled validator, six-build regression gate
+and existing native key/pointer fixture passed. One strong screen provider was
+verified in the ELF. Final LEFT rebuild after the mapping helper passed; flash
+use is 362404 B and RAM use is 92420 B.
+Physical readability and live remote readings remain unverified.
+
+Implemented now: modifier and Caps/Num/Scroll indicators in the portrait layout.
+Future-only candidates are low-battery emphasis after observing real battery
+behavior, an optional idle animation inspired by Furglitch's fork, a WPM metric
+if useful, and host-provided time/volume/layout/weather/media via separately
+evaluated RAW-HID companion software. These are not current requirements or
+dependencies.
+
+Updated portrait LEFT image (labels/order):
+[kairos44-left-trackpad-receiver-portrait-status.uf2](../artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-portrait-status.uf2).
+SHA256: `addde36f3c4428d956fb8ea15fc6cf9979c1a8bcf20eff907107c6dbb43201b8`.
+`SHA256SUMS-portrait-status` is beside the UF2. Flashed to LEFT after verifying
+bootloader serial `6A5D691ABAC1CDB3`, `/dev/sda` mount and checksum immediately
+before copy/sync. The bootloader volume disappeared and the same serial returned
+as ZMK `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`. The previous portrait image
+(`9ead8328...`), landscape image and extra-thumb-holds image remain available
+for rollback. No RIGHT flash, bond reset or EP_OFF testing.
+
+After flashing, check both batteries (allow 60 seconds), all layers and pointer
+modes, thumb tap/hold actions, typing/pointing/scroll and host output changes.
+Powering off RIGHT should show OFF and invalidate its percentage; unplugging
+RIGHT USB alone is not a disconnect test if its battery keeps it running.
+Physical readability of the revised punctuation/prefixes and modifier order,
+both battery values and lock LED reports remain pending user acceptance.
+
 ## Extra Thumb Holds (2026-10-08)
 
 Only the approved tap/hold actions are added in Kairos44 trackpad builds:

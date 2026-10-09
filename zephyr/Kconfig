@@ -1,0 +1,7 @@
+config KAIROS44_STATUS_DISPLAY
+    bool "Kairos44 dual-half status display"
+    depends on ZMK_DISPLAY && ZMK_SPLIT_ROLE_CENTRAL
+    depends on SHIELD_NICE_VIEW && SHIELD_KAIROS44_TRACKPAD_RECEIVER
+    select LV_USE_LABEL
+    select LV_USE_CANVAS
+    select LV_FONT_UNSCII_8

@@ -4,7 +4,99 @@ Checkpoint: 2026-10-08. This document is the starting point for continuing on
 another session or computer. It requires neither Copilot memory nor the original
 chat transcript. Update it when the checkpoint, gates or repository state change.
 
-## Latest Checkpoint: Extra Thumb Holds Flashed (2026-10-08)
+## Latest Checkpoint: Portrait Labels Flashed (2026-10-09)
+
+The user confirmed the portrait LEFT nice!view is readable and requested
+colon-labelled sections and explicit battery/link prefixes. The revised labels
+are `BATTERY:`, `HOST:`, `LINK:`, `MOD:`, `LOCK:`, `LAYER:` and `PAD:`;
+batteries read `L:79%`/`R:79%`, and link state reads `LINK: R+`. Modifier slots
+read GUI/Alt/Shift/Ctrl (`G-A-S-C`), matching the LEFT home-row order. The
+revised UF2 was flashed to LEFT after verifying serial `6A5D691ABAC1CDB3`,
+mount and checksum before copy/sync. The bootloader volume disappeared and udev
+reported the same serial as `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`. The 68x160
+logical portrait frame and 90-degree rotation are unchanged. Keymap and RIGHT
+sensor firmware remain unchanged.
+
+The Zephyr module now owns an optional custom screen compiled only for the
+LEFT Kairos44 trackpad receiver with nice_view. It selects CUSTOM, disables
+BUILT_IN and NICE_VIEW_WIDGET_STATUS, and enables central battery fetching.
+The output row also carries held GUI/Alt/Shift/Ctrl slots and host Caps/Num/
+Scroll LED slots. Modifiers aggregate keycode press/release masks with
+reference counts; lock state stays `???` until a host HID LED report arrives.
+Left config enables `CONFIG_ZMK_HID_INDICATORS=y`. Fixed row fits within156 px
+at the largest single-byte BLE profile number.
+RIGHT's existing compiled diagnostic configuration has BT_BAS=y; RIGHT reflash
+does not need a feature change. At user request, the exact orientation-user
+diagnostic target was rebuilt before flashing RIGHT. The validator passed, and
+the new UF2 was byte-identical to the existing artifact, SHA256
+`3e60eabe49afcba3780c42560b1478b5924c8ba17505756b4b838b46bef51deb`. Verified
+RIGHT bootloader serial `820E0FAE437DFBDF`, mount `/dev/sda` at
+`/run/media/richard/NICENANO`, and UF2 checksum immediately before copy/sync.
+The NICENANO volume disappeared and the same serial returned as ZMK at
+`/dev/serial/by-id/usb-ZMK_Project_615e_820E0FAE437DFBDF-if00`. RIGHT behavior
+and diagnostic firmware are unchanged. Keyboard-only variants retain default
+behavior. Display geometry, wiring, idle policy and display queue stack were
+not changed.
+
+Raw battery events are retained before screen initialization. Source0 is RIGHT;
+unknown readings show -- and valid reported0% is distinct. The cached central
+getter is not used as evidence of freshness. Detected disconnects invalidate
+RIGHT, and reconnect waits for a report. Read-only1 Hz transport polling avoids
+replacing ZMK's status callback. Events coalesce for10 ms on the display queue,
+and only changed formatted frames are rendered. No LVGL calls in BLE callbacks.
+Both batteries are3200 mAh; percentages remain voltage estimates, not hours
+remaining. USB power is not a charging indication; RIGHT USB and sensor health
+are not available. Existing battery sampling interval is60 seconds.
+
+Passed: focused LEFT build/validator, portable status/bounds tests, all six
+variant builds/validators, existing native key/pointer snapshot, Python syntax
+check, and one strong screen symbol in ELF. The portrait revision adds canvas
+support only to the LEFT receiver; all six compiled validators passed afterward.
+The final LEFT rebuild and portrait coordinate/line tests passed. Flash362404 B,
+RAM92420 B. The user supplied a landscape-screen photo before the portrait
+flash; physical portrait readability, live battery/link and lock reports remain
+pending.
+
+Current portrait scope includes modifier and Caps/Num/Scroll indicators.
+Future ideas only: low-battery emphasis after hardware observation;
+Furglitch-inspired idle-only animation; optional WPM display; host time/volume/
+layout/weather/media via separately assessed RAW-HID host software. None is
+included or required now.
+
+Previous LEFT landscape artifact (available for rollback):
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-dual-status.uf2`.
+SHA256 `c943253f1559d4031ee54e306c70049eba96879cba1c82791b9f6d1ab6b2cb40`.
+Matching SHA256SUMS-dual-status is beside it. Final package matches
+`/tmp/kairos44-diagnostic-workspace/build-kairos44-left-trackpad-verified/zephyr/zmk.uf2`.
+This was installed before the portrait reflash.
+
+Previously installed portrait LEFT artifact (before label/order update):
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-portrait-status.uf2`.
+SHA256 `9ead8328f207f052568b8049d886d03de8d3d8b6121d9c09131a35f2258d4f68`.
+This version was replaced by the updated labels/order below.
+
+Currently installed portrait artifact (colon labels, L:/R: values,
+GUI/Alt/Shift/Ctrl order):
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-portrait-status.uf2`.
+SHA256 `addde36f3c4428d956fb8ea15fc6cf9979c1a8bcf20eff907107c6dbb43201b8`.
+`SHA256SUMS-portrait-status` matches the installed artifact. It matches the
+final focused LEFT build. Verified bootloader serial `6A5D691ABAC1CDB3`, mount
+and checksum immediately before copy/sync; the volume disappeared and the same
+serial returned as ZMK. The older extra-thumb-holds firmware remains available
+for rollback, SHA256
+`c32af7fc4d73850b5857203e37de7e5254d28e038f62ea1ba2fa851e10c09512`.
+RIGHT remains orientation-user debug image; it was rebuilt and reflashed
+byte-identically earlier. No bonds/settings reset/commit/push.
+
+Next: user confirms the new BATTERY:/LINK: labels, L:/R: battery prefixes and
+G-A-S-C modifier order are easy to read. Also recheck both percentages, split
+OFF/reconnect, all layers/modes, lock
+indicators, extra thumb taps/holds, USB/BLE profile changes, typing and
+pointing/scroll. Allow60 seconds for battery sampling. RIGHT USB removal may
+leave it connected on battery. Avoid EP_OFF and preserve prior images for
+rollback. Printable reference and trackpad notes are updated.
+
+## Previous Checkpoint: Extra Thumb Holds Flashed (2026-10-08)
 
 Implemented only the approved Kairos44 trackpad extra-thumb tap/hold actions:
 LEFT extra Enter42 tapENTER/holdpad-scroll; RIGHT extra Space43 tapSPACE/hold
