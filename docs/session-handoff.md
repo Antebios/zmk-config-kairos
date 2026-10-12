@@ -32,8 +32,8 @@ SHA256 `21982517cfd2b863d9a5204e5c0357fee9a02ba0911371b14e0ce6005c3eef37`
 and checksum. The volume disappeared after sync, and udev reported the same
 serial as `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`; USB identified Kairos44.
 User confirmed BLE cursor movement is now "buttery smooth", so the
-display-priority fallback is not needed. Physical view-switching acceptance has
-not been separately reported. If BLE jitter remains, the fallback is
+display-priority fallback is not needed. User also confirmed context screen
+switching works well. If BLE jitter remains, the fallback is
 `CONFIG_ZMK_DISPLAY_DEDICATED_THREAD_PRIORITY=12` in the receiver shield conf.
 RIGHT, keymap, sensor and bonds remain unchanged.
 
