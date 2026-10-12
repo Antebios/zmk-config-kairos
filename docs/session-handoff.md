@@ -31,6 +31,113 @@ keyboard and mouse HID devices. Physical typing/gesture acceptance is pending.
 RIGHT, bonds and settings were not reset or reflashed. Previous BLE-trial
 artifact remains available for rollback; no commit or push was made.
 
+## Previous Checkpoint: Windows BLE Latency Trial Flashed (2026-10-12)
+
+User clarified transport comparison: Linux over USB is smooth; Windows over
+Bluetooth is laggy; Windows over USB is smooth. This isolates the remaining
+issue to BLE/Windows rather than sensor or pointer speed mode. Pinned ZMK's
+LEFT BLE preferences were min interval6 (7.5 ms), max12 (15 ms), peripheral
+latency30, timeout400, with Zephyr auto-update enabled after connection. Added
+LEFT receiver shield config overriding min/max to6 and latency to0. The
+generated LEFT `.config` confirms these values and the complete six-target
+build/validator/native gate passes. Zero latency/fixed short interval may
+increase BLE radio duty and reduce battery life; Windows may reject or
+renegotiate. This is a transport hypothesis trial, not a proven fix.
+
+Trial LEFT UF2:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-ble-low-latency.uf2`.
+SHA256 `ea82cbc544d962b7fcf4a381d6da9bae95ad4d185088bf46fd18872c9dec8b29`;
+`SHA256SUMS-ble-low-latency` records it and it matches the verified build.
+Before copy/sync, verified `/dev/sda` as `NICENANO`, serial
+`6A5D691ABAC1CDB3`, mount `/run/media/richard/NICENANO` and checksum. The
+volume disappeared after sync; udev reported the same serial as
+`ZMK_Project_Kairos44_6A5D691ABAC1CDB3` and USB identified Kairos44. No CDC tty
+node appeared. Test Windows BLE cursor response and battery impact. RIGHT,
+keymap, sensor settings, RGB and bonds remain unchanged.
+
+## Previous Checkpoint: Low-Overhead Observer Flashed (2026-10-12)
+
+The user reports cursor movement is smoother after the redraw-only 10 Hz
+display cap, but still jittery in Normal, Fast and Precision. All three modes
+share the incoming split-input path, so a selected-mode scaler is unlikely to
+be the cause. The passive trackpad observer was still taking the status mutex,
+formatting strings and touching the display work queue for every motion delta
+in Zephyr's input dispatch thread. It now rate-limits that observer bookkeeping
+to 10 Hz before those operations; button changes remain immediate. It does not
+filter or mutate pointer events and leaves the existing ZMK listener unchanged.
+Portable timing tests and the complete six-target build/validator/native gate
+pass. This is a low-overhead observer mitigation; physical smoothness must be
+checked before considering an actual motion filter.
+
+Flashed LEFT UF2:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-context-screen-low-overhead.uf2`.
+SHA256 `fac03432e1c5e5dcf96d2a6a6810c73eeb50d27cc208cf9a428331090712a4c6`;
+`SHA256SUMS-context-screen-low-overhead` records it and it matches the passing
+build. Before copy/sync, verified `/dev/sda` as `NICENANO`, serial
+`6A5D691ABAC1CDB3`, mount `/run/media/richard/NICENANO` and checksum. The volume
+disappeared after sync; udev reported the same serial as
+`ZMK_Project_Kairos44_6A5D691ABAC1CDB3` and USB identified Kairos44. No CDC tty
+node appeared. Physical smoothness remains to be retested.
+
+## Previous Checkpoint: Motion Refresh Update Flashed (2026-10-09)
+
+User reported that trackpad cursor movement became jittery after the context
+screen was flashed. The input observer was scheduling a display refresh for
+every nonzero motion event, while rendering repaints and rotates the full
+68x160 logical frame. Updated the observer to retain every event's latest view
+state but schedule motion-driven redraws at most once per 100 ms. Button changes
+still refresh immediately. This does not filter pointer input or change ZMK's
+existing listener. The portable timing test and full six-target
+build/validator/native behavior gate pass. This is a cause-based mitigation;
+physical smoothness still needs verification.
+
+Flashed LEFT UF2:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-context-screen-smooth-motion.uf2`.
+SHA256 `ff1949db312a933fb4328615ca3e3cf1b789b2113db242af70372f60648adf16`;
+`SHA256SUMS-context-screen-smooth-motion` records it and it matches the passing
+build. Before copy/sync, verified `/dev/sda` as `NICENANO`, serial
+`6A5D691ABAC1CDB3`, mount `/run/media/richard/NICENANO` and checksum. The volume
+disappeared after sync; udev reported the same serial as
+`ZMK_Project_Kairos44_6A5D691ABAC1CDB3` and USB identified Kairos44. No CDC tty
+node appeared. Physical smoothness still needs verification.
+
+Previously installed initial context-screen UF2, SHA256
+`0417bd13929ba30cea6d36ad43f7e9c59c1ae23cfb378e758bf3b0e63d3c3dcc`, flashed
+before the motion-refresh update. RIGHT, keymap, sensor, RGB and bonds/settings
+remain unchanged.
+
+## Previous Checkpoint: Context-Aware Screen Flashed (2026-10-09)
+
+Implemented the approved Overview/Action/Trackpad behavior on the LEFT
+Kairos44 receiver. Overview is the default. Modifier, host lock LED and
+operational-layer changes select Action; held modifiers keep it active, then
+the view remains for three seconds after release/latest event. Nonzero
+trackpad motion, scroll and button transitions select Trackpad for two seconds.
+Priority is Action, then a still-live Trackpad view, then Overview. Both battery
+readings and USB power remain on every view. Action reports modifiers, locks,
+layer and a short last-action label. Trackpad reports pointer mode, action,
+direction and button state (`NONE` while idle). The scoped callback observes the
+existing `trackpad_split` proxy without replacing ZMK's input listener; display
+updates and deadline refreshes use the display work queue.
+
+Portable display tests pass, including view priority/deadlines, held modifier,
+battery visibility and portrait bounds. The complete
+`sh scripts/verify-local.sh /tmp/kairos44-diagnostic-workspace --trackpad` gate
+passed: six firmware builds/validators plus native behavior tests. Final LEFT
+receiver uses 364244 B flash and 92476 B RAM. Context-screen UF2:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-context-screen.uf2`.
+SHA256 `0417bd13929ba30cea6d36ad43f7e9c59c1ae23cfb378e758bf3b0e63d3c3dcc`;
+`SHA256SUMS-context-screen` records it and it is byte-identical to the passing
+build. The user confirmed LEFT bootloader readiness. Immediately before
+copy/sync, verified `/dev/sda` label `NICENANO`, serial `6A5D691ABAC1CDB3`,
+mount `/run/media/richard/NICENANO` and image checksum. After sync, the volume
+disappeared; udev reported `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`, USB
+identified Kairos44 and HID interfaces appeared. No `/dev/serial/by-id` or
+`/dev/ttyACM*` node appeared on this host, but the matching ZMK USB identity
+returned. Physical view transitions, readability and direction labels remain
+unaccepted. No RIGHT, keymap, sensor, RGB, bond/settings changes, commits or
+pushes.
+
 ## Previous Checkpoint: Portrait Labels Flashed (2026-10-09)
 
 The user confirmed the portrait LEFT nice!view is readable and requested

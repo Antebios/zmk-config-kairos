@@ -600,6 +600,26 @@ the nice!view's native 160 x 68 buffer.
 Each line is limited to eight 8-pixel glyphs; the 16 lines use a 9-pixel
 vertical stride, fitting within the 160-pixel portrait height.
 
+The screen now has three context-selected views. **Overview** is the default
+and retains the status layout above. **Action** takes priority after modifier,
+host lock LED or operational-layer changes; it shows modifier/lock/layer state
+and a short `LAST:` label. It remains while a modifier is held and for three
+seconds after the latest action. **Trackpad** appears on nonzero pad movement,
+scroll or button changes and remains for two seconds after the latest event.
+It shows effective pointer mode, `MOVE`/`SCROLL`/`CLICK`, direction (`R`, `L`,
+`U`, `D`) and button state (`NONE` when idle). After Action expires, a still-live
+Trackpad view appears; otherwise the display returns to Overview. Both battery
+readings and USB power status remain visible in every view.
+
+The receiver observes only the `trackpad_split` input proxy and leaves ZMK's
+existing input listener intact. The passive observer records motion at most
+10 Hz; button changes refresh immediately. Most high-rate motion callbacks
+return before mutex, string-formatting and work-queue handling. Activity
+deadlines schedule redraws on the display work queue, and the one-second link
+poll remains independent. Direction labels follow the event axis and configured
+scroll transform. The low-overhead observer update is installed. Physical
+cursor smoothness remains under test.
+
 The host entry shows `USB` for selected USB output. BLE profiles are numbered
 from 1: `B1+` means connected, `B1-` means bonded but disconnected, and `B1?`
 means an open profile. `R+`/`R-` describes the RIGHT split connection, not
@@ -613,6 +633,12 @@ GUI, Alt, Shift, Ctrl. Uppercase means active, `G---` is GUI and `---C` is Ctrl;
 are Caps, Num, Scroll in that order (`C-N-S` means all three on). `???` marks
 unknown host lock state until an LED report arrives. Held modifiers follow
 keycode-state transitions; locks follow host HID LED reports.
+
+The Windows BLE low-latency trial uses a fixed 7.5 ms connection interval and
+zero peripheral latency on the LEFT receiver. This may increase radio activity
+and reduce battery life; a host may negotiate different parameters. The trial
+image was flashed to LEFT on 2026-10-12; Windows BLE response and battery impact
+remain to be tested.
 
 `--` means no usable battery reading has been observed. A disconnected RIGHT
 shows `R OFF`; its cached reading is cleared on detected disconnect and a new
@@ -630,9 +656,11 @@ Space remains held shows PREC. Keymaps and trackpad configuration are unchanged.
 
 The LEFT Kairos44 trackpad receiver presents both battery readings, host/profile,
 RIGHT split-link status, held modifiers, host lock LEDs, operational layer and
-effective pointer mode in the portrait layout. It uses no external display
-widget or host application.
-Physical readability and lock reports still need hardware acceptance.
+effective pointer mode. Overview, Action and Trackpad views are selected from
+activity with two- and three-second display windows. It uses no external display
+widget or host application. The low-overhead observer update is installed on
+LEFT. Physical readability, input direction, cursor smoothness and lock reports
+need hardware acceptance.
 
 ### Future Candidates
 

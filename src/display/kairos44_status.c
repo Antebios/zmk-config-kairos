@@ -1,4 +1,7 @@
 #include <lvgl.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <zephyr/input/input.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/__assert.h>
 #include <zmk/battery.h>
@@ -25,6 +28,7 @@
 #include "kairos44_status.h"
 
 static struct kairos44_status status;
+static struct kairos44_status_activity activity;
 static struct kairos44_status_frame last_frame;
 static lv_obj_t *portrait_canvas;
 static lv_obj_t *display_canvas;
@@ -32,7 +36,12 @@ static lv_color_t portrait_buffer[KAIROS44_PORTRAIT_WIDTH * KAIROS44_PORTRAIT_HE
 static lv_color_t display_buffer[160 * 68];
 static bool frame_valid;
 static bool screen_ready;
+static uint8_t trackpad_buttons;
+static uint32_t next_trackpad_refresh_ms;
 K_MUTEX_DEFINE(status_lock);
+
+static void refresh_status(struct k_work *work);
+K_WORK_DELAYABLE_DEFINE(status_work, refresh_status);
 
 static bool right_connected(void) {
     STRUCT_SECTION_FOREACH(zmk_split_transport_central, transport) {
@@ -93,10 +102,23 @@ static void refresh_status(struct k_work *work) {
     status.profile_connected = zmk_ble_active_profile_is_connected();
     status.profile_bonded = !zmk_ble_active_profile_is_open();
     status.layers = zmk_keymap_layer_state();
+    int64_t now_ms = k_uptime_get();
     struct kairos44_status_frame frame;
-    kairos44_status_format(&status, &frame);
+    kairos44_status_format_view(&status, &activity, now_ms, &frame);
+    int64_t next_update_ms = 0;
+    if (!activity.modifier_held) {
+        if (now_ms < activity.action_until_ms) {
+            next_update_ms = activity.action_until_ms;
+        } else if (now_ms < activity.trackpad_until_ms) {
+            next_update_ms = activity.trackpad_until_ms;
+        }
+    }
     bool ready = screen_ready;
     k_mutex_unlock(&status_lock);
+    if (ready && next_update_ms > now_ms) {
+        k_work_reschedule_for_queue(zmk_display_work_q(), &status_work,
+                                    K_MSEC(next_update_ms - now_ms));
+    }
     if (!ready || (frame_valid && memcmp(&frame, &last_frame, sizeof(frame)) == 0)) {
         return;
     }
@@ -105,12 +127,81 @@ static void refresh_status(struct k_work *work) {
     frame_valid = true;
 }
 
-K_WORK_DELAYABLE_DEFINE(status_work, refresh_status);
-
 static void poll_status(lv_timer_t *timer) {
     ARG_UNUSED(timer);
     refresh_status(NULL);
 }
+
+static const char *layer_action(uint8_t layer) {
+    static const char *const names[] = {"BASE", "NAV", "FUNC", "SYM", "UTILS", "MIRROR",
+                                        "COMBOS"};
+    return layer < ARRAY_SIZE(names) ? names[layer] : "LAYER";
+}
+
+static void trackpad_event(struct input_event *event) {
+    bool is_motion = event->type == INPUT_EV_REL && event->value != 0;
+    bool is_button = event->type == INPUT_EV_KEY && event->code >= INPUT_BTN_0 &&
+                     event->code <= INPUT_BTN_4;
+    if (!is_motion && !is_button) {
+        return;
+    }
+    uint32_t now_ms = k_uptime_get_32();
+    if (!kairos44_status_trackpad_refresh_due(now_ms, next_trackpad_refresh_ms, is_button)) {
+        return;
+    }
+    next_trackpad_refresh_ms = now_ms + KAIROS44_TRACKPAD_REFRESH_INTERVAL_MS;
+
+    char action[9] = "MOVE";
+    char direction[6] = "--";
+    char buttons[9];
+    k_mutex_lock(&status_lock, K_FOREVER);
+    if (is_button) {
+        uint8_t button = event->code - INPUT_BTN_0;
+        if (event->value) {
+            trackpad_buttons |= 1u << button;
+        } else {
+            trackpad_buttons &= ~(1u << button);
+        }
+        snprintf(action, sizeof(action), "CLICK");
+    } else {
+        bool scroll_layer = status.layers & ((1u << POINTER_SCROLL) |
+                                             (1u << POINTER_EXTRA_SCROLL));
+        if (event->code == INPUT_REL_X) {
+            snprintf(direction, sizeof(direction), "%s", event->value > 0 ? "R" : "L");
+            if (scroll_layer) {
+                snprintf(action, sizeof(action), "SCROLL");
+            }
+        } else if (event->code == INPUT_REL_Y) {
+            bool positive = event->value > 0;
+            if (scroll_layer) {
+                snprintf(action, sizeof(action), "SCROLL");
+            }
+            snprintf(direction, sizeof(direction), "%s", positive ? "D" : "U");
+        } else if (event->code == INPUT_REL_WHEEL) {
+            snprintf(direction, sizeof(direction), "%s", event->value > 0 ? "U" : "D");
+            snprintf(action, sizeof(action), "SCROLL");
+        } else if (event->code == INPUT_REL_HWHEEL) {
+            snprintf(direction, sizeof(direction), "%s", event->value > 0 ? "R" : "L");
+            snprintf(action, sizeof(action), "SCROLL");
+        }
+    }
+    if (trackpad_buttons) {
+        snprintf(buttons, sizeof(buttons), "%c%c%c%c%c",
+                 trackpad_buttons & BIT(0) ? '1' : '-', trackpad_buttons & BIT(1) ? '2' : '-',
+                 trackpad_buttons & BIT(2) ? '3' : '-', trackpad_buttons & BIT(3) ? '4' : '-',
+                 trackpad_buttons & BIT(4) ? '5' : '-');
+    } else {
+        snprintf(buttons, sizeof(buttons), "NONE");
+    }
+    kairos44_status_note_trackpad(&activity, k_uptime_get(), action, direction, buttons);
+    bool ready = screen_ready;
+    k_mutex_unlock(&status_lock);
+    if (ready) {
+        k_work_reschedule_for_queue(zmk_display_work_q(), &status_work, K_MSEC(10));
+    }
+}
+
+INPUT_CALLBACK_DEFINE(DEVICE_DT_GET(DT_NODELABEL(trackpad_split)), trackpad_event);
 
 static int status_event(const zmk_event_t *event) {
     const struct zmk_battery_state_changed *local = as_zmk_battery_state_changed(event);
@@ -119,6 +210,7 @@ static int status_event(const zmk_event_t *event) {
     const struct zmk_keycode_state_changed *key = as_zmk_keycode_state_changed(event);
     const struct zmk_hid_indicators_changed *indicators =
         as_zmk_hid_indicators_changed(event);
+    const struct zmk_layer_state_changed *layer = as_zmk_layer_state_changed(event);
     bool connected = remote ? right_connected() : false;
     k_mutex_lock(&status_lock, K_FOREVER);
     if (local) {
@@ -129,6 +221,7 @@ static int status_event(const zmk_event_t *event) {
         kairos44_status_battery(&status, true, remote->source, remote->state_of_charge);
     }
     if (key) {
+        uint8_t previous_modifiers = status.modifiers;
         uint8_t modifiers = key->implicit_modifiers | key->explicit_modifiers;
         if (key->usage_page == HID_USAGE_KEY &&
             key->keycode >= HID_USAGE_KEY_KEYBOARD_LEFTCONTROL &&
@@ -136,9 +229,34 @@ static int status_event(const zmk_event_t *event) {
             modifiers |= 1u << (key->keycode - HID_USAGE_KEY_KEYBOARD_LEFTCONTROL);
         }
         kairos44_status_modifiers(&status, modifiers, key->state);
+        if (status.modifiers != previous_modifiers) {
+            kairos44_status_note_action(&activity, k_uptime_get(),
+                                        status.modifiers & ~previous_modifiers ? "MOD+" : "MOD-",
+                                        status.modifiers != 0);
+        }
     }
     if (indicators) {
+        uint8_t previous_locks = status.locks;
+        bool previous_valid = status.locks_valid;
         kairos44_status_locks(&status, indicators->indicators);
+        if (!previous_valid || previous_locks != status.locks) {
+            const char *action = "LOCK";
+            if ((previous_locks ^ status.locks) & 0x01) {
+                action = status.locks & 0x01 ? "NUM+" : "NUM-";
+            } else if ((previous_locks ^ status.locks) & 0x02) {
+                action = status.locks & 0x02 ? "CAPS+" : "CAPS-";
+            } else if ((previous_locks ^ status.locks) & 0x04) {
+                action = status.locks & 0x04 ? "SCROLL+" : "SCROLL-";
+            }
+            kairos44_status_note_action(&activity, k_uptime_get(), action,
+                                        status.modifiers != 0);
+        }
+    }
+    if (layer && layer->layer <= COMBOS) {
+        char action[9];
+        snprintf(action, sizeof(action), "%s%c", layer_action(layer->layer),
+                 layer->state ? '+' : '-');
+        kairos44_status_note_action(&activity, k_uptime_get(), action, status.modifiers != 0);
     }
     bool ready = screen_ready;
     k_mutex_unlock(&status_lock);

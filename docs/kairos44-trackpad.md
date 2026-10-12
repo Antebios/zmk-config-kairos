@@ -1,5 +1,61 @@
 # Kairos44 Right Trackpad
 
+## Windows BLE Pointer Latency Trial (Flashed 2026-10-12)
+
+The user confirmed that pointer motion is smooth with USB on both Linux and
+Windows, but laggy over Bluetooth on Windows. This isolates the remaining issue
+to the BLE host/transport path rather than the trackpad sensor or speed mode.
+The LEFT trackpad receiver requests a fixed 7.5 ms BLE connection
+interval (min/max 6 units) and peripheral latency 0, replacing ZMK's default
+7.5-15 ms interval and 30-event peripheral latency. Zephyr automatically sends
+the connection-parameter update after connection. The shorter interval and
+zero latency may increase BLE radio activity and reduce battery life. Windows
+may reject or renegotiate the requested parameters, so actual host behavior
+must be tested.
+
+Flashed trial image:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-ble-low-latency.uf2`
+SHA256 `ea82cbc544d962b7fcf4a381d6da9bae95ad4d185088bf46fd18872c9dec8b29`.
+The LEFT-only generated config confirms min/max6, latency0 and automatic update;
+the complete six-target firmware/validator/native gate passes. Before flashing,
+verified LEFT bootloader serial `6A5D691ABAC1CDB3`, mount and image checksum;
+after sync, udev confirmed the same serial returned as ZMK. No CDC tty node
+appeared. Test Windows BLE cursor response and battery impact. RIGHT firmware,
+keymap, sensor, RGB and bonds are unchanged.
+
+## Context-Aware Nice!view Screen (Low-Overhead Observer Flashed 2026-10-12)
+
+The LEFT receiver's portrait screen now selects among three views without a
+manual page key. Overview remains the idle view. Modifier, host lock LED and
+operational-layer changes select Action, showing modifier/lock/layer state and
+the last short action label. A held modifier keeps Action visible; otherwise it
+lasts three seconds after the latest action. Nonzero pad motion, scroll and
+button transitions select Trackpad for two seconds after the latest event.
+Action has priority; after it expires, a live Trackpad view resumes, otherwise
+Overview returns. Every view retains both battery readings and local USB power.
+
+Trackpad shows effective pointer mode, move/scroll/click, direction and the
+current button state. `NONE` means no button is held. The passive observer is
+scoped to the LEFT `trackpad_split` proxy and does not replace the ZMK input
+listener. Display rendering and deadline refreshes run on the display work
+queue. The installed redraw-only update limits non-button screen refreshes to
+one every 100 ms. A follow-up candidate also limits the passive observer's
+motion bookkeeping to 10 Hz, returning before mutex, string-formatting and
+work-queue operations on most motion events; button transitions remain
+immediate. Neither update filters or changes events sent to ZMK's pointer
+listener. Axis signs follow the configured Y inversion and wheel mapping.
+
+The implementation passes the portable display tests and the complete
+six-target build/validator/native behavior gate. Flashed image:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-context-screen-low-overhead.uf2`
+SHA256 `fac03432e1c5e5dcf96d2a6a6810c73eeb50d27cc208cf9a428331090712a4c6`.
+Before copying, verified LEFT bootloader serial `6A5D691ABAC1CDB3`, the
+`NICENANO` mount and UF2 checksum. After sync, the volume disappeared and udev
+reported the same serial as `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`; USB
+identified Kairos44. No CDC tty node appeared. Physical cursor smoothness,
+view behavior and direction labels still need acceptance. No RIGHT firmware,
+keymap, sensor configuration, RGB or bond/settings changes.
+
 ## Dual-Half Nice!view Portrait Layout Updated (2026-10-09)
 
 The user confirmed that the default LEFT nice!view screen works. The approved

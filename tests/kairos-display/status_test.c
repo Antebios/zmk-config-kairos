@@ -117,6 +117,48 @@ int main(void) {
     }
     assert(strcmp(kairos44_status_pointer((1u << POINTER_EXTRA_SCROLL) |
                                          (1u << POINTER_EXTRA_PRECISION)), "SCROLL") == 0);
+    assert(!kairos44_status_trackpad_refresh_due(99, 100, false));
+    assert(kairos44_status_trackpad_refresh_due(100, 100, false));
+    assert(kairos44_status_trackpad_refresh_due(99, 100, true));
+    assert(!kairos44_status_trackpad_refresh_due(UINT32_MAX - 5, 5, false));
+    assert(kairos44_status_trackpad_refresh_due(5, UINT32_MAX - 5, false));
+    struct kairos44_status_activity activity = {0};
+    kairos44_status_note_trackpad(&activity, 1000, "SCROLL", "Y-", "NONE");
+    assert(kairos44_status_active_view(&activity, 1000) == KAIROS44_VIEW_TRACKPAD);
+    kairos44_status_note_action(&activity, 1100, "CAPS", false);
+    assert(kairos44_status_active_view(&activity, 1100) == KAIROS44_VIEW_ACTION);
+    assert(kairos44_status_active_view(&activity, 3099) == KAIROS44_VIEW_ACTION);
+    assert(kairos44_status_active_view(&activity, 4100) == KAIROS44_VIEW_OVERVIEW);
+    kairos44_status_note_trackpad(&activity, 3900, "CLICK", "--", "1");
+    kairos44_status_note_action(&activity, 4500, "MOD+", true);
+    assert(kairos44_status_active_view(&activity, 8000) == KAIROS44_VIEW_ACTION);
+    kairos44_status_note_action(&activity, 7000, "MOD-", false);
+    kairos44_status_note_trackpad(&activity, 8500, "CLICK", "--", "1");
+    assert(kairos44_status_active_view(&activity, 9999) == KAIROS44_VIEW_ACTION);
+    assert(kairos44_status_active_view(&activity, 10000) == KAIROS44_VIEW_TRACKPAD);
+    state.left_valid = true;
+    state.left_level = 42;
+    state.right_connected = true;
+    state.right_valid = false;
+    kairos44_status_format_view(&state, &activity, 10000, &frame);
+    assert(strcmp(frame.portrait_lines[2], "L:42%") == 0);
+    assert(strcmp(frame.portrait_lines[3], "R:--") == 0);
+    assert(strcmp(frame.portrait_lines[5], "TRACKPAD") == 0);
+    assert(strcmp(frame.portrait_lines[9], "CLICK") == 0);
+    assert(strcmp(frame.portrait_lines[11], "--") == 0);
+    assert(strcmp(frame.portrait_lines[13], "1") == 0);
+    check_bounds(&frame);
+    kairos44_status_format_view(&state, &activity, 10500, &frame);
+    assert(strcmp(frame.portrait_lines[5], "HOST:") == 0);
+    assert(strcmp(frame.portrait_lines[1], "BATTERY:") == 0);
+    check_bounds(&frame);
+    kairos44_status_note_action(&activity, 11000, "NAV", false);
+    kairos44_status_format_view(&state, &activity, 11000, &frame);
+    assert(strcmp(frame.portrait_lines[5], "ACTION:") == 0);
+    assert(strcmp(frame.portrait_lines[13], "NAV") == 0);
+    assert(strcmp(frame.portrait_lines[2], "L:42%") == 0);
+    assert(strcmp(frame.portrait_lines[3], "R:--") == 0);
+    check_bounds(&frame);
     kairos44_status_connection(&state, false);
     assert(!state.right_valid);
     kairos44_status_battery(&state, true, 0, 75);
@@ -135,6 +177,6 @@ int main(void) {
     kairos44_status_connection(&state, false);
     kairos44_status_format(&state, &frame);
     check_bounds(&frame);
-    puts("PASS: display battery validity, connection, output, modifiers, locks, layers, pointer priority and text bounds");
+    puts("PASS: display battery validity, context view arbitration, per-view batteries, connection, output, modifiers, locks, layers, pointer priority and text bounds");
     return 0;
 }
