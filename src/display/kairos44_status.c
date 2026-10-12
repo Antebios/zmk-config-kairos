@@ -34,6 +34,7 @@ static lv_obj_t *portrait_canvas;
 static lv_obj_t *display_canvas;
 static lv_color_t portrait_buffer[KAIROS44_PORTRAIT_WIDTH * KAIROS44_PORTRAIT_HEIGHT];
 static lv_color_t display_buffer[160 * 68];
+BUILD_ASSERT(sizeof(lv_color_t) == 1, "portrait rotation assumes one byte per pixel");
 static bool frame_valid;
 static bool screen_ready;
 static uint8_t trackpad_buttons;
@@ -79,16 +80,9 @@ static void render_portrait(const struct kairos44_status_frame *frame) {
                             frame->portrait_lines[line]);
     }
 
-    lv_canvas_fill_bg(display_canvas, lv_color_white(), LV_OPA_COVER);
-    for (lv_coord_t y = 0; y < KAIROS44_PORTRAIT_HEIGHT; y++) {
-        for (lv_coord_t x = 0; x < KAIROS44_PORTRAIT_WIDTH; x++) {
-            uint8_t display_x;
-            uint8_t display_y;
-            kairos44_portrait_to_display(x, y, &display_x, &display_y);
-            lv_canvas_set_px_color(display_canvas, display_x, display_y,
-                                   lv_canvas_get_px(portrait_canvas, x, y));
-        }
-    }
+    // lv_canvas_set_px_color invalidates per pixel; copying the buffers directly is far cheaper.
+    kairos44_rotate_portrait((const uint8_t *)portrait_buffer, (uint8_t *)display_buffer);
+    lv_obj_invalidate(display_canvas);
 }
 
 static void refresh_status(struct k_work *work) {
@@ -152,7 +146,6 @@ static void trackpad_event(struct input_event *event) {
     next_trackpad_refresh_ms = now_ms + KAIROS44_TRACKPAD_REFRESH_INTERVAL_MS;
 
     char action[9] = "MOVE";
-    char direction[6] = "--";
     char buttons[9];
     k_mutex_lock(&status_lock, K_FOREVER);
     if (is_button) {
@@ -163,27 +156,9 @@ static void trackpad_event(struct input_event *event) {
             trackpad_buttons &= ~(1u << button);
         }
         snprintf(action, sizeof(action), "CLICK");
-    } else {
-        bool scroll_layer = status.layers & ((1u << POINTER_SCROLL) |
-                                             (1u << POINTER_EXTRA_SCROLL));
-        if (event->code == INPUT_REL_X) {
-            snprintf(direction, sizeof(direction), "%s", event->value > 0 ? "R" : "L");
-            if (scroll_layer) {
-                snprintf(action, sizeof(action), "SCROLL");
-            }
-        } else if (event->code == INPUT_REL_Y) {
-            bool positive = event->value > 0;
-            if (scroll_layer) {
-                snprintf(action, sizeof(action), "SCROLL");
-            }
-            snprintf(direction, sizeof(direction), "%s", positive ? "D" : "U");
-        } else if (event->code == INPUT_REL_WHEEL) {
-            snprintf(direction, sizeof(direction), "%s", event->value > 0 ? "U" : "D");
-            snprintf(action, sizeof(action), "SCROLL");
-        } else if (event->code == INPUT_REL_HWHEEL) {
-            snprintf(direction, sizeof(direction), "%s", event->value > 0 ? "R" : "L");
-            snprintf(action, sizeof(action), "SCROLL");
-        }
+    } else if (event->code == INPUT_REL_WHEEL || event->code == INPUT_REL_HWHEEL ||
+               (status.layers & ((1u << POINTER_SCROLL) | (1u << POINTER_EXTRA_SCROLL)))) {
+        snprintf(action, sizeof(action), "SCROLL");
     }
     if (trackpad_buttons) {
         snprintf(buttons, sizeof(buttons), "%c%c%c%c%c",
@@ -193,10 +168,11 @@ static void trackpad_event(struct input_event *event) {
     } else {
         snprintf(buttons, sizeof(buttons), "NONE");
     }
-    kairos44_status_note_trackpad(&activity, k_uptime_get(), action, direction, buttons);
+    bool changed =
+        kairos44_status_note_trackpad(&activity, k_uptime_get(), action, buttons);
     bool ready = screen_ready;
     k_mutex_unlock(&status_lock);
-    if (ready) {
+    if (ready && changed) {
         k_work_reschedule_for_queue(zmk_display_work_q(), &status_work, K_MSEC(10));
     }
 }

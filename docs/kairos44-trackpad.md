@@ -34,16 +34,19 @@ button transitions select Trackpad for two seconds after the latest event.
 Action has priority; after it expires, a live Trackpad view resumes, otherwise
 Overview returns. Every view retains both battery readings and local USB power.
 
-Trackpad shows effective pointer mode, move/scroll/click, direction and the
-current button state. `NONE` means no button is held. The passive observer is
-scoped to the LEFT `trackpad_split` proxy and does not replace the ZMK input
-listener. Display rendering and deadline refreshes run on the display work
-queue. The installed redraw-only update limits non-button screen refreshes to
-one every 100 ms. A follow-up candidate also limits the passive observer's
-motion bookkeeping to 10 Hz, returning before mutex, string-formatting and
-work-queue operations on most motion events; button transitions remain
-immediate. Neither update filters or changes events sent to ZMK's pointer
-listener. Axis signs follow the configured Y inversion and wheel mapping.
+Trackpad shows effective pointer mode, move/scroll/click and the current
+button state. `NONE` means no button is held. The live direction label was
+removed because it changed almost every motion sample and forced continuous
+full-screen redraws. Steady motion now only extends the Trackpad deadline;
+redraws happen when the view appears or action/button text changes. The
+portrait-to-panel rotation is a direct buffer copy with one invalidation,
+replacing 10,880 `lv_canvas_set_px_color` calls that each invalidated the
+canvas. Those CPU bursts ran on the priority-5 nice!view display thread. That
+thread preempts the Bluetooth host threads (6-8) and the input thread, and
+blocks the equal-priority BLE HID sender, which explains BLE-only jitter. The
+passive observer is scoped to the LEFT `trackpad_split` proxy and does not
+replace the ZMK input listener. Button transitions remain immediate. Pointer
+events sent to ZMK's listener are not filtered or changed.
 
 The implementation passes the portable display tests and the complete
 six-target build/validator/native behavior gate. Flashed image:

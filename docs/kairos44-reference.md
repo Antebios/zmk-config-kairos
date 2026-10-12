@@ -606,19 +606,20 @@ host lock LED or operational-layer changes; it shows modifier/lock/layer state
 and a short `LAST:` label. It remains while a modifier is held and for three
 seconds after the latest action. **Trackpad** appears on nonzero pad movement,
 scroll or button changes and remains for two seconds after the latest event.
-It shows effective pointer mode, `MOVE`/`SCROLL`/`CLICK`, direction (`R`, `L`,
-`U`, `D`) and button state (`NONE` when idle). After Action expires, a still-live
+It shows effective pointer mode, `MOVE`/`SCROLL`/`CLICK` and button state
+(`NONE` when idle). There is no live direction label: it changed on almost
+every motion sample and forced continuous redraws. After Action expires, a still-live
 Trackpad view appears; otherwise the display returns to Overview. Both battery
 readings and USB power status remain visible in every view.
 
 The receiver observes only the `trackpad_split` input proxy and leaves ZMK's
 existing input listener intact. The passive observer records motion at most
-10 Hz; button changes refresh immediately. Most high-rate motion callbacks
-return before mutex, string-formatting and work-queue handling. Activity
-deadlines schedule redraws on the display work queue, and the one-second link
-poll remains independent. Direction labels follow the event axis and configured
-scroll transform. The low-overhead observer update is installed. Physical
-cursor smoothness remains under test.
+10 Hz; button changes refresh immediately. Steady motion only extends the
+Trackpad deadline. A redraw is scheduled only when the view appears or its
+action/button text changes. Rendering rotates the portrait buffer by direct
+byte copy with one canvas invalidation, instead of 10,880 per-pixel LVGL calls
+that each invalidated the canvas. The one-second link poll remains independent.
+Physical BLE cursor smoothness remains under test.
 
 The host entry shows `USB` for selected USB output. BLE profiles are numbered
 from 1: `B1+` means connected, `B1-` means bonded but disconnected, and `B1?`

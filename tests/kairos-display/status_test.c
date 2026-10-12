@@ -26,6 +26,21 @@ int main(void) {
     assert(display_x == 0 && display_y == 0);
     kairos44_portrait_to_display(67, 159, &display_x, &display_y);
     assert(display_x == 0 && display_y == 67);
+    static uint8_t portrait[KAIROS44_PORTRAIT_WIDTH * KAIROS44_PORTRAIT_HEIGHT];
+    static uint8_t display[KAIROS44_PORTRAIT_WIDTH * KAIROS44_PORTRAIT_HEIGHT];
+    for (unsigned int index = 0; index < sizeof(portrait); index++) {
+        portrait[index] = (uint8_t)(index * 7 + 1);
+    }
+    kairos44_rotate_portrait(portrait, display);
+    for (uint8_t y = 0; y < KAIROS44_PORTRAIT_HEIGHT; y++) {
+        for (uint8_t x = 0; x < KAIROS44_PORTRAIT_WIDTH; x++) {
+            kairos44_portrait_to_display(x, y, &display_x, &display_y);
+            assert(display[display_y * KAIROS44_PORTRAIT_HEIGHT + display_x] ==
+                   portrait[y * KAIROS44_PORTRAIT_WIDTH + x]);
+        }
+    }
+    assert(display[159] == portrait[0]);
+    assert(display[67 * 160] == portrait[159 * 68 + 67]);
     kairos44_status_format(&state, &frame);
     assert(strcmp(frame.left, "L--") == 0);
     assert(strcmp(frame.right, "R OFF") == 0);
@@ -123,17 +138,24 @@ int main(void) {
     assert(!kairos44_status_trackpad_refresh_due(UINT32_MAX - 5, 5, false));
     assert(kairos44_status_trackpad_refresh_due(5, UINT32_MAX - 5, false));
     struct kairos44_status_activity activity = {0};
-    kairos44_status_note_trackpad(&activity, 1000, "SCROLL", "Y-", "NONE");
+    assert(kairos44_status_note_trackpad(&activity, 1000, "SCROLL", "NONE"));
+    assert(!kairos44_status_note_trackpad(&activity, 1100, "SCROLL", "NONE"));
+    assert(kairos44_status_note_trackpad(&activity, 1200, "MOVE", "NONE"));
+    assert(kairos44_status_note_trackpad(&activity, 1300, "MOVE", "1"));
+    assert(!kairos44_status_note_trackpad(&activity, 3299, "MOVE", "1"));
+    assert(kairos44_status_note_trackpad(&activity, 5299, "MOVE", "1"));
+    activity = (struct kairos44_status_activity){0};
+    kairos44_status_note_trackpad(&activity, 1000, "SCROLL", "NONE");
     assert(kairos44_status_active_view(&activity, 1000) == KAIROS44_VIEW_TRACKPAD);
     kairos44_status_note_action(&activity, 1100, "CAPS", false);
     assert(kairos44_status_active_view(&activity, 1100) == KAIROS44_VIEW_ACTION);
     assert(kairos44_status_active_view(&activity, 3099) == KAIROS44_VIEW_ACTION);
     assert(kairos44_status_active_view(&activity, 4100) == KAIROS44_VIEW_OVERVIEW);
-    kairos44_status_note_trackpad(&activity, 3900, "CLICK", "--", "1");
+    kairos44_status_note_trackpad(&activity, 3900, "CLICK", "1");
     kairos44_status_note_action(&activity, 4500, "MOD+", true);
     assert(kairos44_status_active_view(&activity, 8000) == KAIROS44_VIEW_ACTION);
     kairos44_status_note_action(&activity, 7000, "MOD-", false);
-    kairos44_status_note_trackpad(&activity, 8500, "CLICK", "--", "1");
+    kairos44_status_note_trackpad(&activity, 8500, "CLICK", "1");
     assert(kairos44_status_active_view(&activity, 9999) == KAIROS44_VIEW_ACTION);
     assert(kairos44_status_active_view(&activity, 10000) == KAIROS44_VIEW_TRACKPAD);
     state.left_valid = true;
@@ -145,9 +167,16 @@ int main(void) {
     assert(strcmp(frame.portrait_lines[3], "R:--") == 0);
     assert(strcmp(frame.portrait_lines[5], "TRACKPAD") == 0);
     assert(strcmp(frame.portrait_lines[9], "CLICK") == 0);
-    assert(strcmp(frame.portrait_lines[11], "--") == 0);
-    assert(strcmp(frame.portrait_lines[13], "1") == 0);
+    assert(strcmp(frame.portrait_lines[10], "BUTTONS:") == 0);
+    assert(strcmp(frame.portrait_lines[11], "1") == 0);
+    assert(strcmp(frame.portrait_lines[12], "HOST:") == 0);
+    assert(frame.portrait_lines[14][0] == '\0' && frame.portrait_lines[15][0] == '\0');
     check_bounds(&frame);
+    struct kairos44_status_frame repeated;
+    struct kairos44_status_activity moved = activity;
+    assert(!kairos44_status_note_trackpad(&moved, 10050, "CLICK", "1"));
+    kairos44_status_format_view(&state, &moved, 10050, &repeated);
+    assert(memcmp(&frame, &repeated, sizeof(frame)) == 0);
     kairos44_status_format_view(&state, &activity, 10500, &frame);
     assert(strcmp(frame.portrait_lines[5], "HOST:") == 0);
     assert(strcmp(frame.portrait_lines[1], "BATTERY:") == 0);

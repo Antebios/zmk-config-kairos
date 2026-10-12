@@ -58,7 +58,6 @@ struct kairos44_status_activity {
     bool modifier_held;
     char last_action[9];
     char trackpad_action[9];
-    char direction[6];
     char buttons[9];
 };
 
@@ -86,19 +85,36 @@ static inline void kairos44_status_note_action(struct kairos44_status_activity *
     activity->action_until_ms = now_ms + KAIROS44_ACTION_TIMEOUT_MS;
 }
 
-static inline void kairos44_status_note_trackpad(struct kairos44_status_activity *activity,
+// Returns true only when the Trackpad view content changes, so steady motion needs no redraw.
+static inline bool kairos44_status_note_trackpad(struct kairos44_status_activity *activity,
                                                  int64_t now_ms, const char *action,
-                                                 const char *direction, const char *buttons) {
+                                                 const char *buttons) {
+    bool changed = now_ms >= activity->trackpad_until_ms ||
+                   strncmp(activity->trackpad_action, action, sizeof(activity->trackpad_action)) ||
+                   strncmp(activity->buttons, buttons, sizeof(activity->buttons));
     snprintf(activity->trackpad_action, sizeof(activity->trackpad_action), "%s", action);
-    snprintf(activity->direction, sizeof(activity->direction), "%s", direction);
     snprintf(activity->buttons, sizeof(activity->buttons), "%s", buttons);
     activity->trackpad_until_ms = now_ms + KAIROS44_TRACKPAD_TIMEOUT_MS;
+    return changed;
 }
 
 static inline void kairos44_portrait_to_display(uint8_t x, uint8_t y, uint8_t *display_x,
                                                uint8_t *display_y) {
     *display_x = KAIROS44_PORTRAIT_HEIGHT - 1 - y;
     *display_y = x;
+}
+
+// Buffers hold one byte per pixel, row-major; display is PORTRAIT_HEIGHT wide.
+static inline void kairos44_rotate_portrait(const uint8_t *portrait, uint8_t *display) {
+    for (uint8_t y = 0; y < KAIROS44_PORTRAIT_HEIGHT; y++) {
+        for (uint8_t x = 0; x < KAIROS44_PORTRAIT_WIDTH; x++) {
+            uint8_t display_x;
+            uint8_t display_y;
+            kairos44_portrait_to_display(x, y, &display_x, &display_y);
+            display[display_y * KAIROS44_PORTRAIT_HEIGHT + display_x] =
+                portrait[y * KAIROS44_PORTRAIT_WIDTH + x];
+        }
+    }
 }
 
 static inline void kairos44_status_connection(struct kairos44_status *state, bool connected) {
@@ -313,14 +329,11 @@ static inline void kairos44_status_format_view(const struct kairos44_status *sta
         snprintf(frame->portrait_lines[8], sizeof(frame->portrait_lines[8]), "ACTION:");
         snprintf(frame->portrait_lines[9], sizeof(frame->portrait_lines[9]), "%s",
                  activity->trackpad_action[0] ? activity->trackpad_action : "MOVE");
-        snprintf(frame->portrait_lines[10], sizeof(frame->portrait_lines[10]), "DIR:");
+        snprintf(frame->portrait_lines[10], sizeof(frame->portrait_lines[10]), "BUTTONS:");
         snprintf(frame->portrait_lines[11], sizeof(frame->portrait_lines[11]), "%s",
-                 activity->direction[0] ? activity->direction : "--");
-        snprintf(frame->portrait_lines[12], sizeof(frame->portrait_lines[12]), "BUTTONS:");
-        snprintf(frame->portrait_lines[13], sizeof(frame->portrait_lines[13]), "%s",
                  activity->buttons[0] ? activity->buttons : "NONE");
-        snprintf(frame->portrait_lines[14], sizeof(frame->portrait_lines[14]), "HOST:");
-        snprintf(frame->portrait_lines[15], sizeof(frame->portrait_lines[15]), "%s", host);
+        snprintf(frame->portrait_lines[12], sizeof(frame->portrait_lines[12]), "HOST:");
+        snprintf(frame->portrait_lines[13], sizeof(frame->portrait_lines[13]), "%s", host);
     }
 }
 

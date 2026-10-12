@@ -4,7 +4,40 @@ Checkpoint: 2026-10-12. This document is the starting point for continuing on
 another session or computer. It requires neither Copilot memory nor the original
 chat transcript. Update it when the checkpoint, gates or repository state change.
 
-## Latest Checkpoint: Caps Word Space Continuation Flashed (2026-10-12)
+## Latest Checkpoint: Display Render Fix Flashed (2026-10-12)
+
+User reports master is smooth over USB and BLE, but this branch is jittery over
+BLE only. Master uses the same per-pixel portrait render but never redraws on
+trackpad motion. In this branch the Trackpad view's live `DIR` label changed
+almost every sample, so the screen redrew about 10 Hz. Each redraw made 10,880
+`lv_canvas_set_px_color` calls, each invalidating the canvas. That ran on the
+priority-5 nice!view display thread, above the BT host threads (6/7/8) and
+input thread (lowest). It also blocks the equal-priority BLE HID sender. The
+split proxy feeds a 16-message input queue with `K_NO_WAIT`, and the BLE mouse
+queue drops its oldest report when full. USB sends synchronously.
+
+Fix: removed the `DIR` line, and Trackpad view lines are now MODE/ACTION/BUTTONS/HOST.
+`kairos44_status_note_trackpad()` reports content changes; steady motion only
+extends the deadline. Rendering uses `kairos44_rotate_portrait()` direct buffer
+copy plus one invalidation. Host tests cover rotation, change detection and
+identical frames for repeated motion. The full six-target/validator/native gate
+passes. LEFT uses 363884 B flash and 92476 B RAM. BLE preferences remain
+6/6/0, and the display thread priority remains 5.
+
+Flashed LEFT UF2:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-display-render-fix.uf2`
+SHA256 `21982517cfd2b863d9a5204e5c0357fee9a02ba0911371b14e0ce6005c3eef37`
+(`SHA256SUMS-display-render-fix`). Before copy/sync, verified `/dev/sda` as
+`NICENANO`, serial `6A5D691ABAC1CDB3`, mount `/run/media/richard/NICENANO`
+and checksum. The volume disappeared after sync, and udev reported the same
+serial as `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`; USB identified Kairos44.
+User confirmed BLE cursor movement is now "buttery smooth", so the
+display-priority fallback is not needed. Physical view-switching acceptance has
+not been separately reported. If BLE jitter remains, the fallback is
+`CONFIG_ZMK_DISPLAY_DEDICATED_THREAD_PRIORITY=12` in the receiver shield conf.
+RIGHT, keymap, sensor and bonds remain unchanged.
+
+## Previous Checkpoint: Caps Word Space Continuation Flashed (2026-10-12)
 
 LEFT now keeps Caps Word active across Space, minus and underscore. The shared
 continuation list also retains Backspace and Delete. Shift's tap-dance and
