@@ -2,5 +2,5 @@
 #define n &none
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
+    continue-list = <SPACE UNDERSCORE MINUS BACKSPACE DELETE>;
 };

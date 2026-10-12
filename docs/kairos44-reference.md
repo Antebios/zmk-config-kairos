@@ -131,8 +131,9 @@ Shift's nested hold/taps use 300 ms; Semicolon's first hold/tap uses 220 ms.
 For the plain punctuation dances, holding keeps the selected character key
 pressed; host repeat settings determine repetition. Caps Word uppercases
 letters without holding Shift. Its configured continuation keys are underscore,
-minus, Backspace and Delete; Space ends the word mode. Caps Word is not Caps
-Lock. Home-row Shift remains an ordinary held modifier.
+minus, Space, Backspace and Delete; these keys keep the word mode active.
+Double-tap Shift again to turn Caps Word off. Caps Word is not Caps Lock.
+Home-row Shift remains an ordinary held modifier.
 
 ## NAVIGATION: Movement, Mouse And Layer Selection
 

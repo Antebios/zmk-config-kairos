@@ -1,10 +1,37 @@
 # Session Handoff
 
-Checkpoint: 2026-10-08. This document is the starting point for continuing on
+Checkpoint: 2026-10-12. This document is the starting point for continuing on
 another session or computer. It requires neither Copilot memory nor the original
 chat transcript. Update it when the checkpoint, gates or repository state change.
 
-## Latest Checkpoint: Portrait Labels Flashed (2026-10-09)
+## Latest Checkpoint: Caps Word Space Continuation Flashed (2026-10-12)
+
+LEFT now keeps Caps Word active across Space, minus and underscore. The shared
+continuation list also retains Backspace and Delete. Shift's tap-dance and
+timings are unchanged: double-tap toggles Caps Word, ordinary hold sends Left
+Shift, and double-tap-then-hold sends Left Ctrl. Native tests cover separator
+continuation, toggle-off and balanced modifier holds; the six-target firmware
+gate and display tests passed.
+
+The flashed receiver preserves the previous Windows BLE-latency trial:
+preferred interval min/max6 (7.5 ms), latency0, and automatic connection updates.
+The general verification build uses default BLE timing and was NOT flashed.
+The dedicated `build-kairos44-left-caps-word-space` build passed the compiled
+LEFT firmware validator, and its generated configuration confirmed these BLE
+settings, custom display and Caps Word continuation list.
+
+Flashed artifact:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-caps-word-space.uf2`.
+SHA256 `159a94a4ebfffce3ec255e6add62d4ebdc7b571f2a17bd2a0f15cae4f0db4ae1`;
+matching `SHA256SUMS-caps-word-space` is beside it. Before copy/sync, verified
+LEFT serial `6A5D691ABAC1CDB3`, NICENANO label, `/dev/sda` mount at
+`/run/media/richard/NICENANO`, and artifact checksum. The bootloader disappeared
+and the same serial returned as `ZMK_Project_Kairos44_6A5D691ABAC1CDB3`, with
+keyboard and mouse HID devices. Physical typing/gesture acceptance is pending.
+RIGHT, bonds and settings were not reset or reflashed. Previous BLE-trial
+artifact remains available for rollback; no commit or push was made.
+
+## Previous Checkpoint: Portrait Labels Flashed (2026-10-09)
 
 The user confirmed the portrait LEFT nice!view is readable and requested
 colon-labelled sections and explicit battery/link prefixes. The revised labels
