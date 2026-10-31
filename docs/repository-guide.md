@@ -36,6 +36,7 @@ check the current Git state before choosing a transfer method.
 | [Verification helper](../scripts/verify-local.sh) | Four-target build, generated-firmware checks and native test |
 | [Generated-firmware validator](../scripts/validate_firmware.py) | Compiled matrix/layer/behavior contracts and original-baseline comparison |
 | [Native fixture](../tests/kairos-behaviors/native_posix_64.keymap) | Focused behavior events, using the real shared definitions |
+| [Companion app](../companion/docs/index.md) / [plan and log](kairos44-companion-app.md) / [source](../companion) | Floating desktop layer viewer: user manual, plan, phase status and log |
 
 Layer binding files 0-6 are under `boards/shields/common/kairos/keymaps/`.
 Hardware definitions live separately under `boards/shields/kairos/` and
@@ -62,6 +63,9 @@ They are inspection/output artifacts and will be regenerated.
    renumbering existing layers; update all affected validation and recovery.
 4. Update the binding table in the README and add focused tests for behavior
    changes. Verify all four builds, since shared edits can affect either side.
+   The [companion app](../companion/docs/development.md) keeps its own
+   hand-written copy of the layers and combos; update it for any key or combo
+   change and run `npm run docs:reference` in `companion/`.
 
 Common ZMK binding forms (illustrations, not edits to apply automatically):
 

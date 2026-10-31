@@ -1,0 +1,19 @@
+site_name: Kairos44 Companion
+site_description: Floating Kairos44 keyboard layer and shortcut viewer
+docs_dir: docs
+site_dir: site
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Install and run: install.md
+  - The three views: views.md
+  - Reading a key: reading-keys.md
+  - Window controls: window-controls.md
+  - Command line: command-line.md
+  - Key bindings: keybindings.md
+  - Hyprland: hyprland.md
+  - Layer and combo reference: reference.md
+  - Troubleshooting: troubleshooting.md
+  - Development: development.md
+  - Roadmap: roadmap.md

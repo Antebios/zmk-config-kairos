@@ -1,0 +1,20 @@
+[package]
+name = "kairos44-companion"
+version = "0.1.0"
+description = "Floating Kairos44 layer and shortcut viewer"
+edition = "2021"
+
+[lib]
+name = "kairos44_companion_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde_json = "1"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-single-instance = "2"
+tauri-plugin-window-state = "2"

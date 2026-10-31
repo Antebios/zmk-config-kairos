@@ -4,6 +4,9 @@ Checkpoint: 2026-10-12. This document is the starting point for continuing on
 another session or computer. It requires neither Copilot memory nor the original
 chat transcript. Update it when the checkpoint, gates or repository state change.
 
+The desktop companion app is tracked separately in
+[kairos44-companion-app.md](kairos44-companion-app.md).
+
 ## Latest Checkpoint: Display Render Fix Flashed (2026-10-12)
 
 User reports master is smooth over USB and BLE, but this branch is jittery over
