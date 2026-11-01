@@ -37,6 +37,7 @@ check the current Git state before choosing a transfer method.
 | [Generated-firmware validator](../scripts/validate_firmware.py) | Compiled matrix/layer/behavior contracts and original-baseline comparison |
 | [Native fixture](../tests/kairos-behaviors/native_posix_64.keymap) | Focused behavior events, using the real shared definitions |
 | [Companion app](../companion/docs/index.md) / [plan and log](kairos44-companion-app.md) / [source](../companion) | Floating desktop layer viewer: user manual, plan, phase status and log |
+| [Generic companion planning](generic-companion/README.md) | Portable ZMK/QMK feasibility research, future work breakdown and validation requirements; not implemented support |
 | [Host telemetry](kairos44-host-telemetry.md) / [source](../src/telemetry) | USB report of the active layer, modifiers and locks that the companion app reads |
 
 Layer binding files 0-6 are under `boards/shields/common/kairos/keymaps/`.
