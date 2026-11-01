@@ -42,6 +42,7 @@ developed and tested on Hyprland (Omarchy).
 | [The three views](views.md)               | Normal, Compact and Shortcuts                              |
 | [Reading a key](reading-keys.md)          | Key types, colours, gestures, details, the layers          |
 | [Window controls](window-controls.md)     | Pin, opacity, click-through, taskbar, sizes                |
+| [Live layer sync](live-sync.md)           | Following the keyboard's layer, what the status strip shows |
 | [Command line](command-line.md)           | Controlling a running window from a script or key          |
 | [Key bindings](keybindings.md)            | The key combos that show, hide and switch the window       |
 | [Hyprland](hyprland.md)                   | How pinning, hiding and sizing work on Hyprland            |
@@ -52,9 +53,10 @@ developed and tested on Hyprland (Omarchy).
 
 ## Current limits
 
-- The layer shown is the one you choose. The window does not yet follow the
-  layer your keyboard is actually on; that needs a firmware change and is
-  planned ([Roadmap](roadmap.md)).
+- The window follows the layer your keyboard is on while the keyboard is
+  connected by USB and the updated firmware is installed; otherwise you choose
+  the layer yourself ([Live layer sync](live-sync.md)). Bluetooth-only use
+  cannot be followed.
 - The key data is written by hand from the keymap for the trackpad build of the
   Kairos44 (the NAVIGATION layer with mouse and scroll keys). The keyboard-only
   variant of that layer is not drawn.

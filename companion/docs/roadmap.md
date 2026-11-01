@@ -11,14 +11,15 @@ the repository root. This page is the summary.
 | 1     | Layer viewer with key types, gestures and combos                         | Done                                         |
 | 2     | Floating window, three views, pin, opacity, click-through, show and hide | Done; Windows and macOS untested             |
 | 3     | Firmware sends the active layer to the computer                          | Done                                         |
-| 4     | App reads the keyboard and follows the active layer                      | Not started                                  |
+| 4     | App reads the keyboard and follows the active layer                      | Built; awaiting your acceptance              |
 | 5     | Key data generated from the compiled keymap                              | Not started                                  |
 | 6     | Packaging for Linux and Windows                                          | Not started                                  |
 
 ## Live layer sync (phases 3 and 4)
 
-Today you choose the layer to show. The goal is for the window to follow the
-layer the keyboard is on.
+The window follows the layer the keyboard is on ([Live layer sync](live-sync.md)).
+The firmware part (phase 3) and the app part (phase 4) are built; this section
+records how they were designed.
 
 Normal keyboard input does not say which layer is active, so this needs a small
 firmware addition on the left half, which is the half connected to the computer:

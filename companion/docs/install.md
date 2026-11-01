@@ -10,15 +10,15 @@ The app is built from source. These are the versions it was developed with.
 | Rust (stable)                                    | 1.99           | `cargo` and `rustc`                                  |
 | WebKitGTK                                        | 4.1 (2.54)     | `webkit2gtk-4.1` development files                   |
 | GTK 3, libsoup 3, JavaScriptCoreGTK 4.1, librsvg | current        | Needed by Tauri on Linux                             |
-| libudev, hidapi (hidraw)                         | current        | Not used yet; needed for the planned live layer sync |
+| libudev, hidapi (hidraw)                         | current        | Needed to read the keyboard ([Live layer sync](live-sync.md)) |
 
 On Arch Linux the Tauri packages are `webkit2gtk-4.1`, `gtk3`, `libsoup3`,
 `librsvg` and `base-devel`. See the Tauri documentation for other
 distributions.
 
-No elevated rights are needed to build or run the app. The planned live layer
-sync will need a one-time udev rule on Linux so a normal user can read the
-keyboard's raw HID device.
+No elevated rights are needed to build or run the app. Reading the keyboard on
+Linux needs a one-time udev rule, installed with `sudo` once (see the
+live-sync section below).
 
 ## Build and run
 
@@ -69,6 +69,22 @@ Because the window hides to the tray when closed, a key binding that runs
 ([Window controls](window-controls.md)). If you bound the binary under
 `src-tauri/target/release`, point the binding at the installed one
 (`~/.local/bin/kairos44-companion`) so it always runs what was last installed.
+
+## Reading the keyboard on Linux
+
+The keyboard's state report is a raw HID device that only root can open by
+default. This rule lets the logged-in user read just that interface (USB
+interface 1, not the one that types). Run it once from the `companion` folder:
+
+```sh
+sudo install -m 644 contrib/udev/70-kairos44-companion.rules /etc/udev/rules.d/
+sudo udevadm control --reload
+sudo udevadm trigger --subsystem-match=hidraw --action=add
+```
+
+Then unplug and replug the left half if the app still says Keyboard not found.
+The rule uses the `uaccess` tag, so access follows whoever is logged in at the
+keyboard. Nothing is needed on Windows or macOS ([Live layer sync](live-sync.md)).
 
 ## All scripts
 

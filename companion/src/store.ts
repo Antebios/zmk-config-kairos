@@ -1,4 +1,5 @@
 import { createMemo, createRoot, createSignal } from "solid-js";
+import { NO_KEYBOARD, type KeyboardLink } from "./keyboard";
 import { LAYER } from "./layout";
 import { FIRST_PAGE } from "./manual/pages";
 import {
@@ -16,6 +17,21 @@ export const [highlightedCombo, setHighlightedCombo] = createSignal<
   string | null
 >(null);
 export const [hoveredKey, setHoveredKey] = createSignal<number | null>(null);
+
+// What the keyboard reports over USB; not connected until the first report arrives.
+export const [keyboard, setKeyboard] = createSignal<KeyboardLink>(NO_KEYBOARD);
+
+export const FOLLOW_KEY = "kairos44.follow";
+export const [followKeyboard, setFollowSignal] = createSignal(
+  typeof localStorage === "undefined"
+    ? true
+    : localStorage.getItem(FOLLOW_KEY) !== "off",
+);
+
+export function setFollowKeyboard(on: boolean): void {
+  setFollowSignal(on);
+  localStorage.setItem(FOLLOW_KEY, on ? "on" : "off");
+}
 
 const saved = parseSettings(
   typeof localStorage === "undefined"

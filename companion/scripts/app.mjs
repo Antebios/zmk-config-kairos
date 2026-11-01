@@ -37,6 +37,7 @@ const linux = {
   ],
 };
 const macApp = join(home, "Applications", `${PRODUCT}.app`);
+const UDEV_RULE = "/etc/udev/rules.d/70-kairos44-companion.rules";
 const windowsHome = join(
   process.env.LOCALAPPDATA ?? join(home, "AppData", "Local"),
   PRODUCT,
@@ -148,6 +149,14 @@ function installLinux() {
   );
   if (!(process.env.PATH ?? "").split(":").includes(dirname(linux.binary))) {
     console.log(`Note: ${dirname(linux.binary)} is not on your PATH.`);
+  }
+  if (!existsSync(UDEV_RULE)) {
+    console.log(
+      "To let the app read the keyboard, run once (needs sudo):\n" +
+        `  sudo install -m 644 ${join(root, "contrib", "udev", "70-kairos44-companion.rules")} /etc/udev/rules.d/\n` +
+        "  sudo udevadm control --reload\n" +
+        "  sudo udevadm trigger --subsystem-match=hidraw --action=add",
+    );
   }
 }
 

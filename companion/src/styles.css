@@ -149,6 +149,58 @@ header {
   color: var(--text);
 }
 
+.kb-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.kb-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5b6475;
+}
+
+.kb-dot.on {
+  background: #34d399;
+}
+
+.kb-chip {
+  border: 1px solid #3a4150;
+  border-radius: 10px;
+  padding: 1px 8px;
+  color: var(--text);
+}
+
+.kb-chip.mod {
+  border-color: var(--combo);
+}
+
+.kb-chip.lock {
+  border-color: var(--accent);
+}
+
+.kb-follow {
+  margin-left: auto;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 2px 10px;
+  background: var(--panel);
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.kb-follow.active {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
 /* Border and swatch colour encode the key type. */
 .kind-key {
   --kind: #5b6475;

@@ -23,6 +23,7 @@ export const MANUAL_NAV: ManualPage[] = [
   { slug: "views", title: "The three views" },
   { slug: "reading-keys", title: "Reading a key" },
   { slug: "window-controls", title: "Window controls" },
+  { slug: "live-sync", title: "Live layer sync" },
   { slug: "command-line", title: "Command line" },
   { slug: "keybindings", title: "Key bindings" },
   { slug: "hyprland", title: "Hyprland" },

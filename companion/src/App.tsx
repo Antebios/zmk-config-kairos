@@ -2,6 +2,7 @@ import { Match, Show, Switch, createMemo } from "solid-js";
 import { ComboList } from "./components/ComboList";
 import { KeyDetails } from "./components/KeyDetails";
 import { Keyboard } from "./components/Keyboard";
+import { KeyboardStatus } from "./components/KeyboardStatus";
 import { LayerTabs } from "./components/LayerTabs";
 import { Legend } from "./components/Legend";
 import { Manual } from "./components/Manual";
@@ -9,10 +10,13 @@ import { ShortcutsView } from "./components/ShortcutsView";
 import { WindowBar } from "./components/WindowBar";
 import { COMBOS, LAYERS, combosForLayer } from "./layout";
 import {
+  followKeyboard,
   highlightedCombo,
   hoveredKey,
+  keyboard,
   manualOpen,
   selectedLayer,
+  setFollowKeyboard,
   setHighlightedCombo,
   setHoveredKey,
   setSelectedLayer,
@@ -36,7 +40,16 @@ export default function App() {
           <LayerTabs
             layers={LAYERS}
             selected={selectedLayer()}
-            onSelect={setSelectedLayer}
+            onSelect={(id) => {
+              // Picking a layer by hand means you are not following the keyboard.
+              setFollowKeyboard(false);
+              setSelectedLayer(id);
+            }}
+          />
+          <KeyboardStatus
+            link={keyboard()}
+            follow={followKeyboard()}
+            onFollow={setFollowKeyboard}
           />
           <p class="reach">{layer().reach}</p>
         </header>

@@ -1,5 +1,24 @@
 # Troubleshooting
 
+## Keyboard not found
+
+The status strip says so when the app cannot open the keyboard's report
+interface.
+
+- The left half must be connected by USB and run the firmware with host
+  telemetry. Over Bluetooth only, nothing is reported.
+- On Linux, install the udev rule once ([Install and run](install.md)), then
+  replug the left half. `ls -l /dev/hidraw*` shows a device with your user in
+  its access list (`getfacl`) once the rule has applied.
+- The right half is never read; only the left half reports.
+- The app looks again every 3 seconds, so plugging the keyboard in is enough.
+
+## The layer does not follow the keyboard
+
+Check that Follow keyboard is on; choosing a layer tab by hand turns it off. The
+layer shown is the highest of the seven keyboard layers, so holding a trackpad
+mode key alone changes only the Pointer chip.
+
 ## There is no tray icon
 
 The icon needs a tray in your bar. The Omarchy bar has one (it may sit inside

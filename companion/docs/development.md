@@ -22,11 +22,13 @@ companion/
     layout.ts            Combos, short names, hints, descriptions, filtering
     geometry.ts          Where each of the 44 keys sits on the grid
     components/          Keyboard, Legend, KeyDetails, ComboList, ShortcutsView,
-                         LayerTabs, WindowBar, Manual
+                         LayerTabs, KeyboardStatus, WindowBar, Manual
+    keyboard.ts          Layer, mode, modifier and lock logic for the live state
     manual/              Loads and renders the pages in docs/
   src-tauri/             Rust shell (Tauri 2)
     src/lib.rs           Commands, command-line parsing, show and hide
     src/tray.rs          Tray icon and menu
+    src/keyboard.rs      Reads the keyboard's USB report (hidapi) on a thread
     src/hyprland.rs      Hyprland control through hyprctl
     tauri.conf.json      Window and bundle configuration
     capabilities/        Permissions the web UI is granted
@@ -118,6 +120,8 @@ and migrates the earlier single-window format (`alwaysOnTop`, `skipTaskbar`,
 | Event `next-view`                        | Emitted by `--next-view`                                                                      |
 | Event `set-view`                         | Emitted by `--view <name>`, carrying the name                                                 |
 | Event `toggle-manual`                    | Emitted by `--manual`                                                                         |
+| Command `get_keyboard()`                 | Returns the latest keyboard connection and state, for a UI that starts after the first event  |
+| Event `keyboard-state`                   | Emitted by the keyboard reader when the connection or the reported state changes              |
 | Plugin single-instance                   | Forwards a second launch's arguments to the running app                                       |
 | Plugin window-state                      | Restores the window position only; sizes belong to the views                                  |
 
@@ -125,6 +129,14 @@ and migrates the earlier single-window format (`alwaysOnTop`, `skipTaskbar`,
 Hyprland calls are in `src/hyprland.rs`; pure parts (parsing `hyprctl` JSON,
 building dispatcher expressions, keeping a window on screen) are unit tested.
 The `hyprctl` calls themselves were checked against a running Hyprland.
+
+The keyboard reader in `src/keyboard.rs` finds the keyboard's vendor interface
+(usage page `0xFF4B`, usage `1`), asks for a snapshot, then reads reports and
+emits `keyboard-state`. It retries every 3 seconds while the keyboard is absent.
+`parse_report` is checked against the golden bytes in
+`docs/kairos44-host-telemetry.md` in the repository root, so the format cannot
+drift from the firmware. The UI side, which layer to show and what the chips
+say, is in `src/keyboard.ts`.
 
 ## Tests
 
@@ -140,11 +152,13 @@ npm run test:rust      # Rust tests only
 | `src/views.test.ts`         | Combo hints, key descriptions, the filter, private-text safety                  |
 | `src/geometry.test.ts`      | The grid position of every key                                                  |
 | `src/settings.test.ts`      | Settings parsing, clamping, migration and view cycling                          |
+| `src/keyboard.test.ts`      | Active layer, pointer mode, modifiers, locks and output labels                  |
 | `src/reference.test.ts`     | The generated reference page is up to date                                      |
 | `src/docs.test.ts`          | Manual pages, navigation, links and images are consistent                       |
 | `src-tauri/src/lib.rs`      | The command-line parser                                                         |
 | `src-tauri/src/tray.rs`     | Tray menu ids map to commands                                                   |
 | `src-tauri/src/hyprland.rs` | `hyprctl` parsing, dispatcher expressions, on-screen clamping                   |
+| `src-tauri/src/keyboard.rs` | Keyboard report parsing against the golden bytes, and the snapshot request      |
 
 ## The manual
 

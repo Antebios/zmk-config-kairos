@@ -1,0 +1,7 @@
+# Lets the logged-in user read the Kairos44 state report (USB interface 1, usage page 0xFF4B).
+# It does not touch the keyboard's typing interface.
+# The IDs and the interface number sit on different parents, so they are matched in two steps.
+SUBSYSTEM!="hidraw", GOTO="kairos44_end"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="615e", ENV{KAIROS44_KEYBOARD}="1"
+ENV{KAIROS44_KEYBOARD}=="1", SUBSYSTEMS=="usb", ATTRS{bInterfaceNumber}=="01", TAG+="uaccess"
+LABEL="kairos44_end"

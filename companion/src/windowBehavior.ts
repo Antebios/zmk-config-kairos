@@ -9,21 +9,27 @@ import {
 import {
   alwaysOnTop,
   clickThrough,
+  followKeyboard,
+  keyboard,
   opacity,
   setAlwaysOnTop,
   setClickThrough,
+  setKeyboard,
   setManualOpen,
+  setSelectedLayer,
   setView,
   setViewSize,
   skipTaskbar,
   view,
   viewSettings,
 } from "./store";
+import { activeLayer, type KeyboardLink } from "./keyboard";
 import {
   applyAlwaysOnTop,
   applyClickThrough,
   applySkipTaskbar,
   applyWindowSize,
+  currentKeyboard,
   inTauri,
   onCommand,
   onWindowResized,
@@ -48,6 +54,13 @@ export function useWindowBehavior(): void {
   );
 
   createEffect(() => {
+    const current = keyboard();
+    if (followKeyboard() && current.connected && current.state) {
+      setSelectedLayer(activeLayer(current.state.layers));
+    }
+  });
+
+  createEffect(() => {
     document.documentElement.style.setProperty(
       "--ui-opacity",
       String(opacity()),
@@ -67,7 +80,11 @@ export function useWindowBehavior(): void {
     document.documentElement.dataset.shell = inTauri() ? "tauri" : "browser";
 
     let settleTimer: ReturnType<typeof setTimeout> | undefined;
+    void currentKeyboard().then((initial) => {
+      if (initial) setKeyboard(initial);
+    });
     const listeners = Promise.all([
+      onCommand<KeyboardLink>("keyboard-state", setKeyboard),
       onCommand("toggle-click-through", () => setClickThrough((on) => !on)),
       onCommand("toggle-pin", () => setAlwaysOnTop((on) => !on)),
       onCommand("next-view", () => setView(nextView(view()))),

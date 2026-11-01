@@ -1,4 +1,5 @@
 mod hyprland;
+mod keyboard;
 mod tray;
 
 use std::sync::Mutex;
@@ -10,6 +11,8 @@ use tauri_plugin_window_state::StateFlags;
 struct AppState {
     // Last pin requested by the UI, re-applied when the window is shown again.
     pinned: Mutex<bool>,
+    // Latest keyboard connection and state, for a UI that starts after the first event.
+    keyboard: Mutex<keyboard::KeyboardEvent>,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -168,6 +171,11 @@ fn set_window_size(window: WebviewWindow, width: u32, height: u32) {
     }
 }
 
+#[tauri::command]
+fn get_keyboard(state: State<AppState>) -> keyboard::KeyboardEvent {
+    state.keyboard.lock().unwrap().clone()
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -189,6 +197,7 @@ pub fn run() {
             if let Err(error) = tray::create(app) {
                 eprintln!("Tray icon unavailable: {error}");
             }
+            keyboard::start(app.handle().clone());
             Ok(())
         })
         // The window close button and a window manager close both hide to the tray.
@@ -198,7 +207,11 @@ pub fn run() {
                 dismiss(window.app_handle());
             }
         })
-        .invoke_handler(tauri::generate_handler![set_always_on_top, set_window_size])
+        .invoke_handler(tauri::generate_handler![
+            set_always_on_top,
+            set_window_size,
+            get_keyboard
+        ])
         .run(tauri::generate_context!())
         .expect("error while running Kairos44 Companion");
 }

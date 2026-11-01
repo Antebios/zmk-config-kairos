@@ -1,6 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { listen, type UnlistenFn } from "@tauri-apps/api/event";
+import type { KeyboardLink } from "./keyboard";
 import type { Size } from "./settings";
 
 export const inTauri = (): boolean =>
@@ -33,6 +34,17 @@ export async function applyWindowSize(size: Size): Promise<void> {
     await invoke("set_window_size", { width: size.width, height: size.height });
   } catch (error) {
     console.warn("Resizing failed", error);
+  }
+}
+
+// The reader thread may have connected before the UI started listening.
+export async function currentKeyboard(): Promise<KeyboardLink | null> {
+  if (!inTauri()) return null;
+  try {
+    return await invoke<KeyboardLink>("get_keyboard");
+  } catch (error) {
+    console.warn("Reading the keyboard state failed", error);
+    return null;
   }
 }
 

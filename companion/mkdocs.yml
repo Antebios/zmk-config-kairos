@@ -10,6 +10,7 @@ nav:
   - The three views: views.md
   - Reading a key: reading-keys.md
   - Window controls: window-controls.md
+  - Live layer sync: live-sync.md
   - Command line: command-line.md
   - Key bindings: keybindings.md
   - Hyprland: hyprland.md
