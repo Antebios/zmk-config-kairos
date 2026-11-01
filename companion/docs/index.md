@@ -58,6 +58,7 @@ developed and tested on Hyprland (Omarchy).
   the layer yourself ([Live layer sync](live-sync.md)). Bluetooth-only use
   cannot be followed.
 - The key data is written by hand from the keymap for the trackpad build of the
-  Kairos44 (the NAVIGATION layer with mouse and scroll keys). The keyboard-only
-  variant of that layer is not drawn.
+  Kairos44 (the NAVIGATION layer with mouse and scroll keys), and tests compare
+  it with the compiled firmware keymap. The keyboard-only variant of that layer
+  is not drawn.
 - Only Linux on Hyprland has been tested. Windows and macOS are untested.

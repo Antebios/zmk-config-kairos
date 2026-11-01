@@ -24,6 +24,8 @@
     "check:rust": "cargo check --manifest-path src-tauri/Cargo.toml",
     "check": "npm run typecheck && npm run test:all && npm run check:rust",
     "audit": "npm audit",
+    "keymap:generate": "node scripts/keymap.mjs generate",
+    "keymap:check": "node scripts/keymap.mjs check",
     "docs:reference": "vitest run src/reference.test.ts -u",
     "docs:serve": "mkdocs serve",
     "docs:build": "mkdocs build --strict",

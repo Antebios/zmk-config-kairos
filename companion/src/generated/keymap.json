@@ -1,0 +1,3993 @@
+{
+  "generatedBy": "scripts/generate_companion_keymap.py",
+  "keyCount": 44,
+  "layers": [
+    {
+      "index": 0,
+      "node": "base_layer",
+      "name": "BASE",
+      "keys": [
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458794
+          ],
+          "text": "kp BSPC"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458772
+          ],
+          "text": "kp Q"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458778
+          ],
+          "text": "kp W"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458760
+          ],
+          "text": "kp E"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458773
+          ],
+          "text": "kp R"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458775
+          ],
+          "text": "kp T"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458780
+          ],
+          "text": "kp Y"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458776
+          ],
+          "text": "kp U"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458764
+          ],
+          "text": "kp I"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458770
+          ],
+          "text": "kp O"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458771
+          ],
+          "text": "kp P"
+        },
+        {
+          "behavior": "td_equal",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458798
+              ],
+              "text": "kp EQUAL"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013230
+              ],
+              "text": "kp LS(EQUAL)"
+            }
+          ],
+          "text": "td_equal"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458795
+          ],
+          "text": "kp TAB"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458979,
+            458756
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458979
+            ],
+            "text": "kp LGUI"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458756
+            ],
+            "text": "kp A"
+          },
+          "text": "ht kp LGUI kp A"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458978,
+            458774
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458978
+            ],
+            "text": "kp LALT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458774
+            ],
+            "text": "kp S"
+          },
+          "text": "ht kp LALT kp S"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458977,
+            458759
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458977
+            ],
+            "text": "kp LSHFT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458759
+            ],
+            "text": "kp D"
+          },
+          "text": "ht kp LSHFT kp D"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458976,
+            458761
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458976
+            ],
+            "text": "kp LCTRL"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458761
+            ],
+            "text": "kp F"
+          },
+          "text": "ht kp LCTRL kp F"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458762
+          ],
+          "text": "kp G"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458763
+          ],
+          "text": "kp H"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458980,
+            458765
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458980
+            ],
+            "text": "kp RCTRL"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458765
+            ],
+            "text": "kp J"
+          },
+          "text": "ht kp RCTRL kp J"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458981,
+            458766
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458981
+            ],
+            "text": "kp RSHFT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458766
+            ],
+            "text": "kp K"
+          },
+          "text": "ht kp RSHFT kp K"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458982,
+            458767
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458982
+            ],
+            "text": "kp RALT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458767
+            ],
+            "text": "kp L"
+          },
+          "text": "ht kp RALT kp L"
+        },
+        {
+          "behavior": "td_semicolon",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "td_semi_first_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                458983,
+                458803
+              ],
+              "hold": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458983
+                ],
+                "text": "kp RGUI"
+              },
+              "tap": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458803
+                ],
+                "text": "kp SEMI"
+              },
+              "text": "td_semi_first_tap kp RGUI kp SEMI"
+            },
+            {
+              "behavior": "td_semi_second_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                34013235,
+                34013235
+              ],
+              "hold": {
+                "behavior": "none",
+                "compatible": "zmk,behavior-none",
+                "params": [],
+                "text": "none"
+              },
+              "tap": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  34013235
+                ],
+                "text": "kp LS(SEMI)"
+              },
+              "text": "td_semi_second_tap none kp LS(SEMI)"
+            }
+          ],
+          "text": "td_semicolon"
+        },
+        {
+          "behavior": "td_quote",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458804
+              ],
+              "text": "kp SQT"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013236
+              ],
+              "text": "kp LS(SQT)"
+            }
+          ],
+          "text": "td_quote"
+        },
+        {
+          "behavior": "td_lshift_caps",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "td_lshift_first_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                458977,
+                458977
+              ],
+              "hold": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458977
+                ],
+                "text": "kp LSHFT"
+              },
+              "tap": {
+                "behavior": "sk",
+                "compatible": "zmk,behavior-sticky-key",
+                "params": [
+                  458977
+                ],
+                "text": "sk LSHFT"
+              },
+              "text": "td_lshift_first_tap kp LSHFT sk LSHFT"
+            },
+            {
+              "behavior": "td_lshift_second_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                458976,
+                458976
+              ],
+              "hold": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458976
+                ],
+                "text": "kp LCTRL"
+              },
+              "tap": {
+                "behavior": "caps_word",
+                "compatible": "zmk,behavior-caps-word",
+                "params": [],
+                "text": "caps_word"
+              },
+              "text": "td_lshift_second_tap kp LCTRL caps_word"
+            }
+          ],
+          "text": "td_lshift_caps"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458781
+          ],
+          "text": "kp Z"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458779
+          ],
+          "text": "kp X"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458758
+          ],
+          "text": "kp C"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458777
+          ],
+          "text": "kp V"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458757
+          ],
+          "text": "kp B"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458769
+          ],
+          "text": "kp N"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458768
+          ],
+          "text": "kp M"
+        },
+        {
+          "behavior": "td_comma",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458806
+              ],
+              "text": "kp COMMA"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013238
+              ],
+              "text": "kp LS(COMMA)"
+            }
+          ],
+          "text": "td_comma"
+        },
+        {
+          "behavior": "td_period",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458807
+              ],
+              "text": "kp DOT"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013239
+              ],
+              "text": "kp LS(DOT)"
+            }
+          ],
+          "text": "td_period"
+        },
+        {
+          "behavior": "td_fslash",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458808
+              ],
+              "text": "kp FSLH"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013240
+              ],
+              "text": "kp LS(FSLH)"
+            }
+          ],
+          "text": "td_fslash"
+        },
+        {
+          "behavior": "td_bslash",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458801
+              ],
+              "text": "kp BSLH"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013233
+              ],
+              "text": "kp LS(BSLH)"
+            }
+          ],
+          "text": "td_bslash"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            1
+          ],
+          "text": "mo NAVIGATION"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            2
+          ],
+          "text": "mo FUNCTIONS"
+        },
+        {
+          "behavior": "td_left_space_key",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            3,
+            458796
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              3
+            ],
+            "text": "mo SYMBOL_KP"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458796
+            ],
+            "text": "kp SPACE"
+          },
+          "text": "td_left_space_key mo SYMBOL_KP kp SPACE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458792
+          ],
+          "text": "kp ENTER"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            3
+          ],
+          "text": "mo SYMBOL_KP"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            4
+          ],
+          "text": "mo UTILS"
+        },
+        {
+          "behavior": "pointer_thumb",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            12,
+            458792
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              12
+            ],
+            "text": "mo 12"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458792
+            ],
+            "text": "kp ENTER"
+          },
+          "text": "pointer_thumb mo 12 kp ENTER"
+        },
+        {
+          "behavior": "pointer_thumb",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            11,
+            458796
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              11
+            ],
+            "text": "mo 11"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458796
+            ],
+            "text": "kp SPACE"
+          },
+          "text": "pointer_thumb mo 11 kp SPACE"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "node": "navigation_layer",
+      "name": "NAVIGATION",
+      "keys": [
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458828
+          ],
+          "text": "kp DEL"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            4
+          ],
+          "text": "to UTILS"
+        },
+        {
+          "behavior": "sl",
+          "compatible": "zmk,behavior-sticky-key",
+          "params": [
+            2
+          ],
+          "text": "sl FUNCTIONS"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458834
+          ],
+          "text": "kp UP"
+        },
+        {
+          "behavior": "sl",
+          "compatible": "zmk,behavior-sticky-key",
+          "params": [
+            3
+          ],
+          "text": "sl SYMBOL_KP"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458827
+          ],
+          "text": "kp PG_UP"
+        },
+        {
+          "behavior": "nav_scroll",
+          "compatible": "zmk,behavior-macro-two-param",
+          "params": [
+            10,
+            64
+          ],
+          "text": "nav_scroll 10 64"
+        },
+        {
+          "behavior": "nav_scroll",
+          "compatible": "zmk,behavior-macro-two-param",
+          "params": [
+            4294311936,
+            4290772992
+          ],
+          "text": "nav_scroll -655360 -4194304"
+        },
+        {
+          "behavior": "mmv",
+          "compatible": "zmk,behavior-input-two-axis",
+          "params": [
+            64936
+          ],
+          "text": "mmv 64936"
+        },
+        {
+          "behavior": "nav_scroll",
+          "compatible": "zmk,behavior-macro-two-param",
+          "params": [
+            655360,
+            4194304
+          ],
+          "text": "nav_scroll 655360 4194304"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458826
+          ],
+          "text": "kp HOME"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458829
+          ],
+          "text": "kp END"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458825
+          ],
+          "text": "kp INS"
+        },
+        {
+          "behavior": "sl",
+          "compatible": "zmk,behavior-sticky-key",
+          "params": [
+            4
+          ],
+          "text": "sl UTILS"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458832
+          ],
+          "text": "kp LEFT"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458833
+          ],
+          "text": "kp DOWN"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458831
+          ],
+          "text": "kp RIGHT"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458830
+          ],
+          "text": "kp PG_DN"
+        },
+        {
+          "behavior": "nav_scroll",
+          "compatible": "zmk,behavior-macro-two-param",
+          "params": [
+            65526,
+            65472
+          ],
+          "text": "nav_scroll 65526 65472"
+        },
+        {
+          "behavior": "mmv",
+          "compatible": "zmk,behavior-input-two-axis",
+          "params": [
+            4255645696
+          ],
+          "text": "mmv -39321600"
+        },
+        {
+          "behavior": "mmv",
+          "compatible": "zmk,behavior-input-two-axis",
+          "params": [
+            600
+          ],
+          "text": "mmv 600"
+        },
+        {
+          "behavior": "mmv",
+          "compatible": "zmk,behavior-input-two-axis",
+          "params": [
+            39321600
+          ],
+          "text": "mmv 39321600"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            0
+          ],
+          "text": "to BASE"
+        },
+        {
+          "behavior": "pointer_scroll",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            10,
+            458978
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              10
+            ],
+            "text": "mo 10"
+          },
+          "tap": {
+            "behavior": "sk",
+            "compatible": "zmk,behavior-sticky-key",
+            "params": [
+              458978
+            ],
+            "text": "sk LALT"
+          },
+          "text": "pointer_scroll mo 10 sk LALT"
+        },
+        {
+          "behavior": "mkp",
+          "compatible": "zmk,behavior-mouse-key-press",
+          "params": [
+            2
+          ],
+          "text": "mkp 2"
+        },
+        {
+          "behavior": "mkp",
+          "compatible": "zmk,behavior-mouse-key-press",
+          "params": [
+            4
+          ],
+          "text": "mkp 4"
+        },
+        {
+          "behavior": "mkp",
+          "compatible": "zmk,behavior-mouse-key-press",
+          "params": [
+            1
+          ],
+          "text": "mkp 1"
+        },
+        {
+          "behavior": "pointer_cycle_fast",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            9,
+            0
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              9
+            ],
+            "text": "mo 9"
+          },
+          "tap": {
+            "behavior": "pointer_next_fast",
+            "compatible": "zmk,behavior-macro",
+            "params": [],
+            "text": "pointer_next_fast"
+          },
+          "text": "pointer_cycle_fast mo 9 pointer_next_fast"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            6
+          ],
+          "text": "mo COMBOS"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "node": "functions_layer",
+      "name": "FUNCTIONS",
+      "keys": [
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458836
+          ],
+          "text": "kp KP_DIVIDE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458838
+          ],
+          "text": "kp KP_MINUS"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458782
+          ],
+          "text": "kp 1"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458783
+          ],
+          "text": "kp 2"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458784
+          ],
+          "text": "kp 3"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458807
+          ],
+          "text": "kp DOT"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458810
+          ],
+          "text": "kp F1"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458811
+          ],
+          "text": "kp F2"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458812
+          ],
+          "text": "kp F3"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458813
+          ],
+          "text": "kp F4"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458794
+          ],
+          "text": "kp BSPC"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458837
+          ],
+          "text": "kp KP_MULTIPLY"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458839
+          ],
+          "text": "kp KP_PLUS"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458785
+          ],
+          "text": "kp 4"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458786
+          ],
+          "text": "kp 5"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458787
+          ],
+          "text": "kp 6"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458806
+          ],
+          "text": "kp COMMA"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458814
+          ],
+          "text": "kp F5"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458815
+          ],
+          "text": "kp F6"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458816
+          ],
+          "text": "kp F7"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458817
+          ],
+          "text": "kp F8"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458840
+          ],
+          "text": "kp KP_ENTER"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458798
+          ],
+          "text": "kp EQUAL"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458788
+          ],
+          "text": "kp 7"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458789
+          ],
+          "text": "kp 8"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458790
+          ],
+          "text": "kp 9"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458791
+          ],
+          "text": "kp 0"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            0
+          ],
+          "text": "to BASE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458818
+          ],
+          "text": "kp F9"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458819
+          ],
+          "text": "kp F10"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458820
+          ],
+          "text": "kp F11"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458821
+          ],
+          "text": "kp F12"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458794
+          ],
+          "text": "kp BSPC"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "node": "symkp_layer",
+      "name": "SYMBOL_KP",
+      "keys": [
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458794
+          ],
+          "text": "kp BSPC"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013214
+          ],
+          "text": "kp LS(1)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013215
+          ],
+          "text": "kp LS(2)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013216
+          ],
+          "text": "kp LS(3)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013222
+          ],
+          "text": "kp LS(9)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013223
+          ],
+          "text": "kp LS(0)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458836
+          ],
+          "text": "kp KP_DIVIDE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458788
+          ],
+          "text": "kp 7"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458789
+          ],
+          "text": "kp 8"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458790
+          ],
+          "text": "kp 9"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458838
+          ],
+          "text": "kp KP_MINUS"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013229
+          ],
+          "text": "kp LS(MINUS)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458805
+          ],
+          "text": "kp GRAVE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013217
+          ],
+          "text": "kp LS(4)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013218
+          ],
+          "text": "kp LS(5)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013219
+          ],
+          "text": "kp LS(6)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458799
+          ],
+          "text": "kp LBKT"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458800
+          ],
+          "text": "kp RBKT"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458837
+          ],
+          "text": "kp KP_MULTIPLY"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458785
+          ],
+          "text": "kp 4"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458786
+          ],
+          "text": "kp 5"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458787
+          ],
+          "text": "kp 6"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013230
+          ],
+          "text": "kp LS(EQUAL)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458798
+          ],
+          "text": "kp EQUAL"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013237
+          ],
+          "text": "kp LS(GRAVE)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013220
+          ],
+          "text": "kp LS(7)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013221
+          ],
+          "text": "kp LS(8)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013233
+          ],
+          "text": "kp LS(BSLH)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013231
+          ],
+          "text": "kp LS(LBKT)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            34013232
+          ],
+          "text": "kp LS(RBKT)"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458807
+          ],
+          "text": "kp DOT"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458782
+          ],
+          "text": "kp 1"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458783
+          ],
+          "text": "kp 2"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458784
+          ],
+          "text": "kp 3"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458806
+          ],
+          "text": "kp COMMA"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458840
+          ],
+          "text": "kp KP_ENTER"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458794
+          ],
+          "text": "kp BSPC"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458796
+          ],
+          "text": "kp SPACE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458792
+          ],
+          "text": "kp ENTER"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458791
+          ],
+          "text": "kp 0"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "node": "utils_layer",
+      "name": "UTILS",
+      "keys": [
+        {
+          "behavior": "bt",
+          "compatible": "zmk,behavior-bluetooth",
+          "params": [
+            3,
+            0
+          ],
+          "text": "bt 3 0"
+        },
+        {
+          "behavior": "bt",
+          "compatible": "zmk,behavior-bluetooth",
+          "params": [
+            2,
+            0
+          ],
+          "text": "bt 2 0"
+        },
+        {
+          "behavior": "bt",
+          "compatible": "zmk,behavior-bluetooth",
+          "params": [
+            1,
+            0
+          ],
+          "text": "bt 1 0"
+        },
+        {
+          "behavior": "bt",
+          "compatible": "zmk,behavior-bluetooth",
+          "params": [
+            4,
+            0
+          ],
+          "text": "bt 4 0"
+        },
+        {
+          "behavior": "ext_power",
+          "compatible": "zmk,behavior-ext-power",
+          "params": [
+            0
+          ],
+          "text": "ext_power 0"
+        },
+        {
+          "behavior": "ext_power",
+          "compatible": "zmk,behavior-ext-power",
+          "params": [
+            1
+          ],
+          "text": "ext_power 1"
+        },
+        {
+          "behavior": "ext_power",
+          "compatible": "zmk,behavior-ext-power",
+          "params": [
+            1
+          ],
+          "text": "ext_power 1"
+        },
+        {
+          "behavior": "ext_power",
+          "compatible": "zmk,behavior-ext-power",
+          "params": [
+            0
+          ],
+          "text": "ext_power 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            0,
+            0
+          ],
+          "text": "rgb_ug 0 0"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            1
+          ],
+          "text": "to NAVIGATION"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786543
+          ],
+          "text": "kp C_BRI_UP"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786665
+          ],
+          "text": "kp C_VOL_UP"
+        },
+        {
+          "behavior": "bt",
+          "compatible": "zmk,behavior-bluetooth",
+          "params": [
+            3,
+            1
+          ],
+          "text": "bt 3 1"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            0,
+            0
+          ],
+          "text": "rgb_ug 0 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            3,
+            0
+          ],
+          "text": "rgb_ug 3 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            5,
+            0
+          ],
+          "text": "rgb_ug 5 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            7,
+            0
+          ],
+          "text": "rgb_ug 7 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            9,
+            0
+          ],
+          "text": "rgb_ug 9 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            0,
+            0
+          ],
+          "text": "rgb_ug 0 0"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            2
+          ],
+          "text": "to FUNCTIONS"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            3
+          ],
+          "text": "to SYMBOL_KP"
+        },
+        {
+          "behavior": "sl",
+          "compatible": "zmk,behavior-sticky-key",
+          "params": [
+            1
+          ],
+          "text": "sl NAVIGATION"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786544
+          ],
+          "text": "kp C_BRI_DN"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786666
+          ],
+          "text": "kp C_VOL_DN"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            0
+          ],
+          "text": "to BASE"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            11,
+            0
+          ],
+          "text": "rgb_ug 11 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            4,
+            0
+          ],
+          "text": "rgb_ug 4 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            6,
+            0
+          ],
+          "text": "rgb_ug 6 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            8,
+            0
+          ],
+          "text": "rgb_ug 8 0"
+        },
+        {
+          "behavior": "rgb_ug",
+          "compatible": "zmk,behavior-rgb-underglow",
+          "params": [
+            10,
+            0
+          ],
+          "text": "rgb_ug 10 0"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            5
+          ],
+          "text": "to MIRROR"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786614
+          ],
+          "text": "kp C_PREV"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786637
+          ],
+          "text": "kp C_PLAY_PAUSE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786613
+          ],
+          "text": "kp C_NEXT"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            6
+          ],
+          "text": "to COMBOS"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            786658
+          ],
+          "text": "kp C_MUTE"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "node": "mirror_layer",
+      "name": "MIRROR",
+      "keys": [
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458780
+          ],
+          "text": "kp Y"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458776
+          ],
+          "text": "kp U"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458764
+          ],
+          "text": "kp I"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458770
+          ],
+          "text": "kp O"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458771
+          ],
+          "text": "kp P"
+        },
+        {
+          "behavior": "td_equal",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458798
+              ],
+              "text": "kp EQUAL"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013230
+              ],
+              "text": "kp LS(EQUAL)"
+            }
+          ],
+          "text": "td_equal"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458794
+          ],
+          "text": "kp BSPC"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458772
+          ],
+          "text": "kp Q"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458778
+          ],
+          "text": "kp W"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458760
+          ],
+          "text": "kp E"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458773
+          ],
+          "text": "kp R"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458775
+          ],
+          "text": "kp T"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458763
+          ],
+          "text": "kp H"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458980,
+            458765
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458980
+            ],
+            "text": "kp RCTRL"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458765
+            ],
+            "text": "kp J"
+          },
+          "text": "ht kp RCTRL kp J"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458981,
+            458766
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458981
+            ],
+            "text": "kp RSHFT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458766
+            ],
+            "text": "kp K"
+          },
+          "text": "ht kp RSHFT kp K"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458982,
+            458767
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458982
+            ],
+            "text": "kp RALT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458767
+            ],
+            "text": "kp L"
+          },
+          "text": "ht kp RALT kp L"
+        },
+        {
+          "behavior": "td_semicolon",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "td_semi_first_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                458983,
+                458803
+              ],
+              "hold": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458983
+                ],
+                "text": "kp RGUI"
+              },
+              "tap": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458803
+                ],
+                "text": "kp SEMI"
+              },
+              "text": "td_semi_first_tap kp RGUI kp SEMI"
+            },
+            {
+              "behavior": "td_semi_second_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                34013235,
+                34013235
+              ],
+              "hold": {
+                "behavior": "none",
+                "compatible": "zmk,behavior-none",
+                "params": [],
+                "text": "none"
+              },
+              "tap": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  34013235
+                ],
+                "text": "kp LS(SEMI)"
+              },
+              "text": "td_semi_second_tap none kp LS(SEMI)"
+            }
+          ],
+          "text": "td_semicolon"
+        },
+        {
+          "behavior": "td_quote",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458804
+              ],
+              "text": "kp SQT"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013236
+              ],
+              "text": "kp LS(SQT)"
+            }
+          ],
+          "text": "td_quote"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458795
+          ],
+          "text": "kp TAB"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458979,
+            458756
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458979
+            ],
+            "text": "kp LGUI"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458756
+            ],
+            "text": "kp A"
+          },
+          "text": "ht kp LGUI kp A"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458978,
+            458774
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458978
+            ],
+            "text": "kp LALT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458774
+            ],
+            "text": "kp S"
+          },
+          "text": "ht kp LALT kp S"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458977,
+            458759
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458977
+            ],
+            "text": "kp LSHFT"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458759
+            ],
+            "text": "kp D"
+          },
+          "text": "ht kp LSHFT kp D"
+        },
+        {
+          "behavior": "ht",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            458976,
+            458761
+          ],
+          "hold": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458976
+            ],
+            "text": "kp LCTRL"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458761
+            ],
+            "text": "kp F"
+          },
+          "text": "ht kp LCTRL kp F"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458762
+          ],
+          "text": "kp G"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458769
+          ],
+          "text": "kp N"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458768
+          ],
+          "text": "kp M"
+        },
+        {
+          "behavior": "td_comma",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458806
+              ],
+              "text": "kp COMMA"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013238
+              ],
+              "text": "kp LS(COMMA)"
+            }
+          ],
+          "text": "td_comma"
+        },
+        {
+          "behavior": "td_period",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458807
+              ],
+              "text": "kp DOT"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013239
+              ],
+              "text": "kp LS(DOT)"
+            }
+          ],
+          "text": "td_period"
+        },
+        {
+          "behavior": "td_fslash",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458808
+              ],
+              "text": "kp FSLH"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013240
+              ],
+              "text": "kp LS(FSLH)"
+            }
+          ],
+          "text": "td_fslash"
+        },
+        {
+          "behavior": "td_bslash",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                458801
+              ],
+              "text": "kp BSLH"
+            },
+            {
+              "behavior": "kp",
+              "compatible": "zmk,behavior-key-press",
+              "params": [
+                34013233
+              ],
+              "text": "kp LS(BSLH)"
+            }
+          ],
+          "text": "td_bslash"
+        },
+        {
+          "behavior": "td_lshift_caps",
+          "compatible": "zmk,behavior-tap-dance",
+          "params": [],
+          "taps": [
+            {
+              "behavior": "td_lshift_first_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                458977,
+                458977
+              ],
+              "hold": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458977
+                ],
+                "text": "kp LSHFT"
+              },
+              "tap": {
+                "behavior": "sk",
+                "compatible": "zmk,behavior-sticky-key",
+                "params": [
+                  458977
+                ],
+                "text": "sk LSHFT"
+              },
+              "text": "td_lshift_first_tap kp LSHFT sk LSHFT"
+            },
+            {
+              "behavior": "td_lshift_second_tap",
+              "compatible": "zmk,behavior-hold-tap",
+              "params": [
+                458976,
+                458976
+              ],
+              "hold": {
+                "behavior": "kp",
+                "compatible": "zmk,behavior-key-press",
+                "params": [
+                  458976
+                ],
+                "text": "kp LCTRL"
+              },
+              "tap": {
+                "behavior": "caps_word",
+                "compatible": "zmk,behavior-caps-word",
+                "params": [],
+                "text": "caps_word"
+              },
+              "text": "td_lshift_second_tap kp LCTRL caps_word"
+            }
+          ],
+          "text": "td_lshift_caps"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458781
+          ],
+          "text": "kp Z"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458779
+          ],
+          "text": "kp X"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458758
+          ],
+          "text": "kp C"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458777
+          ],
+          "text": "kp V"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458757
+          ],
+          "text": "kp B"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            1
+          ],
+          "text": "mo NAVIGATION"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            2
+          ],
+          "text": "mo FUNCTIONS"
+        },
+        {
+          "behavior": "td_left_space_key",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            3,
+            458796
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              3
+            ],
+            "text": "mo SYMBOL_KP"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458796
+            ],
+            "text": "kp SPACE"
+          },
+          "text": "td_left_space_key mo SYMBOL_KP kp SPACE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458792
+          ],
+          "text": "kp ENTER"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            3
+          ],
+          "text": "mo SYMBOL_KP"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            4
+          ],
+          "text": "mo UTILS"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "node": "combos_layer",
+      "name": "COMBOS",
+      "keys": [
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "to",
+          "compatible": "zmk,behavior-to-layer",
+          "params": [
+            0
+          ],
+          "text": "to BASE"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "none",
+          "compatible": "zmk,behavior-none",
+          "params": [],
+          "text": "none"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            1
+          ],
+          "text": "mo NAVIGATION"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            2
+          ],
+          "text": "mo FUNCTIONS"
+        },
+        {
+          "behavior": "td_left_space_key",
+          "compatible": "zmk,behavior-hold-tap",
+          "params": [
+            3,
+            458796
+          ],
+          "hold": {
+            "behavior": "mo",
+            "compatible": "zmk,behavior-momentary-layer",
+            "params": [
+              3
+            ],
+            "text": "mo SYMBOL_KP"
+          },
+          "tap": {
+            "behavior": "kp",
+            "compatible": "zmk,behavior-key-press",
+            "params": [
+              458796
+            ],
+            "text": "kp SPACE"
+          },
+          "text": "td_left_space_key mo SYMBOL_KP kp SPACE"
+        },
+        {
+          "behavior": "kp",
+          "compatible": "zmk,behavior-key-press",
+          "params": [
+            458792
+          ],
+          "text": "kp ENTER"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            3
+          ],
+          "text": "mo SYMBOL_KP"
+        },
+        {
+          "behavior": "mo",
+          "compatible": "zmk,behavior-momentary-layer",
+          "params": [
+            4
+          ],
+          "text": "mo UTILS"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        },
+        {
+          "behavior": "trans",
+          "compatible": "zmk,behavior-transparent",
+          "params": [],
+          "text": "trans"
+        }
+      ]
+    }
+  ],
+  "combos": [
+    {
+      "name": "enter_left",
+      "positions": [
+        37,
+        38
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458792
+        ],
+        "text": "kp ENTER"
+      }
+    },
+    {
+      "name": "space_right",
+      "positions": [
+        39,
+        40
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458796
+        ],
+        "text": "kp SPACE"
+      }
+    },
+    {
+      "name": "esc_left",
+      "positions": [
+        2,
+        3
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458793
+        ],
+        "text": "kp ESC"
+      }
+    },
+    {
+      "name": "delete",
+      "positions": [
+        0,
+        1
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458828
+        ],
+        "text": "kp DEL"
+      }
+    },
+    {
+      "name": "vscode_tog_primary_sb1",
+      "positions": [
+        8,
+        9
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_primary_sb",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_primary_sb"
+      }
+    },
+    {
+      "name": "vscode_tog_primary_sb2",
+      "positions": [
+        2,
+        3
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_primary_sb",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_primary_sb"
+      }
+    },
+    {
+      "name": "vscode_tog_secondary_sb1",
+      "positions": [
+        20,
+        21
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_secondary_sb",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_secondary_sb"
+      }
+    },
+    {
+      "name": "vscode_tog_secondary_sb2",
+      "positions": [
+        14,
+        15
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_secondary_sb",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_secondary_sb"
+      }
+    },
+    {
+      "name": "vscode_tog_panel1",
+      "positions": [
+        32,
+        33
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_panel",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_panel"
+      }
+    },
+    {
+      "name": "vscode_tog_panel2",
+      "positions": [
+        26,
+        27
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_panel",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_panel"
+      }
+    },
+    {
+      "name": "vscode_tog_console1",
+      "positions": [
+        9,
+        10
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_console",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_console"
+      }
+    },
+    {
+      "name": "vscode_tog_console2",
+      "positions": [
+        1,
+        2
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_tog_console",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_tog_console"
+      }
+    },
+    {
+      "name": "vscode_new_console1",
+      "positions": [
+        21,
+        22
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_new_console",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_new_console"
+      }
+    },
+    {
+      "name": "vscode_new_console2",
+      "positions": [
+        15,
+        16
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_new_console",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_new_console"
+      }
+    },
+    {
+      "name": "vscode_cmd_pallet1",
+      "positions": [
+        33,
+        34
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_cmd_pallet",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_cmd_pallet"
+      }
+    },
+    {
+      "name": "vscode_cmd_pallet2",
+      "positions": [
+        25,
+        26
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_cmd_pallet",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_cmd_pallet"
+      }
+    },
+    {
+      "name": "vscode_explorer1",
+      "positions": [
+        10,
+        11
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          50790408
+        ],
+        "text": "kp LC(LS(E))"
+      }
+    },
+    {
+      "name": "vscode_explorer2",
+      "positions": [
+        0,
+        1
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          50790408
+        ],
+        "text": "kp LC(LS(E))"
+      }
+    },
+    {
+      "name": "vscode_search_left1",
+      "positions": [
+        22,
+        23
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          50790409
+        ],
+        "text": "kp LC(LS(F))"
+      }
+    },
+    {
+      "name": "vscode_search_left2",
+      "positions": [
+        12,
+        13
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          50790409
+        ],
+        "text": "kp LC(LS(F))"
+      }
+    },
+    {
+      "name": "vscode_search_right",
+      "positions": [
+        16,
+        38
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          50790409
+        ],
+        "text": "kp LC(LS(F))"
+      }
+    },
+    {
+      "name": "vscode_find1",
+      "positions": [
+        16,
+        29
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          17235977
+        ],
+        "text": "kp LC(F)"
+      }
+    },
+    {
+      "name": "vscode_source_control1",
+      "positions": [
+        34,
+        35
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_source_control",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_source_control"
+      }
+    },
+    {
+      "name": "vscode_source_control2",
+      "positions": [
+        24,
+        25
+      ],
+      "layers": [
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_source_control",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_source_control"
+      }
+    },
+    {
+      "name": "vscode_new_window1",
+      "positions": [
+        15,
+        16
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          50790417
+        ],
+        "text": "kp LC(LS(N))"
+      }
+    },
+    {
+      "name": "print_screen1",
+      "positions": [
+        11,
+        23
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458822
+        ],
+        "text": "kp PSCRN"
+      }
+    },
+    {
+      "name": "print_screen2",
+      "positions": [
+        0,
+        12
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458822
+        ],
+        "text": "kp PSCRN"
+      }
+    },
+    {
+      "name": "back_tick",
+      "positions": [
+        0,
+        1,
+        2
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458805
+        ],
+        "text": "kp GRAVE"
+      }
+    },
+    {
+      "name": "tilde",
+      "positions": [
+        12,
+        13,
+        14
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          34013237
+        ],
+        "text": "kp LS(GRAVE)"
+      }
+    },
+    {
+      "name": "minus",
+      "positions": [
+        6,
+        7
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458797
+        ],
+        "text": "kp MINUS"
+      }
+    },
+    {
+      "name": "underscore",
+      "positions": [
+        7,
+        8
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          34013229
+        ],
+        "text": "kp LS(MINUS)"
+      }
+    },
+    {
+      "name": "plus",
+      "positions": [
+        18,
+        19
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          34013230
+        ],
+        "text": "kp LS(EQUAL)"
+      }
+    },
+    {
+      "name": "equal",
+      "positions": [
+        19,
+        20
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          458798
+        ],
+        "text": "kp EQUAL"
+      }
+    },
+    {
+      "name": "wkshell",
+      "positions": [
+        4,
+        5
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_cmd_pallet2",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_cmd_pallet2"
+      }
+    },
+    {
+      "name": "hmmp",
+      "positions": [
+        16,
+        17
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_cmd_pallet3",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_cmd_pallet3"
+      }
+    },
+    {
+      "name": "hmmp2",
+      "positions": [
+        28,
+        29
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "vscode_cmd_pallet4",
+        "compatible": "zmk,behavior-macro",
+        "params": [],
+        "text": "vscode_cmd_pallet4"
+      }
+    },
+    {
+      "name": "shc_undo",
+      "positions": [
+        24,
+        25
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          17235997
+        ],
+        "text": "kp LC(Z)"
+      }
+    },
+    {
+      "name": "shc_cut",
+      "positions": [
+        25,
+        26
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          17235995
+        ],
+        "text": "kp LC(X)"
+      }
+    },
+    {
+      "name": "shc_copy",
+      "positions": [
+        26,
+        27
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          17235974
+        ],
+        "text": "kp LC(C)"
+      }
+    },
+    {
+      "name": "shc_paste",
+      "positions": [
+        27,
+        28
+      ],
+      "layers": [
+        0
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "kp",
+        "compatible": "zmk,behavior-key-press",
+        "params": [
+          17235993
+        ],
+        "text": "kp LC(V)"
+      }
+    },
+    {
+      "name": "reset_r_e_s",
+      "positions": [
+        23,
+        27,
+        38
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "sys_reset",
+        "compatible": "zmk,behavior-reset",
+        "params": [],
+        "text": "sys_reset"
+      }
+    },
+    {
+      "name": "reset_BASE",
+      "positions": [
+        36,
+        37,
+        38
+      ],
+      "layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "timeoutMs": 50,
+      "binding": {
+        "behavior": "to",
+        "compatible": "zmk,behavior-to-layer",
+        "params": [
+          0
+        ],
+        "text": "to BASE"
+      }
+    }
+  ]
+}

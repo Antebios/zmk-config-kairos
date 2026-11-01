@@ -12,7 +12,7 @@ the repository root. This page is the summary.
 | 2     | Floating window, three views, pin, opacity, click-through, show and hide | Done; Windows and macOS untested             |
 | 3     | Firmware sends the active layer to the computer                          | Done                                         |
 | 4     | App reads the keyboard and follows the active layer                      | Done; Windows and macOS untested             |
-| 5     | Key data generated from the compiled keymap                              | Not started                                  |
+| 5     | Key data generated from the compiled keymap                              | Built; awaiting your acceptance              |
 | 6     | Packaging for Linux and Windows                                          | Not started                                  |
 
 ## Live layer sync (phases 3 and 4)
@@ -47,7 +47,6 @@ Flashing firmware needs your confirmation and is never done automatically.
 
 | Item                                       | Notes                                                                                                   |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| Generate key data from the compiled keymap | Removes the hand-written copy so it cannot drift; reuses the approach of `scripts/validate_firmware.py` |
 | Keyboard-only NAVIGATION layer             | Today only the trackpad variant is drawn                                                                |
 | One-key show/hide                          | A Kairos44 combo sending an unused key such as F13, bound in Hyprland                                   |
 | Windows and macOS                          | Pinning, hiding, show and hide, and click-through are untested there                                    |

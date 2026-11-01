@@ -107,6 +107,8 @@ keyboard. Nothing is needed on Windows or macOS ([Live layer sync](live-sync.md)
 | `check:rust`                   | `cargo check`                                                           |
 | `check`                        | Typecheck, all tests and `cargo check`; run this before committing      |
 | `docs:reference`               | Regenerate the generated reference page ([Development](development.md)) |
+| `keymap:generate`              | Refresh the compiled keymap data from the firmware build (developer)    |
+| `keymap:check`                 | Fail if that data is out of date (developer)                            |
 | `docs:serve`, `docs:build`     | Preview or build this manual as a MkDocs site                           |
 | `audit`                        | `npm audit`                                                             |
 | `clean`, `clean:rust`          | Remove the web bundle, or the Rust build output                         |

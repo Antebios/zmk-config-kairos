@@ -88,5 +88,6 @@ the same.
 The key labels, types and combos are written by hand from the keymap files in
 `boards/shields/common/kairos`, for the trackpad build. If you change the
 keymap, update `src/layers.ts` and `src/layout.ts` to match
-([Development](development.md)). A later phase will generate this data from the
-compiled keymap so the two cannot drift ([Roadmap](roadmap.md)).
+([Development](development.md)). Tests compare what is drawn with the compiled
+firmware keymap and fail when they disagree, so a changed keymap cannot go
+unnoticed.

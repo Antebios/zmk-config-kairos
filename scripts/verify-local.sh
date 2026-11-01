@@ -96,6 +96,11 @@ if [ "$trackpad" = true ]; then
             "/work/zmk/$build_dir" --keys 44 --side "$side" --trackpad \
             --baseline "/work/zmk/build-kairos44-$side"
     done
+    docker run --rm -e ZEPHYR_BASE=/work/zmk/zephyr \
+        -v "$workspace:/work/zmk" -v "$root:/config:ro" "$image" \
+        python3 /config/scripts/generate_companion_keymap.py \
+        /work/zmk/build-kairos44-left-trackpad-verified \
+        --output /config/companion/src/generated/keymap.json --check
 fi
 
 docker run --rm -e ZEPHYR_BASE=/work/zmk/zephyr \

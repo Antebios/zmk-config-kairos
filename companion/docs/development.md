@@ -19,6 +19,7 @@ companion/
     windowBehavior.ts    Effects: pin, opacity, size, saved settings, commands
     keys.ts              Key types, gestures, key builders
     layers.ts            The seven layers (hand-written key data)
+    generated/keymap.json  The compiled firmware keymap the tests compare against
     layout.ts            Combos, short names, hints, descriptions, filtering
     geometry.ts          Where each of the 44 keys sits on the grid
     components/          Keyboard, Legend, KeyDetails, ComboList, ShortcutsView,
@@ -71,6 +72,25 @@ Kairos44 thumbs.
 
 The tests catch a wrong key count, a combo that uses an invalid position, two
 combos on the same keys and layer, and key labels that are empty.
+
+### Checked against the firmware
+
+`src/generated/keymap.json` is the compiled keymap of the trackpad left build:
+every layer's 44 bindings and every combo, written by
+`scripts/generate_companion_keymap.py` in the repository root (it reads the
+compiled devicetree, as `scripts/validate_firmware.py` does). `src/keymap.test.ts`
+fails when the hand-written data disagrees with it, for example a key drawn as
+the wrong kind, a wrong label or hold action, a missing or extra combo, or a
+combo on the wrong keys or layers. It prints the layer, position and binding.
+
+When you change the keymap, build the firmware, then run
+`npm run keymap:generate` to refresh the file, and fix whatever
+`npm test` now reports. `npm run keymap:check` fails when the file is out of
+date; `scripts/verify-local.sh --trackpad` runs the same check, so a keymap
+change cannot pass the firmware gate without updating the app. The scripts read
+the compiled build from `~/kairos-build/zmk` (change it with `KAIROS_BUILD_DIR`
+and `ZEPHYR_BASE`) and need Python 3. Labels, hold-action text and the short
+combo names stay hand-written; only what the firmware does is checked.
 
 Never write what the private-text combos type. They are shown only as "Private
 text macro", so the window is safe to share on screen.
@@ -153,6 +173,7 @@ npm run test:rust      # Rust tests only
 | `src/geometry.test.ts`      | The grid position of every key                                                  |
 | `src/settings.test.ts`      | Settings parsing, clamping, migration and view cycling                          |
 | `src/keyboard.test.ts`      | Active layer, pointer mode, modifiers, locks and output labels                  |
+| `src/keymap.test.ts`        | Hand-written layers and combos against the compiled firmware keymap             |
 | `src/reference.test.ts`     | The generated reference page is up to date                                      |
 | `src/docs.test.ts`          | Manual pages, navigation, links and images are consistent                       |
 | `src-tauri/src/lib.rs`      | The command-line parser                                                         |
