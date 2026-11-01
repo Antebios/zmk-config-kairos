@@ -37,6 +37,39 @@ later presses toggle it.
 
 `npm run build:app` also builds installers. That path has not been tried.
 
+## Install it as a tray app
+
+The app runs from the tray (Windows), the status notifier tray (Linux) or the
+menu bar (macOS), so you can see whether it is running. The install script
+stops a running copy, builds, installs and registers a launcher entry for your
+platform:
+
+```sh
+npm run app:install     # build, install and register the launcher entry
+npm run app:start       # start the installed app
+npm run app:kill        # stop the running app
+npm run app:uninstall   # stop it and remove it (settings are kept)
+```
+
+Add `-- --skip-build` to `app:install` to reuse the last build.
+
+| Platform | What `app:install` does                                                                                                                | Where you start it                        | Tested |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ------ |
+| Linux    | Copies the binary to `~/.local/bin`, adds icons under `~/.local/share/icons/hicolor` and `~/.local/share/applications/*.desktop` file | The application launcher (Omarchy: Walker) | Yes    |
+| Windows  | Builds the NSIS installer and runs it silently for the current user; it adds a Start menu entry (Kairos44) and an uninstaller           | Start menu                                | No     |
+| macOS    | Builds the app bundle and copies it to `~/Applications`                                                                                | Launchpad or Spotlight                    | No     |
+
+The Windows and macOS paths are written but have not been run, because the
+development machine is Linux. The Windows installer needs the NSIS tools, which
+Tauri downloads on first use. A build for macOS is not signed or notarized, so
+the first start needs a right click and Open.
+
+Because the window hides to the tray when closed, a key binding that runs
+`kairos44-companion --toggle` and the tray icon both bring it back
+([Window controls](window-controls.md)). If you bound the binary under
+`src-tauri/target/release`, point the binding at the installed one
+(`~/.local/bin/kairos44-companion`) so it always runs what was last installed.
+
 ## All scripts
 
 | Script                         | Purpose                                                                 |
@@ -47,6 +80,11 @@ later presses toggle it.
 | `build`                        | Typecheck, then build the web bundle                                    |
 | `build:bin`                    | Release binary without installers                                       |
 | `build:app`                    | Release binary plus installers                                          |
+| `app:build`                    | Build the artifact `app:install` needs on this platform                 |
+| `app:install`                  | Stop the app, build, install and register the launcher entry            |
+| `app:uninstall`                | Stop the app and remove it                                              |
+| `app:start`                    | Start the installed app                                                 |
+| `app:kill`                     | Stop the running app                                                    |
 | `typecheck`, `typecheck:watch` | TypeScript check, once or watching                                      |
 | `test`, `test:watch`           | Frontend tests, once or watching                                        |
 | `test:rust`, `test:all`        | Rust tests, or frontend and Rust together                               |

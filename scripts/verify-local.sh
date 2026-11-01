@@ -39,6 +39,11 @@ docker run --rm -v "$workspace:/work/zmk" -v "$root:/config:ro" "$image" \
     -o /work/zmk/kairos44-display-status-test
 docker run --rm -v "$workspace:/work/zmk" "$image" /work/zmk/kairos44-display-status-test
 
+docker run --rm -v "$workspace:/work/zmk" -v "$root:/config:ro" "$image" \
+    gcc -std=c11 -Wall -Wextra -Werror /config/tests/kairos-telemetry/telemetry_test.c \
+    -o /work/zmk/kairos44-telemetry-test
+docker run --rm -v "$workspace:/work/zmk" "$image" /work/zmk/kairos44-telemetry-test
+
 build() {
     docker run --rm -e ZEPHYR_BASE=/work/zmk/zephyr \
         -v "$workspace:/work/zmk" -v "$1:/config:ro" -w /work/zmk "$image" \

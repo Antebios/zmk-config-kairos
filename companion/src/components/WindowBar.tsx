@@ -96,7 +96,8 @@ export function WindowBar() {
           </button>
           <button
             class="win-btn close"
-            aria-label="Close"
+            aria-label="Hide to tray"
+            title="Hide to tray. Quit from the tray icon menu."
             onClick={closeWindow}
           >
             ×

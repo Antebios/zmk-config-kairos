@@ -7,7 +7,86 @@ chat transcript. Update it when the checkpoint, gates or repository state change
 The desktop companion app is tracked separately in
 [kairos44-companion-app.md](kairos44-companion-app.md).
 
-## Latest Checkpoint: Display Render Fix Flashed (2026-10-12)
+## Latest Checkpoint: Phase 3 Telemetry Accepted (2026-11-01)
+
+The telemetry image first flashed (and its modifier fix, below) made the RIGHT half
+stall on battery: the trackpad and keys stopped about a second after the first
+touch, `LINK:` still read `R+`, and the right sensor's data-ready line stayed
+high with nothing reading it. Diagnosis with a right-half debug shell showed the
+right firmware alive and idle, with no stack overflow. A/B tests on the left
+half: the no-telemetry image passed twice; the full telemetry image failed every
+time, and so did a stage 1 image with only the second USB interface and no
+telemetry logic. Cause: the left half's input thread had a 512 byte stack with
+stack protection off, and it runs the display's `trackpad_event` (uses
+`snprintf`) and every input listener, so an overflow corrupted memory silently,
+and where it landed depended on memory layout. Fix, in
+`boards/shields/kairos44_trackpad_receiver/kairos44_trackpad_receiver.conf`:
+`CONFIG_INPUT_THREAD_STACK_SIZE=2048`,
+`CONFIG_ZMK_SPLIT_BLE_CENTRAL_SPLIT_RUN_STACK_SIZE=1024`,
+`CONFIG_ZMK_BLE_THREAD_STACK_SIZE=1024` (+2.3 KB RAM). The right half also got a
+precaution that turned out not to be the cause: `CONFIG_INPUT_QUEUE_MAX_MSGS=64`
+and `BT_BUF_ACL_TX_COUNT`, `BT_CONN_TX_MAX` and `BT_L2CAP_TX_BUF_COUNT` of 8
+(`kairos44_trackpad.conf`). The stall had never been seen with the earlier
+images, so it is the telemetry's change in memory layout that exposed the
+overflow, not the telemetry logic.
+
+Flashed LEFT image (full telemetry, stacks fixed; gate build is byte-identical):
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-host-telemetry-stack-fix.uf2`
+SHA256 `e868c5c3ef65bd94e1212af9169f9d36af00db4327f493f8ca77864b0d9e287d`
+(`SHA256SUMS-host-telemetry-stack-fix`; 365304 B flash, 95076 B RAM).
+Flashed RIGHT image (normal, with the precaution settings):
+`artifacts/kairos44-right-trackpad-i2c/kairos44-right-trackpad-i2c-tx-queue-fix.uf2`
+SHA256 `78f2e4e1641ff608615febc1cf1b0d46c4e18e65e674f1282e1feec142702472`
+(`SHA256SUMS-tx-queue-fix`). Rollback for the LEFT is
+`...-display-render-fix-caps-word.uf2` (no telemetry, SHA256 `c7db856d...`).
+A right-half debug variant with the same fix and a kernel shell is
+`artifacts/kairos44-right-trackpad-debug/kairos44-right-trackpad-debug-tx-queue-fix-diag.uf2`
+(`config/kairos44-trackpad-diag.conf`). Bisect images
+`bisect-telemetry-stage1.uf2` and `stage2.uf2` are in the left artifact folder;
+the `CONFIG_KAIROS44_HOST_TELEMETRY_DEBUG_STAGE` option (default 0, full) selects
+them and is not needed for normal builds.
+
+Accepted by the user: right trackpad and keys perfect on battery and on USB with
+the left on USB (full telemetry), typing, combos, Bluetooth to the host and a
+longer session unchanged, and telemetry snapshots after a USB replug (the hidraw
+node can change, for example `hidraw8` to `hidraw9`; find it with
+`readlink -f /dev/input/by-id/usb-ZMK_Project_Kairos44_6A5D691ABAC1CDB3-if01-hidraw`).
+Next: Phase 4, the Rust `hidapi` reader and a udev rule. The left display `MOD:`
+line still counts modifier events and can drift after Caps Word.
+
+## Previous Checkpoint: Host Telemetry Flashed, Typing Acceptance Pending (2026-10-31)
+
+Phase 3 of the companion app: the left receiver reports its layer, modifiers,
+locks and output to the computer through a second USB HID interface (usage page
+`0xFF4B`), so the app can follow the active layer. Specification, golden bytes,
+safety notes and the acceptance checklist are in
+[kairos44-host-telemetry.md](kairos44-host-telemetry.md). The full local gate
+passes (six targets, validators, native behaviour tests, telemetry host test).
+The option exists only in the left trackpad receiver build. LEFT uses 365272 B
+flash and 92724 B RAM.
+
+Flashed LEFT image:
+`artifacts/kairos44-left-trackpad-receiver/kairos44-left-trackpad-receiver-host-telemetry-modifier-fix.uf2`
+SHA256 `17071f7f9f2746a80fe48ffb00db2e5dfcee1895a3cd5b5262ac9985536c61fb`
+(`SHA256SUMS-host-telemetry-modifier-fix`). Serial `6A5D691ABAC1CDB3`, label and
+checksum were verified before copy and sync; the same serial came back as
+`ZMK_Project_Kairos44` with the extra `if01-hidraw` interface (usage page
+`0xFF4B`). An earlier image (`...-host-telemetry.uf2`, `e13e1cce...`) was flashed
+first; it counted modifier events and showed Shift stuck after Caps Word, so
+modifiers are now sampled from ZMK's keyboard report. Verified over hidraw: the
+snapshot request, layers 1 to 4 on and off, Shift from a home-row hold on and
+off, Num Lock, USB output. Not yet verified: typing, combo and trackpad
+feel with the telemetry, Bluetooth behaviour, and USB replug. The
+`/dev/hidraw8` node needs `sudo setfacl -m u:richard:rw` after each replug until
+the Phase 4 udev rule exists. The image also carries the Caps Word `SPACE`
+change. Rollback is `...-display-render-fix.uf2` (SHA256 below).
+
+The original bug, cut, copy and paste combos stopping until the keyboard is
+power cycled, is still unresolved. Next test for the user: when it happens, press
+the BASE reset chord (Lower, Raise and the original left Space) and read the
+display `LAYER:` and `MOD:` lines.
+
+## Previous Checkpoint: Display Render Fix Flashed (2026-10-12)
 
 User reports master is smooth over USB and BLE, but this branch is jittery over
 BLE only. Master uses the same per-pixel portrait render but never redraws on

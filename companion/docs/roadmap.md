@@ -9,8 +9,8 @@ the repository root. This page is the summary.
 | ----- | ------------------------------------------------------------------------ | -------------------------------------------- |
 | 0     | Plan and tracking document                                               | Done                                         |
 | 1     | Layer viewer with key types, gestures and combos                         | Done                                         |
-| 2     | Floating window, three views, pin, opacity, click-through, show and hide | Done on Hyprland; Windows and macOS untested |
-| 3     | Firmware sends the active layer to the computer                          | Not started                                  |
+| 2     | Floating window, three views, pin, opacity, click-through, show and hide | Done; Windows and macOS untested             |
+| 3     | Firmware sends the active layer to the computer                          | Done                                         |
 | 4     | App reads the keyboard and follows the active layer                      | Not started                                  |
 | 5     | Key data generated from the compiled keymap                              | Not started                                  |
 | 6     | Packaging for Linux and Windows                                          | Not started                                  |
@@ -23,8 +23,10 @@ layer the keyboard is on.
 Normal keyboard input does not say which layer is active, so this needs a small
 firmware addition on the left half, which is the half connected to the computer:
 
-- Add the community `zmk-raw-hid` module, which pins the same ZMK version this
-  keyboard config uses, and build it only into the left receiver.
+- Add a small USB-only telemetry module to this repository (the community
+  `zmk-raw-hid` module was rejected because it also adds a Bluetooth HID service),
+  and build it only into the left receiver. The report layout is in
+  `docs/kairos44-host-telemetry.md` in the repository root.
 - Send a short report only when the layer, modifiers, lock state or pointer mode
   changes, never on every key press or trackpad movement, and send a full
   snapshot when the app connects.

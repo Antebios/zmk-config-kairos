@@ -26,6 +26,7 @@ companion/
     manual/              Loads and renders the pages in docs/
   src-tauri/             Rust shell (Tauri 2)
     src/lib.rs           Commands, command-line parsing, show and hide
+    src/tray.rs          Tray icon and menu
     src/hyprland.rs      Hyprland control through hyprctl
     tauri.conf.json      Window and bundle configuration
     capabilities/        Permissions the web UI is granted
@@ -142,6 +143,7 @@ npm run test:rust      # Rust tests only
 | `src/reference.test.ts`     | The generated reference page is up to date                                      |
 | `src/docs.test.ts`          | Manual pages, navigation, links and images are consistent                       |
 | `src-tauri/src/lib.rs`      | The command-line parser                                                         |
+| `src-tauri/src/tray.rs`     | Tray menu ids map to commands                                                   |
 | `src-tauri/src/hyprland.rs` | `hyprctl` parsing, dispatcher expressions, on-screen clamping                   |
 
 ## The manual

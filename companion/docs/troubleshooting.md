@@ -1,5 +1,12 @@
 # Troubleshooting
 
+## There is no tray icon
+
+The icon needs a tray in your bar. The Omarchy bar has one (it may sit inside
+the expandable tray group). GNOME has no tray without an AppIndicator
+extension. If the tray is missing the app still runs as a plain window, and
+`kairos44-companion --quit` or `npm run app:kill` ends it.
+
 ## The window cannot be clicked
 
 Click-through is on. Press Esc while the window has focus, or run

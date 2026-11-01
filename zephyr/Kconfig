@@ -5,3 +5,31 @@ config KAIROS44_STATUS_DISPLAY
     select LV_USE_LABEL
     select LV_USE_CANVAS
     select LV_FONT_UNSCII_8
+
+config KAIROS44_HOST_TELEMETRY
+    bool "Kairos44 USB host telemetry"
+    depends on ZMK_USB && ZMK_SPLIT_ROLE_CENTRAL
+    depends on SHIELD_KAIROS44_TRACKPAD_RECEIVER
+    select USB_DEVICE_HID
+    help
+      Adds a second USB HID interface that reports the active layers, modifiers, lock state and
+      output to the host. Needs CONFIG_USB_HID_DEVICE_COUNT=2. See docs/kairos44-host-telemetry.md.
+
+config KAIROS44_HOST_TELEMETRY_COALESCE_MS
+    int "Delay before sending a changed state, in milliseconds"
+    depends on KAIROS44_HOST_TELEMETRY
+    default 20
+    range 5 200
+
+config KAIROS44_HOST_TELEMETRY_INIT_PRIORITY
+    int "Init priority of the telemetry HID device"
+    depends on KAIROS44_HOST_TELEMETRY
+    default 96
+    help
+      Must be above ZMK_USB_HID_INIT_PRIORITY (95), so ZMK's keyboard keeps the first interface.
+
+config KAIROS44_HOST_TELEMETRY_DEBUG_STAGE
+    int "Bisect aid: 0 full, 1 USB interface only, 2 listeners without sending"
+    depends on KAIROS44_HOST_TELEMETRY
+    default 0
+    range 0 2

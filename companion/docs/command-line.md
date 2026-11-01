@@ -23,6 +23,7 @@ If the app is not running, the same command starts it normally.
 | `--toggle-pin`                     | Pin or unpin the current view                           |
 | `--toggle-click-through`           | Turn click-through on or off                            |
 | `--manual`                         | Open or close the manual                                |
+| `--quit`                           | Quit the running app (closing the window only hides it) |
 
 Only one flag is used per call. Unknown flags are ignored, and `--view` with no
 name does nothing.

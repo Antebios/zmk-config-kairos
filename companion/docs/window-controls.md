@@ -68,8 +68,31 @@ and the app keeps it on screen after a resize.
 | `Esc` | Close the manual, or turn click-through off      |
 | `Tab` | Move through the keys; the details panel follows |
 
-## Closing
+## Closing and quitting
 
-Close ends the app. To keep it running but out of the way, hide it with
-`kairos44-companion --hide` or the bound show/hide key
+The Close button, and a close from your window manager, hide the window to the
+tray. The app keeps running; its tray icon is how you tell. To end the app, use
+**Quit Kairos44 Companion** in the tray menu, `kairos44-companion --quit`, or
+`npm run app:kill` ([Install and run](install.md)). To bring the window back, use
+the tray icon, the bound show/hide key, or `kairos44-companion --toggle`
 ([Command line](command-line.md)).
+
+## The tray icon
+
+While the app runs, a Kairos44 icon is in the system tray (Windows), the status
+notifier tray of your bar (Linux, including the Omarchy bar) or the menu bar
+(macOS). On macOS the app has no Dock icon.
+
+| Menu entry                 | Same as                       |
+| -------------------------- | ----------------------------- |
+| Show or hide window        | `--toggle`                    |
+| Next view                  | `--next-view`                 |
+| Pin on top or unpin        | `--toggle-pin`                |
+| Click-through on or off    | `--toggle-click-through`      |
+| Open or close the manual   | `--manual`                    |
+| Quit Kairos44 Companion    | `--quit`                      |
+
+On Windows and macOS a left click on the icon shows or hides the window and a
+right click opens the menu. On Linux the tray protocol has no click event, so
+any click opens the menu. The menu works while the window is hidden or
+click-through, so it is also the way out of click-through.

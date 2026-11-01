@@ -1,8 +1,9 @@
 mod hyprland;
+mod tray;
 
 use std::sync::Mutex;
 use std::thread;
-use tauri::{AppHandle, Emitter, LogicalSize, Manager, State, WebviewWindow};
+use tauri::{AppHandle, Emitter, LogicalSize, Manager, State, WebviewWindow, WindowEvent};
 use tauri_plugin_window_state::StateFlags;
 
 #[derive(Default)]
@@ -23,6 +24,8 @@ pub enum Command {
     NextView,
     SetView(String),
     Manual,
+    // Ends the app; closing the window only hides it to the tray.
+    Quit,
 }
 
 // Lets a window-manager keybinding drive a running instance, since a hidden or click-through window cannot be clicked.
@@ -37,6 +40,7 @@ pub fn parse_command(args: &[String]) -> Command {
             "--toggle-pin" => return Command::TogglePin,
             "--next-view" => return Command::NextView,
             "--manual" => return Command::Manual,
+            "--quit" => return Command::Quit,
             "--view" => {
                 if let Some(name) = rest.next() {
                     return Command::SetView(name.clone());
@@ -137,6 +141,7 @@ fn handle_command(app: &AppHandle, command: Command) {
             present(app, false);
             let _ = app.emit("toggle-manual", ());
         }
+        Command::Quit => app.exit(0),
     }
 }
 
@@ -176,6 +181,23 @@ pub fn run() {
                 .build(),
         )
         .manage(AppState::default())
+        .setup(|app| {
+            // A menu bar app on macOS: no Dock icon, only the tray icon.
+            #[cfg(target_os = "macos")]
+            app.set_activation_policy(tauri::ActivationPolicy::Accessory);
+            // Without a tray host (a bar with no tray) the app still works as a plain window.
+            if let Err(error) = tray::create(app) {
+                eprintln!("Tray icon unavailable: {error}");
+            }
+            Ok(())
+        })
+        // The window close button and a window manager close both hide to the tray.
+        .on_window_event(|window, event| {
+            if let WindowEvent::CloseRequested { api, .. } = event {
+                api.prevent_close();
+                dismiss(window.app_handle());
+            }
+        })
         .invoke_handler(tauri::generate_handler![set_always_on_top, set_window_size])
         .run(tauri::generate_context!())
         .expect("error while running Kairos44 Companion");
@@ -230,6 +252,11 @@ mod tests {
     #[test]
     fn recognises_the_manual_flag() {
         assert_eq!(parse(&["k", "--manual"]), Command::Manual);
+    }
+
+    #[test]
+    fn recognises_the_quit_flag() {
+        assert_eq!(parse(&["k", "--quit"]), Command::Quit);
     }
 
     #[test]

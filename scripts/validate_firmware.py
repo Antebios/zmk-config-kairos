@@ -307,6 +307,12 @@ def validate(build_dir, key_count, side, baseline_dir, dtlib, trackpad=False):
     fetching = "CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING=y"
     assert (fetching in config) == dual_status
     assert ("CONFIG_ZMK_HID_INDICATORS=y" in config) == dual_status
+    # Only the host-connected receiver half reports to a computer.
+    assert ("CONFIG_KAIROS44_HOST_TELEMETRY=y" in config) == dual_status
+    assert ("CONFIG_USB_HID_DEVICE_COUNT=2" in config) == dual_status
+    if dual_status:
+        assert "CONFIG_USB_DEVICE_HID=y" in config
+        assert "CONFIG_ENABLE_HID_INT_OUT_EP=y" not in config
     if dual_status:
         assert "CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y" in config
         assert "CONFIG_ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN=y" not in config
