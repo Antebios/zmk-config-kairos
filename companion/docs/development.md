@@ -180,6 +180,22 @@ npm run test:rust      # Rust tests only
 | `src-tauri/src/tray.rs`     | Tray menu ids map to commands                                                   |
 | `src-tauri/src/hyprland.rs` | `hyprctl` parsing, dispatcher expressions, on-screen clamping                   |
 | `src-tauri/src/keyboard.rs` | Keyboard report parsing against the golden bytes, and the snapshot request      |
+| `src/release.test.ts`       | One version everywhere, the udev rule in the Linux packages, the desktop entry  |
+
+## Releasing
+
+1. Change the version in `package.json`, `src-tauri/tauri.conf.json`,
+   `src-tauri/Cargo.toml` and `pkgver` in `packaging/arch/PKGBUILD`;
+   `npm test` fails until all four agree. Run `cargo check` once so `Cargo.lock`
+   follows.
+2. Run `npm run check`.
+3. Run `npm run package` on each platform you ship for. The files and their
+   `SHA256SUMS` are in `release/` ([Install and run](install.md)).
+
+The Linux packages declare their libraries (WebKitGTK 4.1, GTK 3, the tray
+library and libudev) and ship the udev rule from `contrib/udev`. Bundle settings
+are in `src-tauri/tauri.conf.json` under `bundle`; the Arch package is
+`packaging/arch/PKGBUILD`.
 
 ## The manual
 

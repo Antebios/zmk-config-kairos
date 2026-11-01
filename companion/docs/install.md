@@ -70,6 +70,35 @@ Because the window hides to the tray when closed, a key binding that runs
 `src-tauri/target/release`, point the binding at the installed one
 (`~/.local/bin/kairos44-companion`) so it always runs what was last installed.
 
+## Packages
+
+`npm run package` builds installable packages for the platform you run it on
+and collects them in `release/` with a `SHA256SUMS` file. A package for another
+platform has to be built on that platform.
+
+| Platform                  | Produces                                                  | Install with                                  | Tested |
+| ------------------------- | --------------------------------------------------------- | --------------------------------------------- | ------ |
+| Arch Linux and Omarchy    | `kairos44-companion-<version>-1-x86_64.pkg.tar.zst`       | `sudo pacman -U` that file                    | Built and inspected |
+| Debian and Ubuntu         | `Kairos44-Companion_<version>_amd64.deb`                  | `sudo apt install ./` that file               | Built and inspected |
+| Fedora and openSUSE       | `Kairos44-Companion-<version>-1.x86_64.rpm`               | `sudo dnf install ./` that file               | Built and inspected |
+| Any Linux                 | `Kairos44-Companion_<version>_amd64.AppImage`             | Make it executable and run it                 | Starts |
+| Windows                   | `Kairos44 Companion_<version>_x64-setup.exe` (NSIS)       | Run it; adds the Start menu entry             | No     |
+| macOS                     | `.dmg` containing the app                                 | Drag the app to Applications                  | No     |
+
+The Arch, Debian and RPM packages install the udev rule, so reading the keyboard
+needs no extra step. The AppImage cannot install system files, so use the rule
+from the section below with it. Arch packaging needs `makepkg`, `rust`, `nodejs`
+and `npm`; the package is built from this checkout (`packaging/arch/PKGBUILD`),
+not from a downloaded source, and its licence field says `custom` because the
+project has no licence file yet. If you installed with `npm run app:install`,
+run `npm run app:uninstall` first so the packaged copy is the one that starts, and delete
+`/etc/udev/rules.d/70-kairos44-companion.rules` if you installed the rule by hand.
+
+The Windows installer is built by `npm run package` on Windows with Node.js, Rust
+(MSVC) and the WebView2 runtime; Tauri downloads the NSIS tools on first use. It
+installs for the current user and needs no administrator rights. The Windows and
+macOS packages have not been built.
+
 ## Reading the keyboard on Linux
 
 The keyboard's state report is a raw HID device that only root can open by
@@ -97,6 +126,7 @@ keyboard. Nothing is needed on Windows or macOS ([Live layer sync](live-sync.md)
 | `build:bin`                    | Release binary without installers                                       |
 | `build:app`                    | Release binary plus installers                                          |
 | `app:build`                    | Build the artifact `app:install` needs on this platform                 |
+| `package`                      | Build distributable packages for this platform into `release/`         |
 | `app:install`                  | Stop the app, build, install and register the launcher entry            |
 | `app:uninstall`                | Stop the app and remove it                                              |
 | `app:start`                    | Start the installed app                                                 |

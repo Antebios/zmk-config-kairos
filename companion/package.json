@@ -15,6 +15,7 @@
     "app:uninstall": "node scripts/app.mjs uninstall",
     "app:start": "node scripts/app.mjs start",
     "app:kill": "node scripts/app.mjs kill",
+    "package": "node scripts/app.mjs package",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch",
     "test": "vitest run",

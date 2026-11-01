@@ -12,6 +12,7 @@ npm run dev:app       # native window with hot reload
 npm run build:bin     # release binary: src-tauri/target/release/kairos44-companion
 npm run app:install   # build, then install with a launcher entry (see docs/install.md)
 npm run app:kill      # stop the running app
+npm run package       # build installable packages into release/
 npm run check         # typecheck, frontend and Rust tests, cargo check
 npm run docs:serve    # preview the manual as a website (needs requirements-docs.txt)
 ```

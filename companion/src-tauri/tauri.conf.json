@@ -31,6 +31,21 @@
     "targets": "all",
     "category": "Utility",
     "shortDescription": "Floating Kairos44 keyboard layer and shortcut viewer",
+    "longDescription": "A floating window that shows the Kairos44 keyboard's layers, key types, gestures and combos, and follows the layer the keyboard is on over USB.",
+    "linux": {
+      "deb": {
+        "depends": ["libudev1"],
+        "files": {
+          "/usr/lib/udev/rules.d/70-kairos44-companion.rules": "../contrib/udev/70-kairos44-companion.rules"
+        }
+      },
+      "rpm": {
+        "depends": ["systemd-libs"],
+        "files": {
+          "/usr/lib/udev/rules.d/70-kairos44-companion.rules": "../contrib/udev/70-kairos44-companion.rules"
+        }
+      }
+    },
     "windows": {
       "nsis": {
         "installMode": "currentUser",

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Kairos44 Companion
+Comment=Floating Kairos44 keyboard layer and shortcut viewer
+Exec=kairos44-companion
+Icon=kairos44-companion
+Terminal=false
+Categories=Utility;
+Keywords=keyboard;layers;kairos;zmk;shortcuts;
+StartupWMClass=kairos44-companion

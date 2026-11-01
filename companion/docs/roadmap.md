@@ -12,8 +12,8 @@ the repository root. This page is the summary.
 | 2     | Floating window, three views, pin, opacity, click-through, show and hide | Done; Windows and macOS untested             |
 | 3     | Firmware sends the active layer to the computer                          | Done                                         |
 | 4     | App reads the keyboard and follows the active layer                      | Done; Windows and macOS untested             |
-| 5     | Key data generated from the compiled keymap                              | Built; awaiting your acceptance              |
-| 6     | Packaging for Linux and Windows                                          | Not started                                  |
+| 5     | Key data generated from the compiled keymap                              | Done                                         |
+| 6     | Packaging for Linux and Windows                                          | In progress                                  |
 
 ## Live layer sync (phases 3 and 4)
 
@@ -52,4 +52,4 @@ Flashing firmware needs your confirmation and is never done automatically.
 | Windows and macOS                          | Pinning, hiding, show and hide, and click-through are untested there                                    |
 | Real click-through check                   | Confirm that clicks reach the window underneath                                                         |
 | `rustfmt` and `clippy`                     | Not installed on the development machine; then add lint scripts                                         |
-| Installers                                 | `npm run build:app` has not been tried                                                                  |
+| Installers for Windows and macOS           | Written but never built; `npm run package` must be run on those systems                               |

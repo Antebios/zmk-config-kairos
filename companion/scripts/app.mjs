@@ -1,10 +1,12 @@
 // Build, install, start, stop and remove the app on the current platform: node scripts/app.mjs <command>.
 import { spawn, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   chmodSync,
   copyFileSync,
   existsSync,
   mkdirSync,
+  readFileSync,
   readdirSync,
   renameSync,
   rmSync,
@@ -236,7 +238,58 @@ function start() {
   console.log(`Started ${PRODUCT}.`);
 }
 
-const commands = { kill, build, install, uninstall, start };
+// Distributable files, collected in release/ with a checksum list. Linux also builds the Arch package.
+function makePackages() {
+  const out = join(root, "release");
+  rmSync(out, { recursive: true, force: true });
+  mkdirSync(out, { recursive: true });
+  const npm = platform === "win32" ? "npm.cmd" : "npm";
+  const bundles =
+    platform === "win32"
+      ? "nsis"
+      : platform === "darwin"
+        ? "app,dmg"
+        : "deb,rpm,appimage";
+  const status = run(npm, ["run", "tauri", "--", "build", "--bundles", bundles], {
+    cwd: root,
+  });
+  if (status !== 0) fail("The build failed.");
+
+  const files = [];
+  const bundleRoot = join(release, "bundle");
+  for (const folder of readdirSync(bundleRoot)) {
+    const directory = join(bundleRoot, folder);
+    if (!statSync(directory).isDirectory()) continue;
+    for (const file of readdirSync(directory)) {
+      if (/\.(deb|rpm|AppImage|exe|msi|dmg)$/.test(file)) {
+        files.push(join(directory, file));
+      }
+    }
+  }
+  const arch = join(root, "packaging", "arch");
+  if (platform === "linux" && quietly("makepkg", ["--version"]) === 0) {
+    rmSync(join(arch, "pkg"), { recursive: true, force: true });
+    if (run("makepkg", ["-f", "--noconfirm"], { cwd: arch }) !== 0) {
+      fail("makepkg failed.");
+    }
+    for (const file of readdirSync(arch)) {
+      if (file.endsWith(".pkg.tar.zst")) files.push(join(arch, file));
+    }
+  }
+  if (files.length === 0) fail("No packages were produced.");
+
+  const sums = [];
+  for (const file of files) {
+    const name = file.split(/[\\/]/).pop().replace(/ /g, "-");
+    copyFileSync(file, join(out, name));
+    const digest = createHash("sha256").update(readFileSync(file)).digest("hex");
+    sums.push(`${digest}  ${name}`);
+  }
+  writeFileSync(join(out, "SHA256SUMS"), `${sums.join("\n")}\n`);
+  console.log(`Packages in ${out}:\n${sums.join("\n")}`);
+}
+
+const commands = { kill, build, install, uninstall, start, package: makePackages };
 const [name, ...args] = process.argv.slice(2);
 if (!commands[name]) {
   fail(`Usage: node scripts/app.mjs <${Object.keys(commands).join("|")}>`);
