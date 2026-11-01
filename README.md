@@ -7,6 +7,10 @@ files and recreate the original build baseline without this machine's `/tmp`.
 For editing keys, navigating the configuration, running builds/tests and working
 with Git, see [Using This Repository](docs/repository-guide.md).
 
+For research and future planning to support other ZMK/QMK keyboards, see
+[Generic Companion Planning](docs/generic-companion/README.md).
+This is feasibility documentation, not implemented generic support.
+
 For every Kairos44 layer, combo, tap/hold action and macro, see the single
 [Kairos44 Printable Reference](docs/kairos44-reference.md).
 
