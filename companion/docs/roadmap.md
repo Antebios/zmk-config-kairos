@@ -11,7 +11,7 @@ the repository root. This page is the summary.
 | 1     | Layer viewer with key types, gestures and combos                         | Done                                         |
 | 2     | Floating window, three views, pin, opacity, click-through, show and hide | Done; Windows and macOS untested             |
 | 3     | Firmware sends the active layer to the computer                          | Done                                         |
-| 4     | App reads the keyboard and follows the active layer                      | Built; awaiting your acceptance              |
+| 4     | App reads the keyboard and follows the active layer                      | Done; Windows and macOS untested             |
 | 5     | Key data generated from the compiled keymap                              | Not started                                  |
 | 6     | Packaging for Linux and Windows                                          | Not started                                  |
 
