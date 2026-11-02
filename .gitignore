@@ -1,3 +1,4 @@
 /artifacts/
 /artifacts/__pycache__/
 /scripts/__pycache__/
+.vscode/settings.json

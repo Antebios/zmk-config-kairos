@@ -2,6 +2,9 @@ export const SETTINGS_KEY = "kairos44.window";
 export const MIN_OPACITY = 0.3;
 export const MIN_SIZE = 240;
 export const MAX_SIZE = 4000;
+export const DEFAULT_PEEK_DURATION_MS = 5000;
+export const MIN_PEEK_DURATION_MS = 500;
+export const MAX_PEEK_DURATION_MS = 60000;
 
 export const VIEWS = ["normal", "compact", "shortcuts"] as const;
 export type ViewId = (typeof VIEWS)[number];
@@ -26,6 +29,8 @@ export interface ViewSettings {
 export interface WindowSettings {
   view: ViewId;
   skipTaskbar: boolean;
+  layerPeek: boolean;
+  peekDurationMs: number;
   views: Record<ViewId, ViewSettings>;
 }
 
@@ -57,6 +62,8 @@ export function defaultSettings(): WindowSettings {
   return {
     view: "normal",
     skipTaskbar: false,
+    layerPeek: false,
+    peekDurationMs: DEFAULT_PEEK_DURATION_MS,
     views: {
       normal: structuredClone(DEFAULT_VIEW_SETTINGS.normal),
       compact: structuredClone(DEFAULT_VIEW_SETTINGS.compact),
@@ -118,6 +125,15 @@ export function parseSettings(raw: string | null): WindowSettings {
 
   if (typeof value.skipTaskbar === "boolean")
     result.skipTaskbar = value.skipTaskbar;
+  if (typeof value.layerPeek === "boolean") result.layerPeek = value.layerPeek;
+  if (
+    typeof value.peekDurationMs === "number" &&
+    Number.isFinite(value.peekDurationMs)
+  ) {
+    result.peekDurationMs = Math.round(
+      Math.min(MAX_PEEK_DURATION_MS, Math.max(MIN_PEEK_DURATION_MS, value.peekDurationMs)),
+    );
+  }
   if (isViewId(value.view)) result.view = value.view;
 
   if (isRecord(value.views)) {

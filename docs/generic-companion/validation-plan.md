@@ -9,7 +9,7 @@ See the [implementation work items](implementation-plan.md) for dependencies.
 
 ## Documentation Preservation Gate
 
-For this documentation-only task, verify all four planning documents are present,
+For preservation of this research, verify all planning documents are present,
 internal file links resolve, no machine/session-specific paths are required, and
 all substantive research and the confirmed firmware decision are preserved.
 No app build or firmware test is necessary to save the research.
@@ -24,6 +24,10 @@ Use the bundled Kairos44 profile to check:
   details and generated reference remain consistent.
 - Manual, CLI commands, show/hide, pinning, opacity, click-through and remembered
   per-view settings retain intended behavior.
+- Optional layer peeks stay off by default; disabled mode never reveals a hidden
+  window. Preserve adjustable duration, BASE transitions, ignored non-layer
+  telemetry, baseline resets and explicit-show overrides. Apply the additional
+  [peek validation requirements](layer-peek.md).
 - Follow/manual selection, disconnect fallback, modifiers, known/unknown locks,
   pointer modes, output selection and Bluetooth profile display remain correct.
 - Profile changes do not leave invalid layer/key/combo selections or contaminate

@@ -21,6 +21,7 @@ If the app is not running, the same command starts it normally.
 | `--next-view`                      | Cycle Normal, Compact, Shortcuts                        |
 | `--view <name>` or `--view=<name>` | Select `normal`, `compact` or `shortcuts`               |
 | `--toggle-pin`                     | Pin or unpin the current view                           |
+| `--toggle-layer-peek`              | Enable or disable optional layer-change peeks (off by default) |
 | `--toggle-click-through`           | Turn click-through on or off                            |
 | `--manual`                         | Open or close the manual                                |
 | `--quit`                           | Quit the running app (closing the window only hides it) |
@@ -38,6 +39,10 @@ take focus, because you asked for the window explicitly.
 Hiding is done by the window system. On Hyprland the window is moved to a
 private workspace and brought back on show, keeping its position, size and
 pin state ([Hyprland](hyprland.md)). Elsewhere the window is hidden and shown.
+
+With optional [Layer peek](window-controls.md) enabled, explicit show/toggle-show
+keeps the window open until you hide it. `--hide` re-arms automatic peeks;
+`--toggle-layer-peek` disables the mode entirely if it is currently enabled.
 
 ## Using the commands
 

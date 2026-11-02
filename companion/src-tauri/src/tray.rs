@@ -7,6 +7,7 @@ use crate::{handle_command, Command};
 const TOGGLE: &str = "toggle";
 const NEXT_VIEW: &str = "next-view";
 const TOGGLE_PIN: &str = "toggle-pin";
+const TOGGLE_LAYER_PEEK: &str = "toggle-layer-peek";
 const TOGGLE_CLICK_THROUGH: &str = "toggle-click-through";
 const MANUAL: &str = "manual";
 const QUIT: &str = "quit";
@@ -16,6 +17,7 @@ pub fn command_for_menu_id(id: &str) -> Option<Command> {
         TOGGLE => Some(Command::Toggle),
         NEXT_VIEW => Some(Command::NextView),
         TOGGLE_PIN => Some(Command::TogglePin),
+        TOGGLE_LAYER_PEEK => Some(Command::ToggleLayerPeek),
         TOGGLE_CLICK_THROUGH => Some(Command::ToggleClickThrough),
         MANUAL => Some(Command::Manual),
         QUIT => Some(Command::Quit),
@@ -30,6 +32,7 @@ pub fn create(app: &App) -> tauri::Result<()> {
     let toggle = item(TOGGLE, "Show or hide window")?;
     let next_view = item(NEXT_VIEW, "Next view")?;
     let toggle_pin = item(TOGGLE_PIN, "Pin on top or unpin")?;
+    let layer_peek = item(TOGGLE_LAYER_PEEK, "Layer peek on or off")?;
     let click_through = item(TOGGLE_CLICK_THROUGH, "Click-through on or off")?;
     let manual = item(MANUAL, "Open or close the manual")?;
     let separator = PredefinedMenuItem::separator(handle)?;
@@ -40,6 +43,7 @@ pub fn create(app: &App) -> tauri::Result<()> {
             &toggle,
             &next_view,
             &toggle_pin,
+            &layer_peek,
             &click_through,
             &manual,
             &separator,
@@ -84,6 +88,7 @@ mod tests {
             TOGGLE,
             NEXT_VIEW,
             TOGGLE_PIN,
+            TOGGLE_LAYER_PEEK,
             TOGGLE_CLICK_THROUGH,
             MANUAL,
             QUIT,

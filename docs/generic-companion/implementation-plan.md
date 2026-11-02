@@ -98,6 +98,10 @@ for each accepted target rather than waiting for every wireless configuration.
   macro redaction across imports, generated references and diagnostics.
 - More layer/gesture/custom-state support must not silently change Kairos44's
   existing labels, pointer interpretation, shortcuts or follow behavior.
+- Preserve optional, default-off layer peeks and explicit-show browsing overrides.
+  Derive peek transitions from authoritative effective reference-layer identity,
+  not Kairos44-specific mask bits. See [peek findings and planning](layer-peek.md)
+  for current implementation boundaries and P2/P4/P5 follow-up requirements.
 
 ## Decisions Required Before The Relevant Phase
 

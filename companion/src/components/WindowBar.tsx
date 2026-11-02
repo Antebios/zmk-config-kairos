@@ -4,6 +4,10 @@ import {
   alwaysOnTop,
   clickThrough,
   manualOpen,
+  layerPeek,
+  setLayerPeek,
+  settingsOpen,
+  setSettingsOpen,
   opacity,
   setAlwaysOnTop,
   setClickThrough,
@@ -14,7 +18,8 @@ import {
   skipTaskbar,
   view,
 } from "../store";
-import { closeWindow, minimizeWindow } from "../windowing";
+import { closeWindow, inTauri, minimizeWindow } from "../windowing";
+import { Settings } from "./Settings";
 
 export function WindowBar() {
   return (
@@ -39,6 +44,26 @@ export function WindowBar() {
           </For>
         </div>
         <div class="bar-controls">
+          <button
+            class="toggle"
+            classList={{ on: layerPeek() }}
+            aria-pressed={layerPeek()}
+            disabled={!inTauri()}
+            title={inTauri()
+              ? "Show briefly only when the keyboard layer changes"
+              : "Layer peek requires the desktop app"}
+            onClick={() => setLayerPeek(!layerPeek())}
+          >
+            Layer peek
+          </button>
+          <button
+            class="toggle"
+            classList={{ on: settingsOpen() }}
+            aria-expanded={settingsOpen()}
+            onClick={() => setSettingsOpen(!settingsOpen())}
+          >
+            Settings
+          </button>
           <button
             class="toggle"
             classList={{ on: alwaysOnTop() }}
@@ -103,6 +128,9 @@ export function WindowBar() {
             ×
           </button>
         </div>
+        <Show when={settingsOpen()}>
+          <Settings />
+        </Show>
       </div>
       <Show when={clickThrough()}>
         <p class="banner">

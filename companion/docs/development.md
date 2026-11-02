@@ -17,13 +17,14 @@ companion/
     settings.ts          Settings schema, defaults, parsing and migration
     windowing.ts         Calls into Tauri (window actions, resize, events)
     windowBehavior.ts    Effects: pin, opacity, size, saved settings, commands
+    layerPeek.ts         Layer-change visibility and auto-hide timer
     keys.ts              Key types, gestures, key builders
     layers.ts            The seven layers (hand-written key data)
     generated/keymap.json  The compiled firmware keymap the tests compare against
     layout.ts            Combos, short names, hints, descriptions, filtering
     geometry.ts          Where each of the 44 keys sits on the grid
     components/          Keyboard, Legend, KeyDetails, ComboList, ShortcutsView,
-                         LayerTabs, KeyboardStatus, WindowBar, Manual
+                         LayerTabs, KeyboardStatus, WindowBar, Settings, Manual
     keyboard.ts          Layer, mode, modifier and lock logic for the live state
     manual/              Loads and renders the pages in docs/
   src-tauri/             Rust shell (Tauri 2)
@@ -104,6 +105,8 @@ JSON:
 {
   "view": "normal",
   "skipTaskbar": false,
+  "layerPeek": false,
+  "peekDurationMs": 5000,
   "views": {
     "normal": {
       "alwaysOnTop": true,
@@ -128,6 +131,17 @@ JSON:
 0.3 to 1 and sizes to 240 to 4000, falls back to defaults for anything invalid,
 and migrates the earlier single-window format (`alwaysOnTop`, `skipTaskbar`,
 `opacity`) to every view. Click-through is deliberately never stored.
+Layer peek defaults off, including for old settings. Its duration is finite,
+rounded to milliseconds and clamped to 500–60000 ms. The Settings panel edits
+seconds; manual/Settings open state and explicit-show overrides are not saved.
+
+`layerPeek.ts` compares `activeLayer`, not the raw layer mask or `highest`
+(which can include pointer-mode layers). It uses the first connected state as
+a baseline, resets on disconnect, and only peeks while following live state.
+Explicit shows and browsing hold visibility until manual hide. The UI serializes
+visibility requests; the native side serializes compositor operations as well.
+The native command completes after the operation, not after launching a detached
+show/hide thread, so a delayed show cannot overtake the timer's hide.
 
 ## Rust side
 
@@ -137,6 +151,9 @@ and migrates the earlier single-window format (`alwaysOnTop`, `skipTaskbar`,
 | Command `set_window_size(width, height)` | Resizes the window; on Hyprland also resizes it through the compositor and keeps it on screen |
 | Event `toggle-click-through`             | Emitted by `--toggle-click-through`                                                           |
 | Event `toggle-pin`                       | Emitted by `--toggle-pin`                                                                     |
+| Event `toggle-layer-peek`                | Emitted by `--toggle-layer-peek` and the tray toggle                                           |
+| Event `window-visibility`                | Boolean explicit show/hide notification from CLI, tray or close; updates the peek override    |
+| Command `set_window_visible(visible)`     | Automatic non-focusing show/hide through the native/Hyprland path; does not emit a manual override |
 | Event `next-view`                        | Emitted by `--next-view`                                                                      |
 | Event `set-view`                         | Emitted by `--view <name>`, carrying the name                                                 |
 | Event `toggle-manual`                    | Emitted by `--manual`                                                                         |
@@ -172,6 +189,8 @@ npm run test:rust      # Rust tests only
 | `src/views.test.ts`         | Combo hints, key descriptions, the filter, private-text safety                  |
 | `src/geometry.test.ts`      | The grid position of every key                                                  |
 | `src/settings.test.ts`      | Settings parsing, clamping, migration and view cycling                          |
+| `src/layerPeek.test.ts`     | Exact peek deadlines, reconnect baselines, noise, browsing, overrides and cleanup |
+| `src/windowing.test.ts`     | Serialized native visibility requests, logged failures and browser isolation    |
 | `src/keyboard.test.ts`      | Active layer, pointer mode, modifiers, locks and output labels                  |
 | `src/keymap.test.ts`        | Hand-written layers and combos against the compiled firmware keymap             |
 | `src/reference.test.ts`     | The generated reference page is up to date                                      |

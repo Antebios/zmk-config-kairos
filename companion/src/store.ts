@@ -42,6 +42,9 @@ const saved = parseSettings(
 export const [view, setView] = createSignal<ViewId>(saved.view);
 export const [viewSettings, setViewSettings] = createSignal(saved.views);
 export const [skipTaskbar, setSkipTaskbar] = createSignal(saved.skipTaskbar);
+export const [layerPeek, setLayerPeek] = createSignal(saved.layerPeek);
+export const [peekDurationMs, setPeekDurationMs] = createSignal(saved.peekDurationMs);
+export const [settingsOpen, setSettingsOpen] = createSignal(false);
 export const [clickThrough, setClickThrough] = createSignal(false);
 // The manual replaces the current view while open and is never saved.
 export const [manualOpen, setManualOpen] = createSignal(false);

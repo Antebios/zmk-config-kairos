@@ -23,6 +23,10 @@ future implementation phases.
   plug-and-play with every untouched ZMK/QMK keyboard.
 - Detailed live tap-dance progress and macro execution are possible extensions,
   not existing features that must be preserved.
+- The Kairos44 app now has optional, default-off layer-change peeks with a saved,
+  adjustable 5-second default. This is a current-app enhancement, not approval
+  to begin generic application/profile/adapter implementation. Preserve it in
+  future parity work; see [layer-peek findings and planning](layer-peek.md).
 
 ## Documents
 
@@ -31,6 +35,7 @@ future implementation phases.
 | [Feasibility assessment](feasibility.md) | Inspected source coupling, compatibility matrix, firmware/driver requirements, upstream evidence and limitations |
 | [Future implementation plan](implementation-plan.md) | Recommended architecture, phased work items, dependencies, acceptance criteria and unresolved decisions |
 | [Validation plan](validation-plan.md) | Required application, import, protocol, platform, hardware and privacy checks |
+| [Layer-peek findings and planning](layer-peek.md) | Current Kairos44 behavior, reusable boundaries and future generic acceptance criteria |
 
 The documents are self-contained repository work products; they do not depend on
 the original chat, session database, absolute local paths or generated build
@@ -43,7 +48,7 @@ point, including its formerly unanswered firmware-policy question.
    working tree including untracked files. Saving files locally does not publish
    them; no commit or push is implied by this documentation task.
 2. On the other computer, check the branch and `git status --short`, then read this
-   page and the three linked documents before changing anything.
+   page and the linked documents before changing anything.
 3. Use the [repository guide](../repository-guide.md) and
    [existing session handoff](../session-handoff.md) for build-workspace setup.
    Reinspect current source and pinned dependencies; the research is a snapshot.

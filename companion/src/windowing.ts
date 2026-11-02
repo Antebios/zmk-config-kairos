@@ -37,6 +37,16 @@ export async function applyWindowSize(size: Size): Promise<void> {
   }
 }
 
+// Serialize visibility changes so a slow compositor show cannot overtake the auto-hide.
+let visibilityChange = Promise.resolve();
+export function applyWindowVisibility(visible: boolean): Promise<void> {
+  if (!inTauri()) return Promise.resolve();
+  visibilityChange = visibilityChange
+    .then(() => invoke<void>("set_window_visible", { visible }))
+    .catch((error: unknown) => console.warn("Changing window visibility failed", error));
+  return visibilityChange;
+}
+
 // The reader thread may have connected before the UI started listening.
 export async function currentKeyboard(): Promise<KeyboardLink | null> {
   if (!inTauri()) return null;

@@ -11,12 +11,18 @@ import {
   clickThrough,
   followKeyboard,
   keyboard,
+  layerPeek,
+  peekDurationMs,
+  manualOpen,
+  settingsOpen,
   opacity,
   setAlwaysOnTop,
   setClickThrough,
   setKeyboard,
+  setLayerPeek,
   setManualOpen,
   setSelectedLayer,
+  setSettingsOpen,
   setView,
   setViewSize,
   skipTaskbar,
@@ -29,11 +35,13 @@ import {
   applyClickThrough,
   applySkipTaskbar,
   applyWindowSize,
+  applyWindowVisibility,
   currentKeyboard,
   inTauri,
   onCommand,
   onWindowResized,
 } from "./windowing";
+import { createLayerPeek } from "./layerPeek";
 
 const RESIZE_SETTLE_MS = 500;
 // The compositor reports intermediate sizes while it applies the size of a newly selected view.
@@ -71,6 +79,8 @@ export function useWindowBehavior(): void {
     const snapshot: WindowSettings = {
       view: view(),
       skipTaskbar: skipTaskbar(),
+      layerPeek: layerPeek(),
+      peekDurationMs: peekDurationMs(),
       views: viewSettings(),
     };
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(snapshot));
@@ -79,14 +89,37 @@ export function useWindowBehavior(): void {
   onMount(() => {
     document.documentElement.dataset.shell = inTauri() ? "tauri" : "browser";
 
+    const peek = createLayerPeek(
+      (visible) => void applyWindowVisibility(visible),
+    );
+    if (inTauri()) {
+      createEffect(() =>
+        peek.update({
+          enabled: layerPeek(),
+          durationMs: peekDurationMs(),
+          following: followKeyboard(),
+          browsing: manualOpen() || settingsOpen(),
+          keyboard: keyboard(),
+        }),
+      );
+    }
+
     let settleTimer: ReturnType<typeof setTimeout> | undefined;
     void currentKeyboard().then((initial) => {
       if (initial) setKeyboard(initial);
     });
     const listeners = Promise.all([
       onCommand<KeyboardLink>("keyboard-state", setKeyboard),
+      onCommand<boolean>("window-visibility", (visible) => {
+        if (!visible) {
+          setManualOpen(false);
+          setSettingsOpen(false);
+        }
+        peek.manualVisibility(visible);
+      }),
       onCommand("toggle-click-through", () => setClickThrough((on) => !on)),
       onCommand("toggle-pin", () => setAlwaysOnTop((on) => !on)),
+      onCommand("toggle-layer-peek", () => setLayerPeek((on) => !on)),
       onCommand("next-view", () => setView(nextView(view()))),
       onCommand("toggle-manual", () => setManualOpen((open) => !open)),
       onCommand<string>("set-view", (name) => {
@@ -107,6 +140,7 @@ export function useWindowBehavior(): void {
       if (event.key === "Escape") {
         setClickThrough(false);
         setManualOpen(false);
+        setSettingsOpen(false);
       } else if (event.key === "F1") {
         event.preventDefault();
         setManualOpen((open) => !open);
@@ -116,6 +150,7 @@ export function useWindowBehavior(): void {
 
     onCleanup(() => {
       clearTimeout(settleTimer);
+      peek.dispose();
       window.removeEventListener("keydown", onKey);
       void listeners.then((stops) => stops.forEach((stop) => stop()));
     });

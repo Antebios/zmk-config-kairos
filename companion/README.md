@@ -3,6 +3,10 @@
 A floating desktop window that shows the Kairos44 keyboard's layers, key types,
 gestures and combos. Built with Tauri 2, SolidJS and Vite.
 
+Optional **Layer peek** (off by default) shows the window only on live layer
+changes, then auto-hides. Adjust its default 5-second duration in **Settings**.
+See [window controls](docs/window-controls.md).
+
 The full user manual is in [docs/index.md](docs/index.md). It is also inside the
 app (Manual button or `F1`) and builds as a MkDocs site.
 

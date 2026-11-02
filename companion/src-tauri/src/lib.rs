@@ -9,6 +9,7 @@ use tauri_plugin_window_state::StateFlags;
 
 #[derive(Default)]
 struct AppState {
+    visibility: Mutex<()>,
     // Last pin requested by the UI, re-applied when the window is shown again.
     pinned: Mutex<bool>,
     // Latest keyboard connection and state, for a UI that starts after the first event.
@@ -24,6 +25,7 @@ pub enum Command {
     Toggle,
     ToggleClickThrough,
     TogglePin,
+    ToggleLayerPeek,
     NextView,
     SetView(String),
     Manual,
@@ -41,6 +43,7 @@ pub fn parse_command(args: &[String]) -> Command {
             "--toggle" => return Command::Toggle,
             "--toggle-click-through" => return Command::ToggleClickThrough,
             "--toggle-pin" => return Command::TogglePin,
+            "--toggle-layer-peek" => return Command::ToggleLayerPeek,
             "--next-view" => return Command::NextView,
             "--manual" => return Command::Manual,
             "--quit" => return Command::Quit,
@@ -68,64 +71,86 @@ fn is_hidden(window: &WebviewWindow) -> bool {
     !window.is_visible().unwrap_or(true)
 }
 
-fn present(app: &AppHandle, take_focus: bool) {
-    let Some(window) = app.get_webview_window("main") else {
-        return;
-    };
+fn present(app: &AppHandle, take_focus: bool) -> Result<(), String> {
+    let state = app.state::<AppState>();
+    let _visibility = state.visibility.lock().unwrap();
+    let window = app
+        .get_webview_window("main")
+        .ok_or("Main window unavailable")?;
     if hyprland::is_available() {
         let pinned = *app.state::<AppState>().pinned.lock().unwrap();
         let pid = std::process::id();
-        thread::spawn(move || {
-            // Showing a window can pull focus to it, which would swallow what the user is typing.
-            let previous = if take_focus {
-                None
-            } else {
-                hyprland::active_address()
-            };
-            if hyprland::is_hidden(pid) == Some(true) {
-                hyprland::show(pid, pinned);
+        // Showing a window can pull focus to it, which would swallow what the user is typing.
+        let previous = if take_focus {
+            None
+        } else {
+            hyprland::active_address()
+        };
+        if hyprland::is_hidden(pid) == Some(true) {
+            hyprland::show(pid, pinned);
+        }
+        if take_focus {
+            hyprland::focus(pid);
+        } else if let Some(address) = previous {
+            if hyprland::active_address().as_deref() != Some(address.as_str()) {
+                hyprland::focus_address(&address);
             }
-            if take_focus {
-                hyprland::focus(pid);
-            } else if let Some(address) = previous {
-                if hyprland::active_address().as_deref() != Some(address.as_str()) {
-                    hyprland::focus_address(&address);
-                }
-            }
-        });
-        return;
+        }
+        return Ok(());
     }
-    let _ = window.show();
-    let _ = window.unminimize();
+    window
+        .show()
+        .and_then(|_| window.unminimize())
+        .map_err(|error| error.to_string())?;
     if take_focus {
-        let _ = window.set_focus();
+        window.set_focus().map_err(|error| error.to_string())?;
     }
+    Ok(())
 }
 
-fn dismiss(app: &AppHandle) {
-    let Some(window) = app.get_webview_window("main") else {
-        return;
-    };
+fn dismiss(app: &AppHandle) -> Result<(), String> {
+    let state = app.state::<AppState>();
+    let _visibility = state.visibility.lock().unwrap();
+    let window = app
+        .get_webview_window("main")
+        .ok_or("Main window unavailable")?;
     if hyprland::is_available() {
-        thread::spawn(|| hyprland::hide(std::process::id()));
-        return;
+        hyprland::hide(std::process::id());
+        return Ok(());
     }
-    let _ = window.hide();
+    window.hide().map_err(|error| error.to_string())
+}
+
+fn manual_visibility(app: &AppHandle, visible: bool, take_focus: bool) {
+    if let Err(error) = app.emit("window-visibility", visible) {
+        eprintln!("Notifying window visibility failed: {error}");
+    }
+    let app = app.clone();
+    thread::spawn(move || {
+        let result = if visible {
+            present(&app, take_focus)
+        } else {
+            dismiss(&app)
+        };
+        if let Err(error) = result {
+            eprintln!("Changing window visibility failed: {error}");
+        }
+    });
 }
 
 fn handle_command(app: &AppHandle, command: Command) {
     match command {
-        Command::Show => present(app, true),
-        Command::ShowQuietly => present(app, false),
-        Command::Hide => dismiss(app),
+        Command::Show => manual_visibility(app, true, true),
+        Command::ShowQuietly => manual_visibility(app, true, false),
+        Command::Hide => manual_visibility(app, false, false),
         Command::Toggle => {
             let hidden = app
                 .get_webview_window("main")
                 .is_some_and(|window| is_hidden(&window));
             if hidden {
-                present(app, false);
+                manual_visibility(app, true, false);
             } else {
-                dismiss(app);
+                manual_visibility(app, false, false);
             }
         }
         Command::ToggleClickThrough => {
@@ -134,6 +159,9 @@ fn handle_command(app: &AppHandle, command: Command) {
         Command::TogglePin => {
             let _ = app.emit("toggle-pin", ());
         }
+        Command::ToggleLayerPeek => {
+            let _ = app.emit("toggle-layer-peek", ());
+        }
         Command::NextView => {
             let _ = app.emit("next-view", ());
         }
@@ -141,11 +169,24 @@ fn handle_command(app: &AppHandle, command: Command) {
             let _ = app.emit("set-view", name);
         }
         Command::Manual => {
-            present(app, false);
+            manual_visibility(app, true, false);
             let _ = app.emit("toggle-manual", ());
         }
         Command::Quit => app.exit(0),
     }
+}
+
+#[tauri::command]
+async fn set_window_visible(app: AppHandle, visible: bool) -> Result<(), String> {
+    tauri::async_runtime::spawn_blocking(move || {
+        if visible {
+            present(&app, false)
+        } else {
+            dismiss(&app)
+        }
+    })
+    .await
+    .map_err(|error| error.to_string())?
 }
 
 // On Hyprland the compositor, not the toolkit, decides stacking, so pinning is done through it.
@@ -204,12 +245,13 @@ pub fn run() {
         .on_window_event(|window, event| {
             if let WindowEvent::CloseRequested { api, .. } = event {
                 api.prevent_close();
-                dismiss(window.app_handle());
+                manual_visibility(window.app_handle(), false, false);
             }
         })
         .invoke_handler(tauri::generate_handler![
             set_always_on_top,
             set_window_size,
+            set_window_visible,
             get_keyboard
         ])
         .run(tauri::generate_context!())
@@ -247,6 +289,10 @@ mod tests {
             Command::ToggleClickThrough
         );
         assert_eq!(parse(&["k", "--toggle-pin"]), Command::TogglePin);
+        assert_eq!(
+            parse(&["k", "--toggle-layer-peek"]),
+            Command::ToggleLayerPeek
+        );
     }
 
     #[test]

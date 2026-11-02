@@ -3,6 +3,7 @@ import {
   DEFAULT_VIEW_SETTINGS,
   MIN_OPACITY,
   MIN_SIZE,
+  DEFAULT_PEEK_DURATION_MS,
   VIEWS,
   defaultSettings,
   isViewId,
@@ -87,6 +88,25 @@ describe("parseSettings", () => {
     expect(
       parseSettings(JSON.stringify({ clickThrough: true })),
     ).not.toHaveProperty("clickThrough");
+  });
+
+  it("defaults layer peek off and restores its saved duration independently of views", () => {
+    expect(defaultSettings().layerPeek).toBe(false);
+    expect(defaultSettings().peekDurationMs).toBe(5000);
+    const settings = parseSettings(JSON.stringify({ layerPeek: true, peekDurationMs: 12500 }));
+    expect(settings.layerPeek).toBe(true);
+    expect(settings.peekDurationMs).toBe(12500);
+  });
+
+  it.each([
+    [0, 500], [999999, 60000], [1234.5, 1235],
+    ["5000", DEFAULT_PEEK_DURATION_MS], [null, DEFAULT_PEEK_DURATION_MS],
+  ])("validates the peek duration %s", (value, expected) => {
+    expect(parseSettings(JSON.stringify({ peekDurationMs: value })).peekDurationMs).toBe(expected);
+  });
+
+  it("ignores an invalid layer peek flag", () => {
+    expect(parseSettings('{"layerPeek":"on"}').layerPeek).toBe(false);
   });
 });
 

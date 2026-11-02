@@ -13,6 +13,36 @@ Manual button, and Minimize and Close.
 | No taskbar    | Hides the window from the taskbar                                  | Yes        |
 | Opacity       | Fades the window background from 100% down to 30%                  | Per view   |
 | Manual        | Opens or closes this manual                                        | No         |
+| Layer peek    | Shows briefly on effective keyboard layer changes; off by default | Yes        |
+| Settings      | Adjusts the peek duration                                          | Duration only |
+
+### Layer peek (optional)
+
+Layer peek is **off by default**. With it off, layer changes never open a hidden
+window. Enable **Layer peek** in the title bar, use **Layer peek on or off** in
+the tray menu, or run `kairos44-companion --toggle-layer-peek`.
+
+When enabled, the desktop window hides while idle. A change to the effective
+keyboard layer shows the current view without explicitly requesting focus, then
+hides it after **5 seconds**. Return to BASE also counts. Another layer change
+restarts the timer; repeated reports, modifiers, locks and pointer-mode-only
+changes do not. Connecting or reconnecting establishes a baseline, not a peek.
+Disconnecting cancels an active peek.
+
+Open **Settings** to adjust the duration from **0.5 to 60 seconds**. The mode and
+duration are saved globally, independently of the three views. Old settings
+retain normal, always-visible behavior until you opt in.
+
+An explicit show from the tray, CLI or launcher keeps the window open for
+browsing. Opening Settings or the manual, or turning Follow off, also suspends
+auto-hide. Hide the window when finished to re-arm peeks (and turn Follow back
+on if you disabled it). Hiding closes the manual and Settings. Turning Layer
+peek off cancels the timer and restores the window.
+
+Pin, opacity, click-through and the selected view are unchanged by peeks.
+The browser preview disables the Layer peek button; native visibility requires
+the desktop app. Hyprland uses the existing workspace/focus-preserving show/hide
+path. Focus behavior on other desktops still needs platform testing.
 
 ### Pin
 
@@ -88,6 +118,7 @@ notifier tray of your bar (Linux, including the Omarchy bar) or the menu bar
 | Show or hide window        | `--toggle`                    |
 | Next view                  | `--next-view`                 |
 | Pin on top or unpin        | `--toggle-pin`                |
+| Layer peek on or off       | `--toggle-layer-peek`         |
 | Click-through on or off    | `--toggle-click-through`      |
 | Open or close the manual   | `--manual`                    |
 | Quit Kairos44 Companion    | `--quit`                      |
